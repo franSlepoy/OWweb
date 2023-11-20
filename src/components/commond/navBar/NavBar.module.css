@@ -1,0 +1,8 @@
+.lista div a {
+  text-decoration: none;
+  color: #000;
+}
+
+.container_navbar{
+  padding-top: 64px !important;
+}

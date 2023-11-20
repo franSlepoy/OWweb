@@ -1,0 +1,20 @@
+.toolbar {
+	width: 20%; /* Ajusta el ancho según sea necesario */
+	min-height: 80vh; /* Altura completa de la vista */
+	background-color: #f5f5f5; /* Color de fondo gris claro */
+	display: flex; /* Usar flexbox para el diseño */
+	flex-direction: column; /* Orientación de las columnas */
+	justify-content: start; /* Alinear elementos al inicio */
+	padding: 20px; /* Espacio alrededor del contenido */
+}
+
+.toolbar ul {
+	list-style-type: none; /* Sin viñetas */
+	padding: 0; /* Sin relleno */
+}
+
+.toolbar li {
+	margin-bottom: 20px; /* Espacio entre elementos */
+	font-size: 18px; /* Tamaño de fuente */
+	cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+}
