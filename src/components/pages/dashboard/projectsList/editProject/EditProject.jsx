@@ -1,3 +1,6 @@
+import AddSlidesEdit from "./addSlidesEdit/AddSlidesEdit";
+import ImagePpalEdit from "./imagePpalEdit/ImagePpalEdit";
+
 const EditProject = ({ project, setProject }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -20,18 +23,19 @@ const EditProject = ({ project, setProject }) => {
 					/>
 				</div>
 
-				{/* 	<ImagePpal
-					formData={formData}
-					setFile={setFile}
+				<ImagePpalEdit
+					project={project}
+					setProject={setProject}
+					/* setFile={setFile}
 					file={file}
 					handleImageUpload={handleImageUpload}
 					loadingImage={loadingImage}
-					isImageUpload={isImageUpload}
+					isImageUpload={isImageUpload} */
 				/>
 
-				<AddSlides setFormData={setFormData} formData={formData} />
+				<AddSlidesEdit project={project} setProject={setProject} />
 
-				<AddGallery3 setFormData={setFormData} formData={formData} /> */}
+				{/* <AddGallery3 setFormData={setFormData} formData={formData} />  */}
 
 				<button type="submit">Crear Producto</button>
 			</form>
