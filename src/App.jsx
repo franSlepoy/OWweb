@@ -13,6 +13,7 @@ import ToolbarDash from "./components/pages/dashboard/toolBar/ToolBarDash";
 import ForgotPassword from "./components/pages/forgotPassword/ForgotPassword";
 import EditStudio3 from "./components/pages/dashboard/editStudio/ediStudio3";
 import AddProjectsContainer from "./components/pages/dashboard/agregarProjects/AddProjects";
+import EditProject from "./components/pages/dashboard/projectsList/editProject/EditProjectContainer";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 						<Route path="/forgot-password" element={<ForgotPassword />} />
 						<Route element={<RoutesManageAdmin />}>
 							<Route element={<ToolbarDash />}>
+								<Route path="/edit-project/:id" element={<EditProject />} />
 								<Route path="/dashboard-editInicio" element={<EditInicio />} />
 								<Route path="/dashboard2" element={<IndexDash2 />} />
 								<Route

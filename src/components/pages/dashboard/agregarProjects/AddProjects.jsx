@@ -41,7 +41,7 @@ const AddProjectsContainer = () => {
 
 		console.log("Valores del formulario a enviar: ", formData);
 
-		/* 	const collectionRef = collection(db, "projects");
+		/* 	const collectionRef = collection(db, "projects_test");
 
 		try {
 			await addDoc(collectionRef, formData);

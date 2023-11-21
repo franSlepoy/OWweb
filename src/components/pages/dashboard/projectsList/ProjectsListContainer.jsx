@@ -6,8 +6,11 @@ import { db } from "../../../../firebaseConfig/FirebaseConfig";
 
 const ProjectsListContainer = () => {
 	const [projects, setProjects] = useState([]);
+	const [changesProjects, setChangesProjects] = useState(false);
+	console.log(changesProjects);
 
 	useEffect(() => {
+		setChangesProjects(false);
 		let refCollection = collection(db, "projects_test");
 		getDocs(refCollection)
 			.then((res) => {
@@ -20,10 +23,12 @@ const ProjectsListContainer = () => {
 				setProjects(projectsArr);
 			})
 			.catch((err) => console.log(err));
-	}, []);
+	}, [changesProjects]);
 
 	console.log(projects);
-	return <ProjectsList projects={projects} />;
+	return (
+		<ProjectsList projects={projects} setChangesProjects={setChangesProjects} />
+	);
 };
 
 export default ProjectsListContainer;
