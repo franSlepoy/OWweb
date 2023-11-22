@@ -1,8 +1,15 @@
-import { useState } from "react";
-import { uploadFile } from "../../../../../firebaseConfig/FirebaseConfig";
+import { useState, useEffect } from "react";
+import { uploadFile } from "../../../../../../firebaseConfig/FirebaseConfig";
 
-const AddGallery3 = ({ setFormData }) => {
-	const [selectedImages, setSelectedImages] = useState([]);
+const AddGalleryEdit = ({ project, setProject }) => {
+	const [selectedImages, setSelectedImages] = useState(project.gallery);
+
+	useEffect(() => {
+		setSelectedImages(project.gallery);
+	}, [project.gallery]);
+
+	console.log("selectedImages es: ", selectedImages);
+	console.log("project.gallery es: ", project.gallery);
 
 	const handleImageSelect = (e) => {
 		const newImage = e.target.files[0];
@@ -14,7 +21,8 @@ const AddGallery3 = ({ setFormData }) => {
 					file: newImage,
 					url: URL.createObjectURL(newImage),
 					order: prevImages.length + 1,
-					double: false, // Nueva propiedad "double" inicializada como false
+					double: false,
+					isNew: true,
 				},
 			]);
 		}
@@ -33,13 +41,13 @@ const AddGallery3 = ({ setFormData }) => {
 			const updatedImages = [...prevImages];
 
 			// Obtener el orden anterior
-			const prevOrder = updatedImages[index].order;
+			/* 	const prevOrder = updatedImages[index].order; */
 
 			// Verificar si newOrder es un número válido
 			if (!isNaN(newOrder) && newOrder !== undefined) {
 				// Verificar si el nuevo orden ya está en uso
 				const isOrderTaken = updatedImages.some(
-					(image) => image.order === newOrder
+					(image, i) => i !== index && image.order == newOrder
 				);
 
 				if (!isOrderTaken) {
@@ -48,21 +56,20 @@ const AddGallery3 = ({ setFormData }) => {
 				}
 			}
 
-			// Actualizar el orden en la información guardada solo si es un número válido
-			if (!isNaN(prevOrder) && prevOrder !== undefined) {
-				setFormData((prevData) => {
+			/* if (!isNaN(prevOrder) && prevOrder !== undefined) {
+				setProject((prevData) => {
 					const updatedData = { ...prevData };
 
 					// Actualizar el orden en la información guardada
 					updatedData.gallery = updatedData.gallery.map((image) =>
-						image.order === prevOrder
+						image.order == prevOrder
 							? { ...image, order: updatedImages[index].order }
 							: image
 					);
 
 					return updatedData;
 				});
-			}
+			} */
 
 			return updatedImages;
 		});
@@ -82,33 +89,28 @@ const AddGallery3 = ({ setFormData }) => {
 
 		// Recorrer todas las imágenes seleccionadas
 		for (let image of selectedImages) {
-			// Subir cada imagen a Firebase Storage y obtener la URL
-			const url = await uploadFile(image.file);
+			// Verificar si la imagen es nueva
+			if (image.isNew) {
+				// Subir la imagen a Firebase Storage y obtener la URL
+				const url = await uploadFile(image.file);
 
-			// Crear un nuevo objeto de imagen que contenga todos los datos de la imagen original, excepto el objeto File
-			const newImage = {
-				url: url,
-				order: image.order,
-				double: image.double,
-				new: false,
-			};
+				// Añadir la URL a la imagen correspondiente
+				image.url = url;
+			}
 
-			// Añadir la nueva imagen a las imágenes subidas
-			uploadedImages.push(newImage);
+			// Añadir la imagen a las imágenes subidas
+			uploadedImages.push(image);
 		}
 
 		// Actualizar el estado de formData con las imágenes subidas
-		setFormData((prevData) => ({
+		setProject((prevData) => ({
 			...prevData,
-			gallery: [...prevData.gallery, ...uploadedImages],
+			gallery: [...uploadedImages],
 		}));
 	};
-
-	console.log("selectedImges: ", selectedImages);
-
 	return (
 		<div style={{ border: "solid blue", display: "flex", flexWrap: "wrap" }}>
-			{selectedImages.map((image, index) => (
+			{selectedImages?.map((image, index) => (
 				<div key={index} style={{ border: "solid green" }}>
 					<img src={image.url} alt={`Image ${index}`} width={100} />
 					<input
@@ -132,11 +134,9 @@ const AddGallery3 = ({ setFormData }) => {
 			<hr />
 			<br />
 			<br />
-			<button type="button" onClick={uploadImages}>
-				Guardar imágenes
-			</button>
+			<button onClick={uploadImages}>Guardar imágenes</button>
 		</div>
 	);
 };
 
-export default AddGallery3;
+export default AddGalleryEdit;
