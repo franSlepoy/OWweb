@@ -72,10 +72,10 @@ const ForgotPassword = () => {
 						</Grid>
 						<Grid item xs={10} md={12}>
 							<Button
-								type="submit"
+								type="button"
 								variant="contained"
 								fullWidth
-								onClick={() => navigate("/form-admin")}
+								onClick={() => navigate("/dashboard-settings")}
 							>
 								Regresar
 							</Button>
