@@ -194,9 +194,9 @@ const EditStudio3 = () => {
           <Typography>Modulo 3</Typography>
           <Divider />
 
-          <Box  mt={3} textAlign={"center"}>
+          <Box mt={3} textAlign={"center"}>
             <img
-			  width={400}
+              width={400}
               src={data.modulo3.url ? data.modulo3.url : imagen_default}
               style={{ width: 300 }}
             />
@@ -239,7 +239,9 @@ const EditStudio3 = () => {
 
           <Box mt={3} display={"flex"}>
             <Box width={"47%"}>
-              <Typography mt={1} textAlign={"center"}>Columna izquierda</Typography>
+              <Typography mt={1} textAlign={"center"}>
+                Columna izquierda
+              </Typography>
               <Box display={"flex"} flexDirection={"column"}>
                 <textarea
                   name=""
@@ -265,7 +267,9 @@ const EditStudio3 = () => {
             </Box>
 
             <Box width={"47%"} ml={"5%"}>
-              <Typography textAlign={"center"} mt={1}>Columna derecha</Typography>
+              <Typography textAlign={"center"} mt={1}>
+                Columna derecha
+              </Typography>
               <Box display={"flex"} flexDirection={"column"}>
                 <textarea
                   name=""
@@ -292,13 +296,17 @@ const EditStudio3 = () => {
           </Box>
         </Box>
 
-		<Box mt={3} >
-		<Button  sx={{ cursor: "pointer" }}
-          color="success"
-          size="large"
-          variant="outlined" onClick={handleSave}>Guardar Cambios</Button>
-		</Box>
-        
+        <Box mt={3}>
+          <Button
+            sx={{ cursor: "pointer" }}
+            color="success"
+            size="large"
+            variant="outlined"
+            onClick={handleSave}
+          >
+            Guardar Cambios
+          </Button>
+        </Box>
       </Box>
     </>
   );
