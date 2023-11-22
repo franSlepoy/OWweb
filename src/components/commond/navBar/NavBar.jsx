@@ -13,7 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import NavListDrawer from "./NavListDrawe";
 import { useEffect, useState } from "react";
 import logo_ow_negro from "../../../../public/imagenes/OWnegro.png";
-import StylesNavBar from "./NavBar.module.css";
+
 
 const NavBar = () => {
 	const { t, i18n } = useTranslation();

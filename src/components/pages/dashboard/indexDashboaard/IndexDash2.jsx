@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig/FirebaseConfig";
+import { Box } from "@mui/material";
 
 const IndexDash2 = () => {
 	const [textValue, setTextValue] = useState("");
@@ -39,7 +40,7 @@ const IndexDash2 = () => {
 	};
 
 	return (
-		<div>
+		<Box sx={{mt:5, ml:5}}>
 			<form onSubmit={handleSubmit}>
 				<textarea
 					placeholder="Aca va la info (puedes usar # para títulos y ## para subtítulos)"
@@ -58,7 +59,7 @@ const IndexDash2 = () => {
 				<h2>Texto con Estilos Aplicados:</h2>
 				{applyStyles(submittedText)}
 			</div>
-		</div>
+		</Box>
 	);
 };
 
