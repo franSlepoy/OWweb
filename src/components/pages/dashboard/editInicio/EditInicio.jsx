@@ -85,7 +85,7 @@ const EditInicio = () => {
                   src={
                     data?.image_desktop ? data.image_desktop : imagen_default
                   }
-                  width={200}
+                  width={400}
                 />
               </Box>
 
@@ -126,7 +126,7 @@ const EditInicio = () => {
             <Box mt={3}>
               <img
                 src={data?.image_mobile ? data.image_mobile : imagen_default}
-                width={200}
+                width={400}
               />
             </Box>
 
@@ -174,7 +174,7 @@ const EditInicio = () => {
             <Box mt={3}>
               <img
                 src={data?.video_desktop ? data.video_desktop : video_default}
-                width={200}
+                width={400}
               />
             </Box>
 
@@ -216,7 +216,7 @@ const EditInicio = () => {
             <Box mt={3}>
               <img
                 src={data?.video_mobile ? data.video_mobile : video_default}
-                width={200}
+                width={400}
               />
             </Box>
 
