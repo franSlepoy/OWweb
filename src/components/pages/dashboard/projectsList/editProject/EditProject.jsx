@@ -1,3 +1,4 @@
+import AddGalleryEdit from "./addGalleryEdit/AddGalleryEdit";
 import AddSlidesEdit from "./addSlidesEdit/AddSlidesEdit";
 import ImagePpalEdit from "./imagePpalEdit/ImagePpalEdit";
 
@@ -23,19 +24,11 @@ const EditProject = ({ project, setProject }) => {
 					/>
 				</div>
 
-				<ImagePpalEdit
-					project={project}
-					setProject={setProject}
-					/* setFile={setFile}
-					file={file}
-					handleImageUpload={handleImageUpload}
-					loadingImage={loadingImage}
-					isImageUpload={isImageUpload} */
-				/>
+				<ImagePpalEdit project={project} setProject={setProject} />
 
 				<AddSlidesEdit project={project} setProject={setProject} />
 
-				{/* <AddGallery3 setFormData={setFormData} formData={formData} />  */}
+				<AddGalleryEdit project={project} setProject={setProject} />
 
 				<button type="submit">Crear Producto</button>
 			</form>

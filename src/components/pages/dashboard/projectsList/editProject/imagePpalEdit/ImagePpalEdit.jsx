@@ -42,10 +42,6 @@ const ImagePpalEdit = ({ project, setProject }) => {
 		}
 	};
 
-	console.log(project.image_ppal);
-	console.log("file es: ", file);
-	console.log(project);
-
 	return (
 		<div>
 			<label htmlFor="">Imagen del Listado</label>

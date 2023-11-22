@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { uploadFile } from "../../../../firebaseConfig/FirebaseConfig";
+import { db, uploadFile } from "../../../../firebaseConfig/FirebaseConfig";
 import AddGallery3 from "./galleryImages/AddGallery3";
 import AddSlides from "./fichasSlides/AddSlides";
 import ImagePpal from "./imagePpal/ImagePpal";
+import { addDoc, collection } from "firebase/firestore";
 
 const AddProjectsContainer = () => {
 	const [formData, setFormData] = useState({
@@ -41,16 +42,19 @@ const AddProjectsContainer = () => {
 
 		console.log("Valores del formulario a enviar: ", formData);
 
-		/* 	const collectionRef = collection(db, "projects_test");
+		const collectionRef = collection(db, "projects_test");
 
 		try {
-			await addDoc(collectionRef, formData);
+			let res = await addDoc(collectionRef, formData);
+			console.log("respuesta exitosa de creacion de producto: ", res);
 
 			//opcional: mostrar mensaje de exito
 		} catch (error) {
 			console.log(error);
-		} */
+		}
 	};
+
+	console.log("formData addprojec: ", formData);
 
 	return (
 		<div>
@@ -81,6 +85,11 @@ const AddProjectsContainer = () => {
 
 				<AddGallery3 setFormData={setFormData} formData={formData} />
 
+				<br />
+				<br />
+				<hr />
+				<br />
+				<br />
 				<button type="submit">Crear Producto</button>
 			</form>
 		</div>
