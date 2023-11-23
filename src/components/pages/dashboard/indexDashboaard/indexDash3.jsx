@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig/FirebaseConfig";
+import { Box } from "@mui/material";
 
 const IndexDash3 = () => {
 	const [textValue, setTextValue] = useState("");
@@ -65,7 +66,7 @@ const IndexDash3 = () => {
 	};
 
 	return (
-		<div>
+		<Box>
 			<h1>Dashboard container</h1>
 
 			<form onSubmit={handleSubmit}>
@@ -86,7 +87,7 @@ const IndexDash3 = () => {
 				<h2>Texto Dividido y Renderizado:</h2>
 				{renderText()}
 			</div>
-		</div>
+		</Box>
 	);
 };
 
