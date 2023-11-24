@@ -45,7 +45,7 @@ const ImagePpalEdit = ({ project, setProject }) => {
 	return (
 		<div>
 			<label htmlFor="">Imagen del Listado</label>
-			<img src={file ? file : imagen_default} alt="" width={300} />
+			<img src={file ? file : imagen_default} alt="" width={400} />
 			<input
 				type="file"
 				name="image_ppal"
