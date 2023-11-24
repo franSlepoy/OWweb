@@ -4,7 +4,7 @@ import AddGallery3 from "./galleryImages/AddGallery3";
 import AddSlides from "./fichasSlides/AddSlides";
 import ImagePpal from "./imagePpal/ImagePpal";
 import { addDoc, collection } from "firebase/firestore";
-import { Box, Input, Typography } from "@mui/material";
+import { Box, Button, Input, Typography } from "@mui/material";
 
 const AddProjectsContainer = () => {
   const [formData, setFormData] = useState({
@@ -88,7 +88,7 @@ const AddProjectsContainer = () => {
           />
         </Box>
 
-        <AddSlides  setFormData={setFormData} formData={formData} />
+        <AddSlides setFormData={setFormData} formData={formData} />
 
         <AddGallery3 setFormData={setFormData} formData={formData} />
 
@@ -97,7 +97,9 @@ const AddProjectsContainer = () => {
         <hr />
         <br />
         <br />
-        <button type="submit">Crear Producto</button>
+        <Button color="success" size="small" variant="outlined" type="submit">
+          Crear Proyecto
+        </Button>
       </form>
     </Box>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { uploadFile } from "../../../../../firebaseConfig/FirebaseConfig";
-import { Box, Button } from "@mui/material";
-import { Label } from "@mui/icons-material";
+import { Box, Button, Typography } from "@mui/material";
+
 
 const AddGallery3 = ({ setFormData }) => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -111,24 +111,28 @@ const AddGallery3 = ({ setFormData }) => {
   return (
     <Box
       mt={3}
-      style={{ border: "solid black 1px", display: "flex", flexWrap: "wrap" }}
+      display={"flex"}
+      flexDirection={"column"}
+      style={{ border: "solid black 1px" }}
     >
       {selectedImages.map((image, index) => (
-        <Box key={index} style={{ border: "solid black 1px" }}>
+        <Box key={index} p={2} style={{ border: "solid black 1px" }}>
           <img src={image.url} alt={`Image ${index}`} width={400} />
+
           <input
             type="number"
             value={image.order}
             onChange={(e) => handleOrderChange(index, parseInt(e.target.value))}
           />
-          <Label>
+
+          <labelabel>
             Double:
             <input
               type="checkbox"
               checked={image.double}
               onChange={() => handleDoubleChange(index)}
             />
-          </Label>
+          </labelabel>
           <Button
             sx={{ cursor: "pointer", textTransform: "none", p: 0, m: 2 }}
             color="success"
@@ -140,13 +144,21 @@ const AddGallery3 = ({ setFormData }) => {
           </Button>
         </Box>
       ))}
-      <label htmlFor="imageInput">Seleccionar imagen</label>
-      <input type="file" id="imageInput" onChange={handleImageSelect} />
-      <hr />
-      <br />
-      <br />
+      <Box m={2}>
+        <Typography mb={3} htmlFor="imageInput">
+          Galeria de imágenes
+        </Typography>
+        <input type="file" id="imageInput" onChange={handleImageSelect} />
+      </Box>
+
       <Button
-        sx={{ cursor: "pointer", textTransform: "none", p: 0, m: 2 }}
+        sx={{
+          cursor: "pointer",
+          textTransform: "none",
+          p: 0,
+          m: 2,
+          width: "15%",
+        }}
         color="success"
         size="small"
         variant="outlined"
