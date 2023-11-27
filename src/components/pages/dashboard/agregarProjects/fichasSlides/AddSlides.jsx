@@ -5,6 +5,8 @@ const AddSlides = ({ setFormData, formData }) => {
     <Box mt={3}>
       <Box display={"flex"} width={"100%"}>
         <Box width={"49%"}>
+          <h5>Recuerda que: puedes usar # para títulos y ## para subtítulos</h5>
+
           <Typography textAlign={"center"}>Ficha Slide 1 - Es</Typography>
           <textarea
             style={{ width: "100%" }}
@@ -92,7 +94,7 @@ const AddSlides = ({ setFormData, formData }) => {
       </Box>
 
       <Box mt={2} display={"flex"} width={"100%"}>
-        <Box width={"49%"} >
+        <Box width={"49%"}>
           <Typography textAlign={"center"}>Memorias - Es</Typography>
           <textarea
             style={{ width: "100%" }}

@@ -22,6 +22,7 @@ const FormAdmin = () => {
 
   const { handleLogin, user } = useContext(AuthContext);
 
+  const [error, setError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [userCredentials, setUserCredentials] = useState({
     email: "",
@@ -35,6 +36,7 @@ const FormAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setError(false);
       const res = await onSignIn(userCredentials);
       let user = res.user;
       let refCollection = collection(db, "users");
@@ -47,12 +49,13 @@ const FormAdmin = () => {
         name: userDoc.data().name,
       };
       handleLogin(finalyUser);
-      navigate("/dashboard2");
+      navigate("/dashboard-projects");
 
       console.log("finalyUser : ", finalyUser);
     } catch (error) {
       console.log(error);
       console.log("Datos incorrecto o usuario sin permiso");
+      setError(true);
     }
   };
 
@@ -107,6 +110,9 @@ const FormAdmin = () => {
                   label="Contraseña"
                 />
               </FormControl>
+              {error && (
+                <small style={{ color: "red" }}>Datos incorrectos</small>
+              )}
             </Grid>
             <Link
               to="/forgot-password"

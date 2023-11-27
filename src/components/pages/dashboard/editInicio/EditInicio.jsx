@@ -39,9 +39,14 @@ const EditInicio = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let refCollection = collection(db, "inicio");
-    let refDoc = doc(refCollection, "D8eDUtoTEElGXUAON9dg");
-    await updateDoc(refDoc, data);
+    try {
+      let refCollection = collection(db, "inicio");
+      let refDoc = doc(refCollection, "D8eDUtoTEElGXUAON9dg");
+      await updateDoc(refDoc, data);
+      console.log("Seccion actualizada con: ", data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleDelete = async (field) => {
@@ -259,7 +264,7 @@ const EditInicio = () => {
           sx={{ cursor: "pointer" }}
           color="success"
           size="large"
-          variant="outlined"
+          variant="contained"
           onClick={handleSubmit}
           type="submit"
           disabled={!isImageUpload}

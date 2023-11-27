@@ -5,25 +5,25 @@ import { db } from "../../../../../firebaseConfig/FirebaseConfig";
 import EditProject from "./EditProject";
 
 const EditProjectContainer = () => {
-	const { id } = useParams();
+  const { id } = useParams();
 
-	const [project, setProject] = useState({});
+  const [project, setProject] = useState({});
 
-	useEffect(() => {
-		(async () => {
-			let refCollection = collection(db, "projects_test");
-			let refDoc = doc(refCollection, id);
-			let res = await getDoc(refDoc);
-			setProject({
-				...res.data(),
-				id: res.id,
-			});
-		})();
-	}, [id]);
+  useEffect(() => {
+    (async () => {
+      let refCollection = collection(db, "projects_test");
+      let refDoc = doc(refCollection, id);
+      let res = await getDoc(refDoc);
+      setProject({
+        ...res.data(),
+        id: res.id,
+      });
+    })();
+  }, [id]);
 
-	console.log("el projecto es: ", project);
+  console.log("el projecto es: ", project);
 
-	return <EditProject project={project} setProject={setProject} />;
+  return <EditProject project={project} setProject={setProject} id={id} />;
 };
 
 export default EditProjectContainer;

@@ -63,9 +63,13 @@ const EditStudio3 = () => {
 
   // Guardar cambios
   const handleSave = async () => {
-    let refCollection = collection(db, "studio");
-    const docRef = doc(refCollection, "modulos_studio_test");
-    await updateDoc(docRef, data);
+    try {
+      let refCollection = collection(db, "studio");
+      const docRef = doc(refCollection, "modulos_studio_test");
+      await updateDoc(docRef, data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleImageUpload = async (file, field) => {
@@ -91,15 +95,19 @@ const EditStudio3 = () => {
     // Obtén la URL de la imagen
 
     const desertRef = ref(storage, url);
-    await deleteObject(desertRef);
-    setData({
-      ...data,
-      modulo3: {
-        url: "",
-      },
-    });
 
-    setIsImageUpload(true);
+    try {
+      await deleteObject(desertRef);
+      setData({
+        ...data,
+        modulo3: {
+          url: "",
+        },
+      });
+      setIsImageUpload(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -301,7 +309,7 @@ const EditStudio3 = () => {
             sx={{ cursor: "pointer" }}
             color="success"
             size="large"
-            variant="outlined"
+            variant="contained"
             onClick={handleSave}
           >
             Guardar Cambios

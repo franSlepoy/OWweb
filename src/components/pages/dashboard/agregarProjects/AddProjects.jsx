@@ -48,6 +48,7 @@ const AddProjectsContainer = () => {
     try {
       let res = await addDoc(collectionRef, formData);
       console.log("respuesta exitosa de creacion de producto: ", res);
+      alert("Producto creado !! ");
 
       //opcional: mostrar mensaje de exito
     } catch (error) {
@@ -97,7 +98,7 @@ const AddProjectsContainer = () => {
         <hr />
         <br />
         <br />
-        <Button color="success" size="small" variant="outlined" type="submit">
+        <Button color="success" size="small" variant="contained" type="submit">
           Crear Proyecto
         </Button>
       </form>
