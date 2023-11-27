@@ -43,7 +43,7 @@ const EditInicio = () => {
       let refCollection = collection(db, "inicio");
       let refDoc = doc(refCollection, "D8eDUtoTEElGXUAON9dg");
       await updateDoc(refDoc, data);
-      console.log("Seccion actualizada con: ", data);
+      alert("Sección de Inicio Actualizada");
     } catch (error) {
       console.log(error);
     }
@@ -52,23 +52,26 @@ const EditInicio = () => {
   const handleDelete = async (field) => {
     // Obtén la URL de la imagen
 
-    const url = data[field];
-    const desertRef = ref(storage, url);
-    await deleteObject(desertRef);
+    try {
+      const borrarOk = confirm("Seguro que quieres borrar esta imagen?");
 
-    if (field == "image_desktop" || field == "image_mobile") {
-      setData({
-        ...data,
-        [field]: "",
-      });
-    } else {
-      setData({
-        ...data,
-        [field]: "",
-      });
+      if (borrarOk) {
+        const url = data[field];
+        const desertRef = ref(storage, url);
+        await deleteObject(desertRef);
+
+        let refCollection = collection(db, "inicio");
+        let refDoc = doc(refCollection, "D8eDUtoTEElGXUAON9dg");
+        await updateDoc(refDoc, { ...data, [field]: "" });
+        alert("Sección de Inicio Actualizada");
+      }
+
+      setData({ ...data, [field]: "" });
+
+      setIsImageUpload(true);
+    } catch (err) {
+      console.log(err);
     }
-
-    setIsImageUpload(true);
   };
 
   console.log(data);
