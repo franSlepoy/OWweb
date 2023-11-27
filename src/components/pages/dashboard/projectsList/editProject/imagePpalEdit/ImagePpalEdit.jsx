@@ -2,6 +2,7 @@ import { useState } from "react";
 import imagen_default from "../../../../../../../public/imagenes/defaults/imagen_default.jfif";
 import { uploadFile } from "../../../../../../firebaseConfig/FirebaseConfig";
 import { useEffect } from "react";
+import { Box, Typography } from "@mui/material";
 
 const ImagePpalEdit = ({ project, setProject }) => {
 	const [file, setFile] = useState(undefined);
@@ -43,16 +44,16 @@ const ImagePpalEdit = ({ project, setProject }) => {
 	};
 
 	return (
-		<div>
-			<label htmlFor="">Imagen del Listado</label>
-			<img src={file ? file : imagen_default} alt="" width={400} />
+		<Box display={"flex"} flexDirection={"column"}>
+			<Typography mt={1} mb={1} htmlFor="">Imagen del Listado</Typography>
+			<img  src={file ? file : imagen_default} alt="" width={400} />
 			<input
 				type="file"
 				name="image_ppal"
 				onChange={(e) => handleChange(e)} //subir la url primero a storage
 			/>
 			{file && clickFile && (
-				<button type="button" onClick={() => handleImageUpload(file)}>
+				<button  type="button" onClick={() => handleImageUpload(file)}>
 					Cargar imagen!
 				</button>
 			)}
@@ -60,7 +61,7 @@ const ImagePpalEdit = ({ project, setProject }) => {
 			{isImageUpload && <p>¡Imagen subida!</p>}
 
 			{/* REVISAR */}
-		</div>
+		</Box>
 	);
 };
 

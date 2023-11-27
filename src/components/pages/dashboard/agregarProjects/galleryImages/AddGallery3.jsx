@@ -112,12 +112,12 @@ const AddGallery3 = ({ setFormData }) => {
     <Box
       mt={3}
       display={"flex"}
-      flexDirection={"column"}
-      style={{ border: "solid black 1px" }}
+     
+      
     >
       {selectedImages.map((image, index) => (
-        <Box key={index} p={2} style={{ border: "solid black 1px" }}>
-          <img src={image.url} alt={`Image ${index}`} width={400} />
+        <Box textAlign={"center"}  maxWidth={300}  key={index} p={2} style={{ border: "solid black 1px" }}>
+          <img  src={image.url} alt={`Image ${index}`} width={200} />
 
           <input
             type="number"
@@ -150,14 +150,14 @@ const AddGallery3 = ({ setFormData }) => {
         </Typography>
         <input type="file" id="imageInput" onChange={handleImageSelect} />
       </Box>
-
-      <Button
+<Box>
+<Button
         sx={{
           cursor: "pointer",
           textTransform: "none",
           p: 0,
           m: 2,
-          width: "15%",
+          
         }}
         color="success"
         size="small"
@@ -165,8 +165,10 @@ const AddGallery3 = ({ setFormData }) => {
         type="button"
         onClick={uploadImages}
       >
-        Guardar imágenes
+        Guardar 
       </Button>
+</Box>
+      
     </Box>
   );
 };
