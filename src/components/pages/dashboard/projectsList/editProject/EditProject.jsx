@@ -1,39 +1,50 @@
+import { Box, Button, Typography } from "@mui/material";
 import AddGalleryEdit from "./addGalleryEdit/AddGalleryEdit";
 import AddSlidesEdit from "./addSlidesEdit/AddSlidesEdit";
 import ImagePpalEdit from "./imagePpalEdit/ImagePpalEdit";
 
 const EditProject = ({ project, setProject }) => {
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		console.log("valores ", project);
-	};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("valores ", project);
+  };
 
-	return (
-		<div>
-			<h2>PROYECTO A EDITAR - {project.name}</h2>
-			<p>Listado - Agregar proyectos </p>
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="">Proyecto</label>
-					<input
-						type="text"
-						placeholder="Nombre del proyecto"
-						name="name"
-						value={project.name}
-						onChange={(e) => setProject({ ...project, name: e.target.value })}
-					/>
-				</div>
+  return (
+    <Box m={3}>
+      <Typography fontSize={"20px"}>PROYECTOS </Typography>
+      <Typography>Listado => {project.name} </Typography>
 
-				<ImagePpalEdit project={project} setProject={setProject} />
+      <Box mt={5}>
+        <form onSubmit={handleSubmit}>
+          <Box mb={1}>
+            <input
+              type="text"
+              placeholder="Nombre del proyecto"
+              name="name"
+              value={project.name}
+              onChange={(e) => setProject({ ...project, name: e.target.value })}
+            />
+          </Box>
 
-				<AddSlidesEdit project={project} setProject={setProject} />
+          <ImagePpalEdit project={project} setProject={setProject} />
 
-				<AddGalleryEdit project={project} setProject={setProject} />
+          <AddSlidesEdit project={project} setProject={setProject} />
 
-				<button type="submit">Crear Producto</button>
-			</form>
-		</div>
-	);
+          <AddGalleryEdit project={project} setProject={setProject} />
+
+          <Button
+            color="success"
+            variant="outlined"
+            size="small"
+            sx={{ width: "45%", mt: 1, p: 0 }}
+            type="submit"
+          >
+            Crear Producto
+          </Button>
+        </form>
+      </Box>
+    </Box>
+  );
 };
 
 export default EditProject;
