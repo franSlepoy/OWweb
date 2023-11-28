@@ -42,15 +42,18 @@ const IndexDashboardContainer = () => {
                     onClick={handleLogOut}
                   >
                     <Typography sx={{ textTransform: "none", color: "white" }}>
-                      Login
+                      Logout
                     </Typography>
                   </Button>
                 </Box>
               )}
             </Hidden>
-            
+
             <Hidden smUp>
-              <Button sx={{color:"white", padding:0}}> <MenuIcon fontSize="large" /> </Button>
+              <Button sx={{ color: "white", padding: 0 }}>
+                {" "}
+                <MenuIcon fontSize="large" />{" "}
+              </Button>
             </Hidden>
           </Box>
         </Toolbar>

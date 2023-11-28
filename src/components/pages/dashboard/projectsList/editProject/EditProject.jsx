@@ -44,12 +44,12 @@ const EditProject = ({ project, setProject, id }) => {
 
           <Button
             color="success"
-            variant="outlined"
+            variant="contained"
             size="small"
             sx={{ width: "45%", mt: 1, p: 0 }}
             type="submit"
           >
-            Crear Producto
+            Actualizar Producto
           </Button>
         </form>
       </Box>

@@ -2,9 +2,9 @@ import { useState } from "react";
 import { uploadFile } from "../../../../../firebaseConfig/FirebaseConfig";
 import { Box, Button, Typography } from "@mui/material";
 
-
 const AddGallery3 = ({ setFormData }) => {
   const [selectedImages, setSelectedImages] = useState([]);
+  const [loadingImage, setLoadingImage] = useState(false);
 
   const handleImageSelect = (e) => {
     const newImage = e.target.files[0];
@@ -81,6 +81,7 @@ const AddGallery3 = ({ setFormData }) => {
   const uploadImages = async () => {
     // Crear un array para almacenar las URLs de las imágenes subidas
     const uploadedImages = [];
+    setLoadingImage(true);
 
     // Recorrer todas las imágenes seleccionadas
     for (let image of selectedImages) {
@@ -104,20 +105,22 @@ const AddGallery3 = ({ setFormData }) => {
       ...prevData,
       gallery: [...prevData.gallery, ...uploadedImages],
     }));
+    setLoadingImage(false);
   };
 
   console.log("selectedImges: ", selectedImages);
 
   return (
-    <Box
-      mt={3}
-      display={"flex"}
-     
-      
-    >
+    <Box mt={3} display={"flex"}>
       {selectedImages.map((image, index) => (
-        <Box textAlign={"center"}  maxWidth={300}  key={index} p={2} style={{ border: "solid black 1px" }}>
-          <img  src={image.url} alt={`Image ${index}`} width={200} />
+        <Box
+          textAlign={"center"}
+          maxWidth={300}
+          key={index}
+          p={2}
+          style={{ border: "solid black 1px" }}
+        >
+          <img src={image.url} alt={`Image ${index}`} width={200} />
 
           <input
             type="number"
@@ -150,25 +153,25 @@ const AddGallery3 = ({ setFormData }) => {
         </Typography>
         <input type="file" id="imageInput" onChange={handleImageSelect} />
       </Box>
-<Box>
-<Button
-        sx={{
-          cursor: "pointer",
-          textTransform: "none",
-          p: 0,
-          m: 2,
-          
-        }}
-        color="success"
-        size="small"
-        variant="outlined"
-        type="button"
-        onClick={uploadImages}
-      >
-        Cargar Imagenes 
-      </Button>
-</Box>
-      
+      <Box>
+        {loadingImage && (
+          <Button
+            sx={{
+              cursor: "pointer",
+              textTransform: "none",
+              p: 0,
+              m: 2,
+            }}
+            color="success"
+            size="small"
+            variant="outlined"
+            type="button"
+            onClick={uploadImages}
+          >
+            Cargar Imagenes
+          </Button>
+        )}
+      </Box>
     </Box>
   );
 };
