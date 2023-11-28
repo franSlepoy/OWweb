@@ -13,80 +13,92 @@ import { IconButton } from "@mui/material";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../../firebaseConfig/FirebaseConfig";
 import { useNavigate } from "react-router-dom";
+import InputSearch from "../../../commond/inputSearch/InputSearch";
 
-export default function ProjectsList({ projects, setChangesProjects }) {
-	const updateVisibility = async (project) => {
-		let obj = {
-			...project,
-			visible: !project.visible,
-		};
+export default function ProjectsList({
+  setChangesProjects,
+  filteredProjects,
+  searchTerm,
+  setSearchTerm,
+}) {
+  const updateVisibility = async (project) => {
+    let obj = {
+      ...project,
+      visible: !project.visible,
+    };
 
-		console.log("el obj final seria: ", obj);
-		let refDoc = doc(db, "projects_test", project.id);
-		await updateDoc(refDoc, obj);
-		setChangesProjects(true);
-	};
+    console.log("el obj final seria: ", obj);
+    let refDoc = doc(db, "projects_test", project.id);
+    await updateDoc(refDoc, obj);
+    setChangesProjects(true);
+  };
 
-	const deleteProject = async (project) => {
-		const rta = confirm(
-			"Deseas eliminar estre producto? (Ya es real): " + project.name
-		);
-		if (rta) {
-			alert(project.name + " fue eliminado");
-			let refDoc = doc(db, "projects_test", project.id);
-			deleteDoc(refDoc);
-			setChangesProjects(true);
-		} else {
-			alert("Sigue donde está");
-		}
-	};
+  const deleteProject = async (project) => {
+    const rta = confirm(
+      "Deseas eliminar estre producto? (Ya es real): " + project.name
+    );
+    if (rta) {
+      alert(project.name + " fue eliminado");
+      let refDoc = doc(db, "projects_test", project.id);
+      deleteDoc(refDoc);
+      setChangesProjects(true);
+    } else {
+      alert("Sigue donde está");
+    }
+  };
 
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const editProject = (project) => {
-		navigate(`/edit-project/${project.id}`);
-	};
+  const editProject = (project) => {
+    navigate(`/edit-project/${project.id}`);
+  };
 
-	return (
-		<TableContainer component={Paper}>
-			
-			<Table sx={{ minWidth: 650 }} aria-label="simple table">
-				<TableHead>
-					<TableRow>
-						<TableCell>id</TableCell>
-						<TableCell align="right">Proyecto</TableCell>
-						<TableCell align="right">Acciones</TableCell>
-					</TableRow>
-				</TableHead>
-				<TableBody>
-					{projects.map((project) => (
-						<TableRow key={project.id}>
-							<TableCell component="th" scope="row">
-								{project.id}
-							</TableCell>
-							<TableCell align="right">{project.name}</TableCell>
-							<TableCell align="right">
-								<div>
-									<IconButton onClick={() => updateVisibility(project)}>
-										{project.visible ? (
-											<VisibilityIcon />
-										) : (
-											<VisibilityOffIcon />
-										)}
-									</IconButton>
+  return (
+    <>
+      <TableContainer component={Paper}>
+        <InputSearch
+          setSearchTerm={setSearchTerm}
+          searchTerm={searchTerm}
+          text={"Productos"}
+        />
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>id</TableCell>
+              <TableCell align="right">Proyecto</TableCell>
+              <TableCell align="right">Acciones</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredProjects.map((project) => (
+              <TableRow key={project.id}>
+                <TableCell component="th" scope="row">
+                  {project.id}
+                </TableCell>
+                <TableCell align="right">{project.name}</TableCell>
+                <TableCell align="right">
+                  <div>
+                    <IconButton onClick={() => updateVisibility(project)}>
+                      {project.visible ? (
+                        <VisibilityIcon />
+                      ) : (
+                        <VisibilityOffIcon />
+                      )}
+                    </IconButton>
 
-									<IconButton onClick={() => editProject(project)}>
-										<EditIcon />
-									</IconButton>
-									<IconButton onClick={() => deleteProject(project)}>
-										<DeleteForeverIcon />
-									</IconButton>
-								</div>
-							</TableCell>
-						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</TableContainer>
-	);
+                    <IconButton onClick={() => editProject(project)}>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton onClick={() => deleteProject(project)}>
+                      <DeleteForeverIcon />
+                    </IconButton>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
+  );
 }
