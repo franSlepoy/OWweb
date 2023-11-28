@@ -210,7 +210,8 @@ const EditStudio3 = () => {
             />
           </Box>
 
-          <Box textAlign={"center"}>
+          <Box m={"auto"} display={"flex"} flexDirection={"column"} textAlign={"center"}>
+            <Box>
             <input
               type="file"
               onChange={(e) => setFile({ url: e.target.files[0] })}
@@ -227,17 +228,21 @@ const EditStudio3 = () => {
             {isImageUpload && <p>¡Imagen subida!</p>}
 
             {data.modulo3.url && (
-              <Button
+               
+               <Button
+
                 color="success"
                 variant="outlined"
                 size="small"
-                sx={{ width: "45%", mt: 1, p: 0 }}
+                sx={{ textTransform:"none", m: 1, p: 0 }}
                 onClick={() => handleDelete(data.modulo3.url)}
                 type="button"
               >
                 Eliminar imagen
               </Button>
             )}
+            </Box>
+            
           </Box>
         </Box>
 
@@ -251,6 +256,9 @@ const EditStudio3 = () => {
                 Columna izquierda
               </Typography>
               <Box display={"flex"} flexDirection={"column"}>
+                <Box>
+                  
+                </Box>
                 <textarea
                   name=""
                   id=""

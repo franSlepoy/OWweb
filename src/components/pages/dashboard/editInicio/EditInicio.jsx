@@ -113,7 +113,8 @@ const EditInicio = () => {
                   </button>
                 )}
                 {data.image_desktop && (
-                  <Button
+                 
+                 <Button
                     color="success"
                     variant="outlined"
                     size="small"
