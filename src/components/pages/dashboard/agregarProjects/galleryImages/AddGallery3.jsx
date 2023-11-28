@@ -165,7 +165,7 @@ const AddGallery3 = ({ setFormData }) => {
         type="button"
         onClick={uploadImages}
       >
-        Guardar 
+        Cargar Imagenes 
       </Button>
 </Box>
       
