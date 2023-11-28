@@ -13,8 +13,27 @@ import ForgotPassword from "./components/pages/forgotPassword/ForgotPassword";
 import EditStudio3 from "./components/pages/dashboard/editStudio/ediStudio3";
 import AddProjectsContainer from "./components/pages/dashboard/agregarProjects/AddProjects";
 import EditProject from "./components/pages/dashboard/projectsList/editProject/EditProjectContainer";
+import ProjectsWithSearch from "./components/pages/dashboard/projectsList/ProjectsWithSearch";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { collection, getFirestore } from "firebase/firestore";
 
 function App() {
+   // Obtén la referencia a la colección en Firestore
+   const projectsCollectionRef = collection(getFirestore(), "projects_test");
+
+   // Obtiene los proyectos usando el hook useCollectionData
+   const [projects, loading, error] = useCollectionData(projectsCollectionRef, {
+     idField: "id", // campo que identifica cada documento
+   });
+ 
+   // Manejar el estado de carga o error si es necesario
+   if (loading) {
+     return <p>Loading...</p>;
+   }
+ 
+   if (error) {
+     return <p>Error: {error.message}</p>;
+   }
   return (
     <BrowserRouter>
       <AuthContextComponent>
@@ -32,6 +51,7 @@ function App() {
                   path="/dashboard-projects"
                   element={<ProjectsListContainer />}
                 />
+                <Route path="/proyectsWithSearch" element={<ProjectsWithSearch projects={projects}  /* setChangesProjects={setChangesProjects} */  />} />
                 <Route path="/dashboard-settings" element={<SettingsAdmin />} />
                 <Route
                   path="/dashboard-addProjects"
