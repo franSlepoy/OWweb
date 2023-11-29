@@ -111,7 +111,7 @@ const AddGallery3 = ({ setFormData }) => {
   console.log("selectedImges: ", selectedImages);
 
   return (
-    <Box mt={3} display={"flex"}>
+    <Box mt={3} display={"flex"} flexWrap={"wrap"}>
       {selectedImages.map((image, index) => (
         <Box
           textAlign={"center"}
