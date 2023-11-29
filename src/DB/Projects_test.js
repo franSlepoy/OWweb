@@ -1,35 +1,65 @@
-export const projects = [
-	{
-		name: "Cumulo",
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "./firebaseConfig";
 
-		image_ppal:
-			"https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fcumulo%2FGrilla%20ordonez%20wenzke%20cumulo.jpg?alt=media&token=19035ab2-0570-4b64-bfa0-0c90802730c4",
+export const generarDocumentos = () => {
+  let refCollection = collection(db, "products");
 
-		slides: {
-			slides1_en: "sadasdasd",
-			slides1_es: "sadasdas",
-			slides2_en: "sadasdas",
-			slides2_es: "sadasdas",
-		},
+  let products = [
+    {
+      name: "paroissan",
+      image_ppal:
+        "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2FGrilla%20ordonezwenzke.jpg?alt=media&token=e0a145ae-c4be-41b2-8207-2f78d6544428",
+      memories: {
+        memorie_en: "nada",
+        memorie_es: "nothing al reves",
+      },
+      slides: {
+        slides1_en: "slide1 english",
+        slides1_es: "slide1 espa",
+        slides2_es: "slide2 esp",
+        slides2_en: "slide2_en",
+      },
+      gallery: [
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2Fhabitacion%20lulu%201%20ordonezwenzke.jpg?alt=media&token=62b84995-f53b-45c7-ae5d-434aebc11a0d",
+          double: false,
+          order: 1,
+          isNew: false,
+        },
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2Fcocina%20lulu%202%20ordonezwenzke.jpg?alt=media&token=3182df90-4346-423a-9f0c-308fd5651419",
+          double: false,
+          order: 2,
+          isNew: false,
+        },
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2Fcocina%20lulu%201%20ordonezwenzke.jpg?alt=media&token=cc245480-298d-4288-ba9f-2418ea6b9445",
+          double: false,
+          order: 3,
+          isNew: false,
+        },
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2Fbiblioa%20lulu%202%20ordonezwenzke.jpg?alt=media&token=3c5320ab-b2b3-437a-a978-88935827b1d3",
+          double: false,
+          order: 4,
+          isNew: false,
+        },
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2Fbiblioa%20lulu%201%20ordonezwenzke.jpg?alt=media&token=779d75cf-891c-40df-b78c-715487e88baf",
+          double: false,
+          order: 5,
+          isNew: false,
+        },
+        {
+          url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fparoisian%2FESCALERA%20lulu%202%20ordonezwenzke.jpg?alt=media&token=b053f62b-904f-4701-aee8-7e45791b1de2",
+          double: false,
+          order: 6,
+          isNew: false,
+        },
+      ],
+      visible: true,
+    },
+  ];
 
-		memories: { memorie_en: "sdasda", memorie_es: "sadas" },
-
-		gallery: [
-			{
-				url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fcumulo%2F2.jpg?alt=media&token=b8b5fbcd-57c1-4f80-a188-6893b6457c41",
-				double: true,
-				order: 1,
-			},
-			{
-				url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fcumulo%2F3%20ordonez%20wenzke%20cumulo.jpg?alt=media&token=0d5e02b5-2795-412a-bc05-cad536cb1a9a",
-				double: false,
-				order: 2,
-			},
-			{
-				url: "https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/projects%2Fcumulo%2F4%20ordonez%20wenzke%20cumulo%20pedro%20ya%C3%B1ez%20felix%20niikado.jpg?alt=media&token=cc735efb-58db-4931-aed8-2d9532da3fb1",
-				double: false,
-				order: 3,
-			},
-		],
-	},
-];
+  products.forEach((e) => addDoc(refCollection, e));
+};
