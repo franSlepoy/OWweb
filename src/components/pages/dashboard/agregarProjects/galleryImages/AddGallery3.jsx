@@ -105,9 +105,10 @@ const AddGallery3 = ({ setFormData }) => {
       ...prevData,
       gallery: [...prevData.gallery, ...uploadedImages],
     }));
-    setLoadingImage(false);
+    /* setLoadingImage(false); */
   };
 
+  console.log("loading: ", loadingImage);
   console.log("selectedImges: ", selectedImages);
 
   return (
@@ -154,23 +155,21 @@ const AddGallery3 = ({ setFormData }) => {
         <input type="file" id="imageInput" onChange={handleImageSelect} />
       </Box>
       <Box>
-        {loadingImage && (
-          <Button
-            sx={{
-              cursor: "pointer",
-              textTransform: "none",
-              p: 0,
-              m: 2,
-            }}
-            color="success"
-            size="small"
-            variant="outlined"
-            type="button"
-            onClick={uploadImages}
-          >
-            Cargar Imagenes
-          </Button>
-        )}
+        <Button
+          sx={{
+            cursor: "pointer",
+            textTransform: "none",
+            p: 0,
+            m: 2,
+          }}
+          color="success"
+          size="small"
+          variant="outlined"
+          type="button"
+          onClick={uploadImages}
+        >
+          Cargar Imagenes
+        </Button>
       </Box>
     </Box>
   );
