@@ -18,6 +18,7 @@ const ImagePpal = ({
         src={formData.image_ppal ? formData.image_ppal : imagen_default}
         alt=""
         width={400}
+        
       />
       <Box mt={1}>
         <input
