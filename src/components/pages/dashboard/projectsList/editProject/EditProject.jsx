@@ -10,8 +10,13 @@ const EditProject = ({ project, setProject, id }) => {
     e.preventDefault();
     console.log("valores ", project);
     try {
+      // Elimina la propiedad file de cada objeto en la propiedad gallery
+      project.gallery.forEach((item) => {
+        delete item.file;
+      });
       let refCollection = collection(db, "projects_test");
       const docRef = doc(refCollection, id);
+
       await updateDoc(docRef, project);
       console.log("Documento actualizado");
     } catch (error) {
