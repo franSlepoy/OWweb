@@ -13,6 +13,7 @@ import ForgotPassword from "./components/pages/forgotPassword/ForgotPassword";
 import EditStudio3 from "./components/pages/dashboard/editStudio/ediStudio3";
 import AddProjectsContainer from "./components/pages/dashboard/agregarProjects/AddProjects";
 import EditProject from "./components/pages/dashboard/projectsList/editProject/EditProjectContainer";
+import CrearProjects from "./DB/CrearProjects";
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                   element={<AddProjectsContainer />}
                 />
                 <Route path="/dashboard-editStudio" element={<EditStudio3 />} />
+                <Route path="/crear-projects" element={<CrearProjects />} />
               </Route>
             </Route>
           </Route>

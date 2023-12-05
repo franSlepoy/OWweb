@@ -13,19 +13,24 @@ import MenuIcon from "@mui/icons-material/Menu";
 import NavListDrawer from "./NavListDrawe";
 import { useEffect, useState } from "react";
 import logo_ow_negro from "../../../../public/imagenes/OWnegro.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 
 
 const NavBar = () => {
 	const { t, i18n } = useTranslation();
+	const { handleLenguage, lenguage } = useContext(AuthContext);
 
 	// Función para cambiar el idioma a español
 	const cambiarAEspanol = () => {
 		i18n.changeLanguage("es");
+		handleLenguage("es")
 	};
 
 	// Función para cambiar el idioma a inglés
 	const cambiarAIngles = () => {
 		i18n.changeLanguage("en");
+		handleLenguage("en")
 	};
 
 	const [open, setOpen] = useState(false);
@@ -47,6 +52,8 @@ const NavBar = () => {
 			document.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
+
+	console.log("El lenguage es: " , lenguage)
 
 	return (
 		<>

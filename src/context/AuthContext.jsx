@@ -8,6 +8,7 @@ const AuthContextComponent = ({ children }) => {
 	const [user, setUser] = useState(
 		JSON.parse(localStorage.getItem("userInfo")) || {}
 	);
+	const [lenguage , setLenguage] = useState("es")
 	const [isLogged, setIsLogged] = useState(
 		JSON.parse(localStorage.getItem("isLogged")) || false
 	);
@@ -27,11 +28,18 @@ const AuthContextComponent = ({ children }) => {
 		navigate("/form-admin");
 	};
 
+	const handleLenguage = (idioma)=> { 
+		setLenguage(idioma)
+	}
+
 	let data = {
 		handleLogin,
 		user,
 		isLogged,
 		handleLogOut,
+		handleLenguage,
+		lenguage
+		
 	};
 	return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

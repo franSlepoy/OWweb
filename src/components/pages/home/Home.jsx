@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import Proyectos from "../proyectos/Proyectos";
-import { useEffect, useState } from "react";
 import NavBar from "../../commond/navBar/NavBar";
 import StudioContainer from "../studio/StudioContainer";
+import Image_init from "./imagen_init/Image_init";
 
 const Home = () => {
-	const [scrollPosition, setScrollPosition] = useState(0);
+/* 	const [scrollPosition, setScrollPosition] = useState(0);
 	const [isTitleVisible, setIsTitleVisible] = useState(true);
 	useEffect(() => {
 		const handleScroll = () => {
@@ -18,20 +18,15 @@ const Home = () => {
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, [scrollPosition]);
+	}, [scrollPosition]); */
+
+	
+
 
 	return (
 		<>
 			{/* IMAGEN DE ARRIBA CON EL LOGO */}
-			<Box sx={{ zIndex: 333 }}>
-				<img
-					/* height="766px" */
-					width="100%"
-					src="public/imagenes/1673364522_1.jpg"
-					alt="una casa en la playa"
-					style={{ height: "100vh" }}
-				/>
-			</Box>
+			<Image_init />
 			<Box
 				sx={{
 					position: "absolute",
@@ -39,7 +34,7 @@ const Home = () => {
 					left: "50%",
 					transform: "translate(-50%, -50%)",
 					zIndex: 4,
-					opacity: isTitleVisible ? 1 : 0,
+					/* opacity: isTitleVisible ? 1 : 0, */
 					transition: "opacity 0.3s",
 				}}
 			>
