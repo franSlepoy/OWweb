@@ -1,12 +1,14 @@
 import { Box, Divider } from "@mui/material";
 import owstyles from "./OW.module.css";
-import { useTranslation } from "react-i18next";
 import O_img from "../../../../../public/imagenes/OW/o.svg";
 import W_img from "../../../../../public/imagenes/OW/w.svg";
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/AuthContext";
 
-const OW = () => {
-  const { t } = useTranslation();
+const OW = ({ modulosStudio }) => {
+  const { lenguage } = useContext(AuthContext);
 
+  console.log(modulosStudio);
   return (
     <Box
       sx={{
@@ -14,7 +16,6 @@ const OW = () => {
         flexDirection: { md: "row", xs: "column" },
         gap: 4,
         justifyContent: "space-around",
-        
       }}
     >
       <Box
@@ -29,13 +30,16 @@ const OW = () => {
         <div className={owstyles.img_container}>
           <img src={O_img} />
         </div>
-        <p className={owstyles.parrafos}>{t("o1")}</p>
+        {/*  <p className={owstyles.parrafos}>{t("o1")}</p>
         <p className={owstyles.parrafos}>{t("o2")}</p>
 
         <p className={owstyles.parrafos}>{t("o3")}</p>
         <p className={owstyles.parrafos}>{t("o4")}</p>
         <p className={owstyles.parrafos}>{t("o5")}</p>
-        <p className={owstyles.parrafos}>{t("o6")}</p>
+        <p className={owstyles.parrafos}>{t("o6")}</p> */}
+        {lenguage == "es"
+          ? modulosStudio?.modulo2?.o_es
+          : modulosStudio?.modulo2?.o_en}
       </Box>
       <Divider
         color="grey"
@@ -56,12 +60,15 @@ const OW = () => {
         <div className={owstyles.img_container}>
           <img src={W_img} />
         </div>
-        <p className={owstyles.parrafos}>{t("w1")}</p>
+        {/* <p className={owstyles.parrafos}>{t("w1")}</p>
         <p className={owstyles.parrafos}>{t("w2")}</p>
         <p className={owstyles.parrafos}>{t("w3")}</p>
         <p className={owstyles.parrafos}>{t("w4")}</p>
         <p className={owstyles.parrafos}>{t("w5")}</p>
-        <p className={owstyles.parrafos}>{t("w6")}</p>
+        <p className={owstyles.parrafos}>{t("w6")}</p> */}
+        {lenguage == "es"
+          ? modulosStudio?.modulo2?.w_es
+          : modulosStudio?.modulo2?.w_en}
       </Box>
     </Box>
   );

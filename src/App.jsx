@@ -15,33 +15,59 @@ import AddProjectsContainer from "./components/pages/dashboard/agregarProjects/A
 import EditProject from "./components/pages/dashboard/projectsList/editProject/EditProjectContainer";
 import CrearProjects from "./DB/CrearProjects";
 
-
 function App() {
   return (
     <BrowserRouter>
       <AuthContextComponent>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/description" element={<Descripcion />} />
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/project/:id"
+            element={<Descripcion />}
+          />
           <Route element={<IndexDashboardContainer />}>
-            <Route path="/form-admin" element={<FormAdmin />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route
+              path="/form-admin"
+              element={<FormAdmin />}
+            />
+            <Route
+              path="/forgot-password"
+              element={<ForgotPassword />}
+            />
             <Route element={<RoutesManageAdmin />}>
               <Route element={<ToolbarDash />}>
-                <Route path="/edit-project/:id" element={<EditProject />} />
-                <Route path="/dashboard-editInicio" element={<EditInicio />} />
+                <Route
+                  path="/edit-project/:id"
+                  element={<EditProject />}
+                />
+                <Route
+                  path="/dashboard-editInicio"
+                  element={<EditInicio />}
+                />
                 <Route
                   path="/dashboard-projects"
                   element={<ProjectsListContainer />}
                 />
 
-                <Route path="/dashboard-settings" element={<SettingsAdmin />} />
+                <Route
+                  path="/dashboard-settings"
+                  element={<SettingsAdmin />}
+                />
                 <Route
                   path="/dashboard-addProjects"
                   element={<AddProjectsContainer />}
                 />
-                <Route path="/dashboard-editStudio" element={<EditStudio3 />} />
-                <Route path="/crear-projects" element={<CrearProjects />} />
+                <Route
+                  path="/dashboard-editStudio"
+                  element={<EditStudio3 />}
+                />
+                <Route
+                  path="/crear-projects"
+                  element={<CrearProjects />}
+                />
               </Route>
             </Route>
           </Route>

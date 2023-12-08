@@ -9,17 +9,15 @@ import { useState } from "react";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 
 const StudioContainer = () => {
+  const [modulosStudio, setModulosStudio] = useState("");
 
-  const [modulosStudio , setModulosStudio] = useState("")
-
-  useEffect(()=>{
-		let refCollection = collection(db, "studio");
-		let refDoc = doc(refCollection, "modulos_studio_test");
-		getDoc(refDoc).then((res) => {
+  useEffect(() => {
+    let refCollection = collection(db, "studio");
+    let refDoc = doc(refCollection, "modulos_studio_test");
+    getDoc(refDoc).then((res) => {
       setModulosStudio(res.data());
-		});
-	}, [])
-
+    });
+  }, []);
 
   return (
     <Box
@@ -33,10 +31,10 @@ const StudioContainer = () => {
       }}
     >
       <div style={{ marginTop: "50px" }}>
-        <TextInitial />
-        <OW />
-        <ImgStudio modulosStudio={modulosStudio}/>
-        <InfoContact />
+        <TextInitial modulosStudio={modulosStudio} />
+        <OW modulosStudio={modulosStudio} />
+        <ImgStudio modulosStudio={modulosStudio} />
+        <InfoContact modulosStudio={modulosStudio} />
       </div>
     </Box>
   );

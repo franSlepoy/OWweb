@@ -1,14 +1,17 @@
-import { useTranslation } from "react-i18next";
-
 import stylesTextInitial from "./TextInitial.module.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../../context/AuthContext";
 
-const TextInitial = () => {
+const TextInitial = ({ modulosStudio }) => {
+  const { lenguage } = useContext(AuthContext);
 
-  
-
-  const { t } = useTranslation();
-
-  return <p className={stylesTextInitial.parraf}>{t("textInitial")}</p>;
+  return (
+    <p className={stylesTextInitial.parraf}>
+      {lenguage === "es"
+        ? modulosStudio?.modulo1?.textInitial_es
+        : modulosStudio?.modulo1?.textInitial_en}
+    </p>
+  );
 };
 
 export default TextInitial;
