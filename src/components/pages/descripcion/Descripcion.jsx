@@ -1,4 +1,3 @@
-import Carousel from "react-material-ui-carousel";
 import { Box, Card, Typography } from "@mui/material";
 import ImgCard from "../../commond/imgCard/ImgCard";
 import { Link, useParams } from "react-router-dom";
@@ -8,9 +7,11 @@ import { db } from "../../../firebaseConfig/FirebaseConfig";
 import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
+import Carousel from "react-material-ui-carousel";
 
 const Descripcion = () => {
   const { id } = useParams();
+  const { lenguage } = useContext(AuthContext);
   const [project, setProject] = useState(null);
   useEffect(() => {
     let refCollection = collection(db, "projects_test");
@@ -20,9 +21,19 @@ const Descripcion = () => {
     });
   }, [id]);
 
-  const { lenguage } = useContext(AuthContext);
+  let combinedData;
+  if (project) {
+    const filteredSlides = Object.entries(project.slides)
+      .filter(([key]) => key.endsWith(`_${lenguage}`))
+      .map(([_, value]) => value);
 
-  console.log("el id es: ", id);
+    const filteredMemories = Object.entries(project.memories)
+      .filter(([key]) => key.endsWith(`_${lenguage}`))
+      .map(([_, value]) => value);
+
+    combinedData = [...project.gallery, ...filteredSlides, ...filteredMemories];
+  }
+  console.log("el id es: ", project);
 
   return (
     <>
@@ -53,17 +64,137 @@ const Descripcion = () => {
           mb: 3,
         }}
       >
-        {/*     <Carousel
-          indicators={false}
-          navButtonsProps={{
-            style: {
-              display: "none",
-            },
+        {/* <Carousel
+          indicators={true}
+          animation="fade"
+          autoPlay={false}
+          timeout={1}
+          sx={{
+            width: "95%",
+            m: "auto",
+            border: "solid red",
+            height: "80vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
+        ></Carousel> */}
+        {/*   {combinedData?.map((item, i) => (
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {item.url ? (
+                <img
+                  src={item.url} // Usa item.url para las imágenes de la galería
+                  width={"80%"}
+                  style={{ height: "50%" }}
+                />
+              ) : (
+                <p>{item}</p> // Si no es una imagen, renderiza el texto
+              )}
+              <p>{item.order}</p>
+            </div>
+          ))} */}
+
+        <Carousel
+          indicators={true}
           animation="fade"
           timeout={1}
-          sx={{ width: "95%", m: "auto" }}
-        > */}
+          sx={{
+            width: "95%",
+            m: "auto",
+            border: "solid red",
+            height: "80vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {
+            combinedData?.reduce(
+              (acc, item, i) => {
+                if (item.url && !acc.skipNext) {
+                  if (item.double) {
+                    // Si la imagen tiene la propiedad "double" en true
+                    let nextItem = combinedData[i + 1];
+                    acc.skipNext = true; // Saltar la siguiente imagen
+                    acc.elements.push(
+                      <div
+                        key={i}
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <img
+                          src={item.url}
+                          width={"40%"}
+                          style={{ height: "50%" }}
+                        />
+                        {nextItem && nextItem.url && (
+                          <img
+                            src={nextItem.url}
+                            width={"40%"}
+                            style={{ height: "50%" }}
+                          />
+                        )}
+                        <p>{item.order}</p>
+                      </div>
+                    );
+                  } else {
+                    // Si la imagen no tiene la propiedad "double" en true
+                    acc.elements.push(
+                      <div
+                        key={i}
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <img
+                          src={item.url}
+                          width={"80%"}
+                          style={{ height: "50%" }}
+                        />
+                        <p>{item.order}</p>
+                      </div>
+                    );
+                  }
+                } else if (!item.url) {
+                  // Si no es una imagen, renderiza el texto
+                  acc.elements.push(
+                    <div
+                      key={i}
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <p>{item}</p>
+                      <p>{item.order}</p>
+                    </div>
+                  );
+                } else if (acc.skipNext) {
+                  // Si se debe saltar la imagen actual
+                  acc.skipNext = false; // Restablecer para la próxima imagen
+                }
+                return acc;
+              },
+              { elements: [], skipNext: false }
+            ).elements
+          }
+        </Carousel>
+
         <Box>
           <Typography>{project?.name}</Typography>
           <Card
@@ -126,7 +257,6 @@ const Descripcion = () => {
             </Box>
           </Card>
         </Box>
-        {/*  </Carousel> */}
       </Box>
     </>
   );

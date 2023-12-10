@@ -14,6 +14,7 @@ import EditStudio3 from "./components/pages/dashboard/editStudio/ediStudio3";
 import AddProjectsContainer from "./components/pages/dashboard/agregarProjects/AddProjects";
 import EditProject from "./components/pages/dashboard/projectsList/editProject/EditProjectContainer";
 import CrearProjects from "./DB/CrearProjects";
+import Descripcion2 from "./components/pages/descripcion/Descripcion2";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
           <Route
             path="/project/:id"
             element={<Descripcion />}
+          />
+          <Route
+            path="/project2/:id"
+            element={<Descripcion2 />}
           />
           <Route element={<IndexDashboardContainer />}>
             <Route

@@ -5,21 +5,6 @@ import StudioContainer from "../studio/StudioContainer";
 import Image_init from "./imagen_init/Image_init";
 
 const Home = () => {
-  /* 	const [scrollPosition, setScrollPosition] = useState(0);
-	const [isTitleVisible, setIsTitleVisible] = useState(true);
-	useEffect(() => {
-		const handleScroll = () => {
-			const currentPosition = window.scrollY;
-			setIsTitleVisible(currentPosition <= scrollPosition); // Desplazándose hacia arriba
-			setScrollPosition(currentPosition);
-		};
-
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, [scrollPosition]); */
-
   return (
     <>
       {/* IMAGEN DE ARRIBA CON EL LOGO */}
@@ -31,7 +16,7 @@ const Home = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          zIndex: 4,
+          zIndex: 1300,
           /* opacity: isTitleVisible ? 1 : 0, */
           transition: "opacity 0.3s",
         }}

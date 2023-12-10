@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Hidden,
-  ImageList,
-  ImageListItem,
-  Typography,
-} from "@mui/material";
+import { Box, Hidden, ImageList, ImageListItem } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 import { Link } from "react-router-dom";
+import proyectosStyle from "./proyectosStyle.module.css";
 
 const Proyectos = () => {
   /*   const [hoveredItem, setHoveredItem] = useState(null); */
@@ -58,54 +53,10 @@ const Proyectos = () => {
                   to={`/project/${item.id}`}
                   style={{ textDecoration: "none", position: "relative" }}
                 >
-                  <Box
-                    sx={{
-                      p: 4,
-                      borderLeft: "solid #666666 0.1px",
-                      borderRight: "solid #666666 0.1px",
-                      textAlign: "center",
-                      position: "relative",
-                      height: "100%",
-                    }}
+                  <div
+                    className={proyectosStyle.Box}
+                    data-name={item.name}
                   >
-                    {/*       {hoveredItem === item ? (
-                      <Box
-                        sx={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          margin: "auto",
-                          width: "75%",
-                          height: "100%",
-                          backgroundColor:
-                            hoveredItem === item ? "#e2e2c7" : "#e2e2c7",
-                          transition: "background-color 1s",
-                          "&:hover": {
-                            backgroundColor: "transparent", // Cambia a "transparent" o cualquier otro color deseado
-                          },
-                        }}
-                      >
-                        <Typography
-                          sx={{
-                            fontFamily: "Pragmatica",
-                            textAlign: "center",
-                            fontSize: "16px",
-                            color: "black",
-                            p: 10,
-                          }}
-                        >
-                          {item.name}
-                        </Typography>
-                      </Box>
-                    ) : (
-                      <img
-                        width={"75%"}
-                        srcSet={`${item.image_ppal}`}
-                        src={`${item.image_ppal}`}
-                        alt={item.name}
-                        loading="lazy"
-                      />
-                    )} */}
                     <img
                       width={"75%"}
                       srcSet={`${item.image_ppal}`}
@@ -113,8 +64,7 @@ const Proyectos = () => {
                       alt={item.name}
                       loading="lazy"
                     />
-                    <Typography>{item.name}</Typography>
-                  </Box>
+                  </div>
                 </Link>
               </ImageListItem>
             ))}

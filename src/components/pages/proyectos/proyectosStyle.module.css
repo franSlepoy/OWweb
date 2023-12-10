@@ -1,0 +1,42 @@
+.Box {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 4px;
+  border-left: solid #666666 0.1px;
+  border-right: solid #666666 0.1px;
+  text-align: center;
+  height: 100%;
+}
+
+.Box img {
+  width: 75%;
+  transition: all 0.5s ease-in-out;
+}
+
+.Box:hover img {
+  opacity: 0;
+}
+
+.Box::before {
+  content: attr(data-name);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: black;
+  background: rgba(211, 211, 211, 0.7); /* Gris más claro */
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2em; /* Tamaño de texto más grande */
+  text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+.Box:hover::before {
+  opacity: 1;
+}

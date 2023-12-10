@@ -60,12 +60,13 @@ const NavBar = () => {
       <Hidden mdDown>
         <div style={{ overflow: "hidden" }}>
           <AppBar
-            position="fixed"
+            /* position="fixed" */
             sx={{
               boxShadow: 0,
               bgcolor: "white",
               top: isScrolled ? "0" : "-64px",
               transition: "top 0.3s",
+              zIndex: 1500,
             }}
           >
             <Toolbar sx={{ justifyContent: "space-between" }}>
