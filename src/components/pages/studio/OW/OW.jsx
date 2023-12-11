@@ -30,17 +30,27 @@ const OW = ({ modulosStudio }) => {
         <div className={owstyles.img_container}>
           <img src={O_img} />
         </div>
-        {/*  <p className={owstyles.parrafos}>{t("o1")}</p>
-        <p className={owstyles.parrafos}>{t("o2")}</p>
-
-        <p className={owstyles.parrafos}>{t("o3")}</p>
-        <p className={owstyles.parrafos}>{t("o4")}</p>
-        <p className={owstyles.parrafos}>{t("o5")}</p>
-        <p className={owstyles.parrafos}>{t("o6")}</p> */}
-        {lenguage == "es"
-          ? modulosStudio?.modulo2?.o_es
-          : modulosStudio?.modulo2?.o_en}
+        <p>
+          {(lenguage == "es"
+            ? modulosStudio?.modulo2?.o_es
+            : modulosStudio?.modulo2?.o_en
+          )
+            ?.split(/\.,/)
+            .map((item, key) => {
+              return (
+                <span
+                  key={key}
+                  className={owstyles.parrafos}
+                >
+                  {item}
+                  <br />
+                  <br />
+                </span>
+              );
+            })}
+        </p>
       </Box>
+
       <Divider
         color="grey"
         sx={{
@@ -52,7 +62,6 @@ const OW = ({ modulosStudio }) => {
           display: "flex",
           flexDirection: "column",
           fontFamily: "'Pragmatica', sans-serif",
-          pl: "20px",
           padding: { md: "0 30px 30px 0", xs: "0 0 30px 0" },
           width: { md: "45%", xs: "100%" },
         }}
@@ -60,15 +69,25 @@ const OW = ({ modulosStudio }) => {
         <div className={owstyles.img_container}>
           <img src={W_img} />
         </div>
-        {/* <p className={owstyles.parrafos}>{t("w1")}</p>
-        <p className={owstyles.parrafos}>{t("w2")}</p>
-        <p className={owstyles.parrafos}>{t("w3")}</p>
-        <p className={owstyles.parrafos}>{t("w4")}</p>
-        <p className={owstyles.parrafos}>{t("w5")}</p>
-        <p className={owstyles.parrafos}>{t("w6")}</p> */}
-        {lenguage == "es"
-          ? modulosStudio?.modulo2?.w_es
-          : modulosStudio?.modulo2?.w_en}
+        <p>
+          {(lenguage == "es"
+            ? modulosStudio?.modulo2?.w_es
+            : modulosStudio?.modulo2?.w_en
+          )
+            ?.split(/\.,/)
+            .map((item, key) => {
+              return (
+                <span
+                  key={key}
+                  className={owstyles.parrafos}
+                >
+                  {item}
+                  <br />
+                  <br />
+                </span>
+              );
+            })}
+        </p>
       </Box>
     </Box>
   );

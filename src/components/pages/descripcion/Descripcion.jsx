@@ -64,44 +64,6 @@ const Descripcion = () => {
           mb: 3,
         }}
       >
-        {/* <Carousel
-          indicators={true}
-          animation="fade"
-          autoPlay={false}
-          timeout={1}
-          sx={{
-            width: "95%",
-            m: "auto",
-            border: "solid red",
-            height: "80vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        ></Carousel> */}
-        {/*   {combinedData?.map((item, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              {item.url ? (
-                <img
-                  src={item.url} // Usa item.url para las imágenes de la galería
-                  width={"80%"}
-                  style={{ height: "50%" }}
-                />
-              ) : (
-                <p>{item}</p> // Si no es una imagen, renderiza el texto
-              )}
-              <p>{item.order}</p>
-            </div>
-          ))} */}
-
         <Carousel
           indicators={true}
           animation="fade"
@@ -169,7 +131,7 @@ const Descripcion = () => {
                       </div>
                     );
                   }
-                } else if (!item.url) {
+                } else if (!item.url && item.trim() !== "") {
                   // Si no es una imagen, renderiza el texto
                   acc.elements.push(
                     <div

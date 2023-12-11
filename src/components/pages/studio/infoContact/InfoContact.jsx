@@ -4,6 +4,35 @@ import { AuthContext } from "../../../../context/AuthContext";
 
 const InfoContact = ({ modulosStudio }) => {
   const { lenguage } = useContext(AuthContext);
+
+  const splitContent = (content) => {
+    if (content) {
+      const index = content.indexOf(" ");
+      const title = content.substring(0, index);
+      const text = content.substring(index + 1);
+      return { title, text };
+    }
+    return { title: "", text: "" };
+  };
+
+  const formatText = (text) => {
+    // Divide la cadena en párrafos utilizando la coma como delimitador
+    const paragraphs = text
+      .split("$")
+      .map((paragraph, index) => <p key={index}>{paragraph.trim()}</p>);
+
+    return paragraphs;
+  };
+
+  const leftContent =
+    lenguage === "es"
+      ? splitContent(modulosStudio?.modulo4?.col_izq_es)
+      : splitContent(modulosStudio?.modulo4?.col_izq_en);
+  const rightContent =
+    lenguage === "es"
+      ? splitContent(modulosStudio?.modulo4?.col_der_es)
+      : splitContent(modulosStudio?.modulo4?.col_der_en);
+
   return (
     <Box
       sx={{
@@ -31,19 +60,12 @@ const InfoContact = ({ modulosStudio }) => {
             fontWeight: "100",
             letterSpacing: "0.5px",
           }}
-        ></h6>
-        {lenguage === "es" ? (
-          <div>{modulosStudio?.modulo4?.col_izq_es}</div>
-        ) : (
-          <div>{modulosStudio?.modulo4?.col_izq_en}</div>
-        )}
-        {/* 
-        <p>Concepción Arenal 4244, #133</p>
-        <p>Barrio Parque Los Andes, </p>
-        <p>Buenos Aires, Argentina</p>
-     */}{" "}
+        >
+          {leftContent.title}
+        </h6>
+        <div>{formatText(leftContent.text)}</div>
       </Box>
-      {/*   <Box
+      <Box
         sx={{
           width: { md: "47%", xs: "100%" },
           letterSpacing: "1px",
@@ -57,35 +79,13 @@ const InfoContact = ({ modulosStudio }) => {
             fontSize: "17px",
             lineHeight: "22px",
             color: "#000",
-            letterSpacing: "0.5px",
             fontWeight: "100",
+            letterSpacing: "0.5px",
           }}
-        ></h6>
-        <p>+54 9 11 5101 5553</p>
-        <p>
-          <a
-            style={{ textDecoration: "none", color: "inherit" }}
-            href="mailto:info@ordonezwenzke.com"
-          >
-            info@ordonezwenzke.com
-          </a>
-        </p>
-
-        <p>
-          <a
-            style={{ textDecoration: "none", color: "inherit" }}
-            href="https://www.instagram.com/ordonezwenzke_ow/"
-          >
-            @ordonezwenzke_ow
-          </a>
-        </p>
-      </Box> */}
-      <Box>
-        {lenguage === "es" ? (
-          <div>{modulosStudio?.modulo4?.col_der_es}</div>
-        ) : (
-          <div>{modulosStudio?.modulo4?.col_der_en}</div>
-        )}
+        >
+          {rightContent.title}
+        </h6>
+        <div>{formatText(rightContent.text)}</div>
       </Box>
     </Box>
   );
