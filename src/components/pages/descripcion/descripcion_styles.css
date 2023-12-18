@@ -1,0 +1,9 @@
+/* Selector genérico, ajusta según tu inspección */
+.MuiCarousel-root .MuiButtonBase-root {
+  opacity: 1 !important; /* Asegúrate de que sean completamente opacos */
+  visibility: visible !important; /* Asegúrate de que siempre sean visibles */
+}
+
+.css-1abc02a .css-1abc02a {
+  top: 10% !important;
+}

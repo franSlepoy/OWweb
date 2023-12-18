@@ -8,7 +8,8 @@ import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import Carousel from "react-material-ui-carousel";
-
+import NavBar2 from "../../commond/navBar/NavBar2";
+import "./descripcion_styles.css";
 const Descripcion = () => {
   const { id } = useParams();
   const { lenguage } = useContext(AuthContext);
@@ -33,14 +34,73 @@ const Descripcion = () => {
 
     combinedData = [...project.gallery, ...filteredSlides, ...filteredMemories];
   }
-  console.log("el id es: ", project);
+
+  const groupElements = (elements) => {
+    const result = [];
+    let currentGroup = [];
+
+    elements.forEach((element) => {
+      if (element.trim() === "") {
+        if (currentGroup.length > 0) {
+          result.push(currentGroup);
+          currentGroup = [];
+        }
+      } else {
+        currentGroup.push(element);
+      }
+    });
+
+    // Agrega el último grupo si no está vacío
+    if (currentGroup.length > 0) {
+      result.push(currentGroup);
+    }
+
+    return result;
+  };
+
+  const renderDivs = (array) => {
+    return (
+      <>
+        {array.map((item, index) => {
+          if (typeof item === "string") {
+            if (item.startsWith("# ")) {
+              return <h1 key={index}>{item.slice(2)}</h1>;
+            } else if (item.startsWith("## ")) {
+              return <h2 key={index}>{item.slice(3)}</h2>;
+            } else {
+              return <p key={index}>{item}</p>;
+            }
+          } else {
+            // Manejar el caso en que item no es una cadena
+            return <p key={index}>{String(item)}</p>;
+          }
+        })}
+      </>
+    );
+  };
+
+  const splitText = (text) => {
+    // Elimina espacios en blanco al principio y al final y luego divide por "#"
+    const elements = text.split("\n");
+    const agrupamiento = groupElements(elements);
+    console.log(agrupamiento); // Agrega esta línea
+    return agrupamiento.map((innerArray, index) => (
+      <div
+        key={index}
+        style={{ margin: 2, padding: 2 }}
+      >
+        {renderDivs(innerArray)}
+      </div>
+    ));
+  };
 
   return (
     <>
+      <NavBar2 />
       <Box
-        mt={6}
-        ml={6}
-        mb={6}
+        mt={3}
+        ml={3}
+        mb={3}
       >
         <Link to="/">
           <Typography
@@ -59,24 +119,28 @@ const Descripcion = () => {
 
       <Box
         sx={{
-          width: "98%",
+          width: "80%",
           m: "auto",
           mb: 3,
         }}
       >
         <Carousel
+          autoPlay={false}
           indicators={true}
           animation="fade"
           timeout={1}
+          cycleNavigation={false}
           sx={{
-            width: "95%",
+            width: "85%",
             m: "auto",
-            border: "solid red",
-            height: "80vh",
+            height: "85vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            ".MuiButtonBase-root": {
+              top: "70% !important",
+            },
           }}
         >
           {
@@ -108,7 +172,6 @@ const Descripcion = () => {
                             style={{ height: "50%" }}
                           />
                         )}
-                        <p>{item.order}</p>
                       </div>
                     );
                   } else {
@@ -127,7 +190,6 @@ const Descripcion = () => {
                           width={"80%"}
                           style={{ height: "50%" }}
                         />
-                        <p>{item.order}</p>
                       </div>
                     );
                   }
@@ -138,12 +200,14 @@ const Descripcion = () => {
                       key={i}
                       style={{
                         display: "flex",
-                        justifyContent: "center",
+                        flexDirection: "column",
+                        justifyContent: "space-evenly",
                         alignItems: "center",
+                        textAlign: "center",
                       }}
                     >
-                      <p>{item}</p>
-                      <p>{item.order}</p>
+                      {/*  {applyStyles(item)} */}
+                      {splitText(item)}
                     </div>
                   );
                 } else if (acc.skipNext) {
@@ -157,7 +221,7 @@ const Descripcion = () => {
           }
         </Carousel>
 
-        <Box>
+        {/*  <Box>
           <Typography>{project?.name}</Typography>
           <Card
             sx={{
@@ -218,7 +282,7 @@ const Descripcion = () => {
               </Box>
             </Box>
           </Card>
-        </Box>
+        </Box> */}
       </Box>
     </>
   );

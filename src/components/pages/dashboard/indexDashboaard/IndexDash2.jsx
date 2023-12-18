@@ -14,29 +14,8 @@ const IndexDash2 = () => {
     event.preventDefault();
     setSubmittedText(textValue);
 
-    /*   const projectsCollection = collection(db, "projects");
-    addDoc(projectsCollection, { textWithStyles: textValue })
-      .then((res) => {
-        console.log(res.id);
-      })
-      .catch((err) => console.log(err)); */
-
     setTextValue("");
   };
-
-  // Función para aplicar estilos al texto
-  /* const applyStyles = (text) => {
-		const lines = text.split("\n");
-		return lines.map((line, index) => {
-			if (line.startsWith("# ")) {
-				return <h1 key={index}>{line.slice(2)}</h1>;
-			} else if (line.startsWith("## ")) {
-				return <h2 key={index}>{line.slice(3)}</h2>;
-			} else {
-				return <p key={index}>{line}</p>;
-			}
-		});
-	}; */
 
   const applyStyles = (text) => {
     const lines = text.split("\n");
@@ -80,7 +59,10 @@ const IndexDash2 = () => {
 
       <div>
         <h2>Texto Enviado:</h2>
-        <textarea value={submittedText} readOnly></textarea>
+        <textarea
+          value={submittedText}
+          readOnly
+        ></textarea>
       </div>
 
       <div>
