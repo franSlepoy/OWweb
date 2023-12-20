@@ -83,11 +83,10 @@ const Descripcion = () => {
     // Elimina espacios en blanco al principio y al final y luego divide por "#"
     const elements = text.split("\n");
     const agrupamiento = groupElements(elements);
-    console.log(agrupamiento); // Agrega esta línea
     return agrupamiento.map((innerArray, index) => (
       <div
         key={index}
-        style={{ margin: 2, padding: 2 }}
+        style={{ margin: 4, padding: 4 }}
       >
         {renderDivs(innerArray)}
       </div>
@@ -131,7 +130,7 @@ const Descripcion = () => {
           timeout={1}
           cycleNavigation={false}
           sx={{
-            width: "85%",
+            width: "99%",
             m: "auto",
             height: "85vh",
             display: "flex",
@@ -163,13 +162,13 @@ const Descripcion = () => {
                         <img
                           src={item.url}
                           width={"40%"}
-                          style={{ height: "50%" }}
+                          style={{ height: "70vh" }}
                         />
                         {nextItem && nextItem.url && (
                           <img
                             src={nextItem.url}
                             width={"40%"}
-                            style={{ height: "50%" }}
+                            style={{ height: "70vh" }}
                           />
                         )}
                       </div>
@@ -187,8 +186,8 @@ const Descripcion = () => {
                       >
                         <img
                           src={item.url}
-                          width={"80%"}
-                          style={{ height: "50%" }}
+                          width={"99%"}
+                          style={{ height: "70vh", objectFit: "contain" }}
                         />
                       </div>
                     );
@@ -204,6 +203,7 @@ const Descripcion = () => {
                         justifyContent: "space-evenly",
                         alignItems: "center",
                         textAlign: "center",
+                        height: "70vh",
                       }}
                     >
                       {/*  {applyStyles(item)} */}

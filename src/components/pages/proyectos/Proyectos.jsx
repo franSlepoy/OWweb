@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Box, Hidden, ImageList, ImageListItem } from "@mui/material";
+import {
+  Box,
+  Hidden,
+  ImageList,
+  ImageListItem,
+  Typography,
+} from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 import { Link } from "react-router-dom";
@@ -78,18 +84,31 @@ const Proyectos = () => {
           m={"auto"}
           id="projects"
         >
-          {/*  <ImageList
+          <ImageList
             variant="classic"
             cols={1}
             gap={0}
           >
-            {projects.map((item) => (
-              <ImageListItem
-                key={item.id}
-                onMouseEnter={() => setHoveredItem(item)}
-                onMouseLeave={() => setHoveredItem(null)}
-              >
-                <Box
+            {projects?.map((item) => (
+              <ImageListItem key={item.id}>
+                <Link
+                  to={`/project/${item.id}`}
+                  style={{ textDecoration: "none", position: "relative" }}
+                >
+                  <div
+                    className={proyectosStyle.Box}
+                    data-name={item.name}
+                  >
+                    <img
+                      width={"75%"}
+                      srcSet={`${item.image_ppal}`}
+                      src={`${item.image_ppal}`}
+                      alt={item.name}
+                      loading="lazy"
+                    />
+                  </div>
+                </Link>
+                {/* <Box
                   sx={{
                     p: 4,
                     width: "100%",
@@ -138,7 +157,6 @@ const Proyectos = () => {
                     />
                   )}
                 </Box>
-
                 <Typography
                   sx={{
                     fontFamily: "Pragmatica",
@@ -149,10 +167,10 @@ const Proyectos = () => {
                   }}
                 >
                   {item.titulo}
-                </Typography>
+                </Typography> */}
               </ImageListItem>
             ))}
-          </ImageList> */}
+          </ImageList>
         </Box>
       </Hidden>
     </>
