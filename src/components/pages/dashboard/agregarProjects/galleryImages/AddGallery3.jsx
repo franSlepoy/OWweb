@@ -83,10 +83,11 @@ const AddGallery3 = ({ setFormData }) => {
     const uploadedImages = [];
     setLoadingImage(true);
 
+    let url;
     // Recorrer todas las imágenes seleccionadas
     for (let image of selectedImages) {
       // Subir cada imagen a Firebase Storage y obtener la URL
-      const url = await uploadFile(image.file);
+      url = await uploadFile(image.file);
 
       // Crear un nuevo objeto de imagen que contenga todos los datos de la imagen original, excepto el objeto File
       const newImage = {
@@ -99,7 +100,11 @@ const AddGallery3 = ({ setFormData }) => {
       // Añadir la nueva imagen a las imágenes subidas
       uploadedImages.push(newImage);
     }
-
+    if (url) {
+      alert("Imagenes Cargadas, ya puedes crear el producto");
+    } else {
+      alert("No hay imagenes nuevas para cargar");
+    }
     // Actualizar el estado de formData con las imágenes subidas
     setFormData((prevData) => ({
       ...prevData,

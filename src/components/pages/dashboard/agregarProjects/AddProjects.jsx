@@ -18,6 +18,7 @@ const AddProjectsContainer = () => {
     },
     memories: { memorie_en: "", memorie_es: "" },
     gallery: [],
+    visible: true,
   });
   const [file, setFile] = useState(null);
   const [isImageUpload, setIsImageUpload] = useState(false);

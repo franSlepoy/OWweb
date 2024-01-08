@@ -23,7 +23,7 @@ const Home = () => {
       >
         <img
           width={"100%"}
-          src="public/imagenes/owblanco.png"
+          src="https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/logo%2FOWblanco.png?alt=media&token=d88e194d-01ad-44fe-9b47-e5340a313a82"
           alt=""
         />
       </Box>

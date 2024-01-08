@@ -1,11 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Hidden,
-  ImageList,
-  ImageListItem,
-  Typography,
-} from "@mui/material";
+import { Box, Hidden, ImageList, ImageListItem } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 import { Link } from "react-router-dom";
@@ -44,71 +38,57 @@ const Proyectos = () => {
             borderRight: "solid #666666 0.1px",
           }}
         >
-          <ImageList
-            variant="classic"
-            cols={3}
-            gap={0}
-          >
-            {projects?.map((item) => (
-              <ImageListItem
-                key={item.id}
-                /*    onMouseEnter={() => setHoveredItem(item)}
+          <ImageList variant="classic" cols={3} gap={0}>
+            {projects
+              ?.filter((item) => item.visible)
+              .map((item) => (
+                <ImageListItem
+                  key={item.id}
+                  /*    onMouseEnter={() => setHoveredItem(item)}
                 onMouseLeave={() => setHoveredItem(null)} */
-              >
-                <Link
-                  to={`/project/${item.id}`}
-                  style={{ textDecoration: "none", position: "relative" }}
                 >
-                  <div
-                    className={proyectosStyle.Box}
-                    data-name={item.name}
+                  <Link
+                    to={`/project/${item.id}`}
+                    style={{ textDecoration: "none", position: "relative" }}
                   >
-                    <img
-                      width={"75%"}
-                      srcSet={`${item.image_ppal}`}
-                      src={`${item.image_ppal}`}
-                      alt={item.name}
-                      loading="lazy"
-                    />
-                  </div>
-                </Link>
-              </ImageListItem>
-            ))}
+                    <div className={proyectosStyle.Box} data-name={item.name}>
+                      <img
+                        width={"75%"}
+                        srcSet={`${item.image_ppal}`}
+                        src={`${item.image_ppal}`}
+                        alt={item.name}
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
+                </ImageListItem>
+              ))}
           </ImageList>
         </Box>
       </Hidden>
 
       <Hidden mdUp>
-        <Box
-          width={"98%"}
-          m={"auto"}
-          id="projects"
-        >
-          <ImageList
-            variant="classic"
-            cols={1}
-            gap={0}
-          >
-            {projects?.map((item) => (
-              <ImageListItem key={item.id}>
-                <Link
-                  to={`/project/${item.id}`}
-                  style={{ textDecoration: "none", position: "relative" }}
-                >
-                  <div
-                    className={proyectosStyle.Box}
-                    data-name={item.name}
+        <Box width={"98%"} m={"auto"} id="projects">
+          <ImageList variant="classic" cols={1} gap={0}>
+            {projects
+              ?.filter((item) => item.visible)
+              .map((item) => (
+                <ImageListItem key={item.id}>
+                  <Link
+                    to={`/project/${item.id}`}
+                    style={{ textDecoration: "none", position: "relative" }}
                   >
-                    <img
-                      width={"75%"}
-                      srcSet={`${item.image_ppal}`}
-                      src={`${item.image_ppal}`}
-                      alt={item.name}
-                      loading="lazy"
-                    />
-                  </div>
-                </Link>
-                {/* <Box
+                    <div className={proyectosStyle.Box} data-name={item.name}>
+                      <img
+                        width={"75%"}
+                        srcSet={`${item.image_ppal}`}
+                        src={`${item.image_ppal}`}
+                        alt={item.name}
+                        loading="lazy"
+                      />
+                    </div>
+                  </Link>
+                  {/* <Box
                   sx={{
                     p: 4,
                     width: "100%",
@@ -168,8 +148,8 @@ const Proyectos = () => {
                 >
                   {item.titulo}
                 </Typography> */}
-              </ImageListItem>
-            ))}
+                </ImageListItem>
+              ))}
           </ImageList>
         </Box>
       </Hidden>

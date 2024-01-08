@@ -34,9 +34,7 @@ export default function ProjectsList({
   };
 
   const deleteProject = async (project) => {
-    const rta = confirm(
-      "Deseas eliminar estre producto? (Ya es real): " + project.name
-    );
+    const rta = confirm("Deseas eliminar estre producto? : " + project.name);
     if (rta) {
       alert(project.name + " fue eliminado");
       let refDoc = doc(db, "projects_test", project.id);

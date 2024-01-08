@@ -89,11 +89,12 @@ const AddGalleryEdit = ({ project, setProject }) => {
     const uploadedImages = [];
 
     // Recorrer todas las imágenes seleccionadas
+    let url;
     for (let image of selectedImages) {
       // Verificar si la imagen es nueva
       if (image.isNew) {
         // Subir la imagen a Firebase Storage y obtener la URL
-        const url = await uploadFile(image.file);
+        url = await uploadFile(image.file);
 
         // Añadir la URL a la imagen correspondiente
         image.url = url;
@@ -102,7 +103,11 @@ const AddGalleryEdit = ({ project, setProject }) => {
       // Añadir la imagen a las imágenes subidas
       uploadedImages.push(image);
     }
-
+    if (url) {
+      alert("Imagenes guardadas");
+    } else {
+      alert("No hay imagenes nuevas a guardar");
+    }
     // Actualizar el estado de formData con las imágenes subidas
     setProject((prevData) => ({
       ...prevData,

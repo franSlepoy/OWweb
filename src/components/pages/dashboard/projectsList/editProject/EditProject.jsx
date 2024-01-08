@@ -18,7 +18,7 @@ const EditProject = ({ project, setProject, id }) => {
       const docRef = doc(refCollection, id);
 
       await updateDoc(docRef, project);
-      console.log("Documento actualizado");
+      alert("Proyecto actualizado");
     } catch (error) {
       console.log(error);
     }
