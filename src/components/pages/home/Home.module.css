@@ -1,0 +1,69 @@
+/* 
+.stickyLogo {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1300;
+  transition: all 0.8s;
+}
+
+
+.hideLogo {
+  opacity: 0;
+  transform: translate(-50%, 60px); 
+}
+ */
+
+/* Home.module.css */
+.stickyLogo {
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1300;
+  transition: transform 0.3s; /* Transición para el movimiento inicial */
+}
+
+.hideLogo {
+  animation: fadeAndDrop 0.5s ease forwards; /* Usar la animación keyframe */
+}
+
+/* Home.module.css */
+.fadeAndDrop {
+  animation: fadeAndDropDown 0.5s ease forwards; /* Animación hacia abajo */
+}
+
+.fadeAndRise {
+  animation: fadeAndRiseUp 0.5s ease forwards; /* Animación hacia arriba */
+}
+
+@keyframes fadeAndDropDown {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 0.5; /* Ajusta a tu preferencia para el efecto deseado */
+    transform: translate(-50%, 10px); /* Mueve un poco hacia abajo */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 20px); /* Mueve más hacia abajo y desaparece */
+  }
+}
+
+@keyframes fadeAndRiseUp {
+  0% {
+    opacity: 1;
+    transform: translate(50%, 0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translate(50%, 10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(50%, 20px);
+  }
+}
