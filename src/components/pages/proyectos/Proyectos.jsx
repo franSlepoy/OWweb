@@ -51,7 +51,7 @@ const Proyectos = () => {
                     to={`/project/${item.id}`}
                     style={{ textDecoration: "none", position: "relative" }}
                   >
-                    <div className={proyectosStyle.Box} data-name={item.name}>
+                     <div className={proyectosStyle.Box} data-name={item.name}> 
                       <img
                         width={"75%"}
                         srcSet={`${item.image_ppal}`}
@@ -59,7 +59,7 @@ const Proyectos = () => {
                         alt={item.name}
                         loading="lazy"
                       />
-                    </div>
+                    </div> 
                   </Link>
                 </ImageListItem>
               ))}

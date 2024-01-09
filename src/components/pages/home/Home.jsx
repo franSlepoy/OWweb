@@ -1,10 +1,10 @@
+import  { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Proyectos from "../proyectos/Proyectos";
 import NavBar from "../../commond/navBar/NavBar";
 import StudioContainer from "../studio/StudioContainer";
 import Image_init from "./imagen_init/Image_init";
 import styles from "./Home.module.css"; // Importa el archivo de estilos CSS Module
-import { useEffect, useState } from "react";
 
 const Home = () => {
   const [isLogoHidden, setIsLogoHidden] = useState(false);
