@@ -21,10 +21,13 @@
 .Box::before {
   content: attr(data-name);
   position: absolute;
-  width: 100%;
+  width: 72%;
+ margin-left: 14%;
+ 
+  
   height: 100%;
   top: 0;
-  left: 0;
+  left: 0%;
   color: black;
   background: rgba(211, 211, 211, 0.7); /* Gris más claro */
   opacity: 0;
@@ -33,8 +36,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 2em; /* Tamaño de texto más grande */
-  text-transform: uppercase; /* Texto en mayúsculas */
+   /* Texto en mayúsculas */
 }
 
 .Box:hover::before {
