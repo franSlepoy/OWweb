@@ -1,21 +1,3 @@
-/* 
-.stickyLogo {
-  position: absolute;
-  top: 260px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  z-index: 1300;
-  transition: all 0.8s;
-}
-
-
-.hideLogo {
-  opacity: 0;
-  transform: translate(-50%, 60px); 
-}
- */
-
-/* Home.module.css */
 .stickyLogo {
   position: absolute;
   top: 260px;
@@ -25,45 +7,51 @@
   transition: transform 0.3s; /* Transición para el movimiento inicial */
 }
 
+/* Estilos para ocultar el logo con animación */
 .hideLogo {
-  animation: fadeAndDrop 0.5s ease forwards; /* Usar la animación keyframe */
+  animation: fadeAndDrop 0.8s ease forwards;
 }
 
-/* Home.module.css */
+/* Estilos para la animación de desaparición hacia abajo */
 .fadeAndDrop {
-  animation: fadeAndDropDown 0.5s ease forwards; /* Animación hacia abajo */
+  animation: fadeAndDropDown 0.8s ease forwards;
 }
 
+/* Estilos para la animación de aparición hacia arriba */
 .fadeAndRise {
-  animation: fadeAndRiseUp 0.5s ease forwards; /* Animación hacia arriba */
+  animation: fadeAndRiseUp 0.8s ease forwards;
 }
 
+/* Animación de desaparición hacia abajo */
 @keyframes fadeAndDropDown {
   0% {
     opacity: 1;
     transform: translate(-50%, 0);
   }
   50% {
-    opacity: 0.5; /* Ajusta a tu preferencia para el efecto deseado */
-    transform: translate(-50%, 10px); /* Mueve un poco hacia abajo */
+    opacity: 0.5;
+    transform: translate(-50%, 10px);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, 20px); /* Mueve más hacia abajo y desaparece */
+    transform: translate(-50%, 20px);
   }
 }
 
+/* Animación de aparición hacia arriba */
 @keyframes fadeAndRiseUp {
   0% {
     opacity: 1;
-    transform: translate(50%, 0);
+    transform: translate(-50%, 0);
   }
   50% {
     opacity: 0.5;
-    transform: translate(50%, 10px);
+    transform: translate(-50%, 10px);
   }
   100% {
     opacity: 0;
-    transform: translate(50%, 20px);
+    transform: translate(-50%, 20px);
   }
+  animation-duration: 1.5s; /* Duración de la animación */
+  animation-timing-function: ease-in-out; /* Ajusta la función de interpolación */
 }

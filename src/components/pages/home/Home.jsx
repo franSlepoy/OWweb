@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Proyectos from "../proyectos/Proyectos";
 import NavBar from "../../commond/navBar/NavBar";
@@ -50,9 +50,6 @@ const Home = () => {
       <Image_init />
       {/* logo */}
       <Box
-        /* className={`${styles.stickyLogo} ${
-          isLogoHidden ? styles.hideLogo : ""
-        }`} */
         className={`${styles.stickyLogo} ${
           isLogoHidden
             ? scrollDirection === "down"
@@ -62,7 +59,9 @@ const Home = () => {
         }`}
         sx={{
           zIndex: 1300,
-          transition: "opacity 0.3s",
+          transition: "opacity 0.8s",
+          maxWidth: "652px",
+          top: "42%",
         }}
       >
         <img
@@ -72,8 +71,7 @@ const Home = () => {
         />
       </Box>
 
-      {/*       empieza el navbar y el resto
-       */}
+      {/* Inicia el navbar y el resto */}
       <NavBar />
       <Proyectos />
       <StudioContainer />
