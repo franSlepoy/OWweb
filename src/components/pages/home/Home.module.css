@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 1300;
-  transition: transform 0.3s; /* Transición para el movimiento inicial */
+  transition: transform 0.8s; /* Transición para el movimiento inicial */
 }
 
 /* Estilos para ocultar el logo con animación */
@@ -25,33 +25,49 @@
 /* Animación de desaparición hacia abajo */
 @keyframes fadeAndDropDown {
   0% {
-    opacity: 1;
+    opacity: 2;
     transform: translate(-50%, 0);
   }
+  25% {
+    opacity: 1.5;
+    transform: translate(-50%, 30px);
+  }
   50% {
+    opacity: 1;
+    transform: translate(-50%, 60px);
+  }
+  75% {
     opacity: 0.5;
-    transform: translate(-50%, 10px);
+    transform: translate(-50%, 120px);
   }
   100% {
     opacity: 0;
-    transform: translate(-50%, 20px);
+    transform: translate(-50%, 160px);
   }
 }
 
 /* Animación de aparición hacia arriba */
 @keyframes fadeAndRiseUp {
   0% {
+    opacity: 0;
+    transform: translate(-50%, 160px);
+  }
+  25% {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 120px);
   }
   50% {
-    opacity: 0.5;
-    transform: translate(-50%, 10px);
+    opacity: 2;
+    transform: translate(-50%, 60px);
+  }
+  75% {
+    opacity: 2.5;
+    transform: translate(-50%, 30px);
   }
   100% {
-    opacity: 0;
-    transform: translate(-50%, 20px);
+    opacity: 3;
+    transform: translate(-50%, 0px);
   }
-  animation-duration: 1.5s; /* Duración de la animación */
+  animation-duration: 3.5s; /* Duración de la animación */
   animation-timing-function: ease-in-out; /* Ajusta la función de interpolación */
 }
