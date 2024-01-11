@@ -22,11 +22,11 @@ const StudioContainer = () => {
   return (
     <Box
       id="studio"
-      width={"93%"}
+      width={"95%"}
       m={"auto"}
       sx={{
-        borderLeft: { md: "solid black 2px", xs: "none" },
-        borderRight: { md: "solid black 2px", xs: "none" },
+        borderLeft: { md: "solid black 1px", xs: "none" },
+        borderRight: { md: "solid black 1px", xs: "none" },
         p: { md: 4, xs: 1 },
       }}
     >
