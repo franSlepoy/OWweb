@@ -28,52 +28,72 @@ const Proyectos = () => {
 
   return (
     <>
-      <Hidden mdDown>
-        <Box
-          id="projects"
-          width={"93%"}
-          m={"auto"}
-          sx={{
-            borderLeft: "solid #666666 0.1px",
-            borderRight: "solid #666666 0.1px",
-          }}
-        >
+  
+  <Hidden mdDown>
+        <Box id="projects" width={"93%"} m={"auto"}>
           <ImageList variant="classic" cols={3} gap={0}>
-            {projects
-              ?.filter((item) => item.visible)
-              .map((item) => (
-                <ImageListItem
-                  key={item.id}
-                  /*    onMouseEnter={() => setHoveredItem(item)}
-                onMouseLeave={() => setHoveredItem(null)} */
-                >
-                  <Link
-                    to={`/project/${item.id}`}
-                    style={{ textDecoration: "none", position: "relative" }}
+            {projects &&
+              projects
+                .filter((item) => item.visible)
+                .map((item, index) => (
+                  <ImageListItem
+                    key={item.id}
+                    className={
+                      index % 3 === 2
+                        ? proyectosStyle.rightBorder
+                        : proyectosStyle.leftBorder
+                    }
                   >
-                     <div className={proyectosStyle.Box} data-name={item.name}> 
-                      <img
-                        width={"75%"}
-                        srcSet={`${item.image_ppal}`}
-                        src={`${item.image_ppal}`}
-                        alt={item.name}
-                        loading="lazy"
-                      />
-                    </div> 
-                  </Link>
+                    <Link
+                      to={`/project/${item.id}`}
+                      style={{ textDecoration: "none", position: "relative" }}
+                    >
+                      <div className={proyectosStyle.Box} data-name={item.name}>
+                        <img
+                          width={"75%"}
+                          srcSet={`${item.image_ppal}`}
+                          src={`${item.image_ppal}`}
+                          alt={item.name}
+                          loading="lazy"
+                        />
+                      </div>
+                    </Link>
+                  </ImageListItem>
+                ))}
+            {/* Agregar tarjetas blancas para completar la última fila */}
+            {Array.from(
+              { length: projects ? 3 - (projects.length % 3) : 0 },
+              (_, index) => (
+                <ImageListItem
+                  key={`blank-${index}`}
+                  className={proyectosStyle.blankCard}
+                >
+                  {/* Contenido de la tarjeta blanca con línea diagonal */}
+                  <div className={proyectosStyle.blankCardContent}>
+                    <div className={proyectosStyle.diagonalLine}></div>
+                  </div>
                 </ImageListItem>
-              ))}
+              )
+            )}
           </ImageList>
         </Box>
       </Hidden>
+
 
       <Hidden mdUp>
         <Box width={"98%"} m={"auto"} id="projects">
           <ImageList variant="classic" cols={1} gap={0}>
             {projects
               ?.filter((item) => item.visible)
-              .map((item) => (
-                <ImageListItem key={item.id}>
+              .map((item, index) => (
+                <ImageListItem
+                  key={item.id}
+                  className={
+                    index % 3 === 2
+                      ? proyectosStyle.rightBorder
+                      : proyectosStyle.leftBorder
+                  }
+                >
                   <Link
                     to={`/project/${item.id}`}
                     style={{ textDecoration: "none", position: "relative" }}

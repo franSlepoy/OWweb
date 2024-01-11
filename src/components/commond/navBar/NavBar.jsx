@@ -42,7 +42,7 @@ const NavBar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > window.innerHeight * 0.3;
+      const isScrolled = window.scrollY > window.innerHeight * 0.9;
       setIsScrolled(isScrolled);
     };
 
@@ -64,16 +64,13 @@ const NavBar = () => {
             sx={{
               boxShadow: 0,
               bgcolor: "white",
-              top: isScrolled ? "0" : "-64px",
+              top: isScrolled ? "0px" : "-672px",
               transition: "top 0.3s",
               zIndex: 1500,
             }}
           >
             <Toolbar sx={{ justifyContent: "space-between" }}>
-              <Box
-                width={"33,3%"}
-                display={"flex"}
-              >
+              <Box width={"33,3%"} display={"flex"}>
                 <a
                   href="#projects"
                   style={{
@@ -89,11 +86,7 @@ const NavBar = () => {
               </Box>
 
               <Box width={"26%"}>
-                <img
-                  width={"320px"}
-                  src={logo_ow_negro}
-                  alt=""
-                />
+                <img width={"320px"} src={logo_ow_negro} alt="" />
               </Box>
 
               <Box width={"33,3%"}>
@@ -118,10 +111,7 @@ const NavBar = () => {
       {/* MANEJADOR DE LENGUAJES
        */}{" "}
       <Hidden mdDown>
-        <AppBar
-          position="fixed"
-          sx={{ width: "100%" }}
-        >
+        <AppBar position="fixed" sx={{ width: "100%" }}>
           <Grid
             container
             justifyContent="space-between"
@@ -219,17 +209,10 @@ const NavBar = () => {
       </Hidden>
       {/* VERSION MOBILE NAVBAR */}
       <Hidden mdUp>
-        <AppBar
-          position="fixed"
-          sx={{ boxShadow: 0, bgcolor: "white" }}
-        >
+        <AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white" }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Box>
-              <img
-                width={"50%"}
-                src="/imagenes/ownegro.png"
-                alt=""
-              />
+              <img width={"50%"} src="/imagenes/ownegro.png" alt="" />
             </Box>
             <Box>
               <Button
@@ -247,11 +230,7 @@ const NavBar = () => {
           </Toolbar>
         </AppBar>
 
-        <Drawer
-          open={open}
-          anchor="top"
-          onClose={() => setOpen(false)}
-        >
+        <Drawer open={open} anchor="top" onClose={() => setOpen(false)}>
           <NavListDrawer onclose={cerrarBar} />
         </Drawer>
       </Hidden>
