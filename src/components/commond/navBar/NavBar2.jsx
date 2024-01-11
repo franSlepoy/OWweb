@@ -68,10 +68,7 @@ const NavBar2 = () => {
             }}
           >
             <Toolbar sx={{ justifyContent: "space-between" }}>
-              <Box
-                width={"33,3%"}
-                display={"flex"}
-              >
+              <Box width={"33,3%"} display={"flex"}>
                 <Link
                   to="/#projects"
                   style={{
@@ -87,11 +84,7 @@ const NavBar2 = () => {
               </Box>
 
               <Box width={"26%"}>
-                <img
-                  width={"320px"}
-                  src={logo_ow_negro}
-                  alt=""
-                />
+                <img width={"320px"} src={logo_ow_negro} alt="" />
               </Box>
 
               <Box width={"33,3%"}>
@@ -116,10 +109,7 @@ const NavBar2 = () => {
       {/* MANEJADOR DE LENGUAJES
        */}{" "}
       <Hidden mdDown>
-        <AppBar
-          position="fixed"
-          sx={{ width: "100%" }}
-        >
+        <AppBar position="fixed" sx={{ width: "100%" }}>
           <Grid
             container
             justifyContent="space-between"
@@ -127,8 +117,10 @@ const NavBar2 = () => {
           >
             <Grid item>
               <Button
+              
                 disableRipple
                 sx={{
+                  
                   "&:hover": {
                     backgroundColor: "transparent",
                     transition: "none",
@@ -144,7 +136,7 @@ const NavBar2 = () => {
                 <Box
                   sx={{
                     fontFamily: "sans-serif",
-
+                    
                     lineHeight: "12px",
                     color: "#1d1d1d",
                   }}
@@ -155,6 +147,7 @@ const NavBar2 = () => {
                       fontFamily: "sans-serif",
                       lineHeight: "12px",
                       color: "#1d1d1d",
+                      
                     }}
                   >
                     e
@@ -217,17 +210,10 @@ const NavBar2 = () => {
       </Hidden>
       {/* VERSION MOBILE NAVBAR */}
       <Hidden mdUp>
-        <AppBar
-          position="fixed"
-          sx={{ boxShadow: 0, bgcolor: "white" }}
-        >
+        <AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white" }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Box>
-              <img
-                width={"50%"}
-                src="/imagenes/ownegro.png"
-                alt=""
-              />
+              <img width={"50%"} src="/imagenes/ownegro.png" alt="" />
             </Box>
             <Box>
               <Button
@@ -245,11 +231,7 @@ const NavBar2 = () => {
           </Toolbar>
         </AppBar>
 
-        <Drawer
-          open={open}
-          anchor="top"
-          onClose={() => setOpen(false)}
-        >
+        <Drawer open={open} anchor="top" onClose={() => setOpen(false)}>
           <NavListDrawer onclose={cerrarBar} />
         </Drawer>
       </Hidden>

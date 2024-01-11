@@ -74,6 +74,7 @@ const NavBar = () => {
                 <a
                   href="#projects"
                   style={{
+                    paddingLeft:"10px",
                     fontSize: "16px",
                     color: "#000",
                     underline: "none",
@@ -93,6 +94,7 @@ const NavBar = () => {
                 <a
                   href="#studio"
                   style={{
+                    paddingRight:"10px",
                     textAlign: "end",
                     fontSize: "16px",
                     color: "#000",
@@ -136,13 +138,15 @@ const NavBar = () => {
                 <Box
                   sx={{
                     fontFamily: "sans-serif",
-
+                   
                     lineHeight: "12px",
                     color: "#1d1d1d",
+                    ml:-3
                   }}
                 >
                   <Typography
                     sx={{
+                     
                       fontSize: "12px",
                       fontFamily: "sans-serif",
                       lineHeight: "12px",
@@ -180,9 +184,10 @@ const NavBar = () => {
                 onClick={cambiarAIngles}
                 data-i18n="en"
               >
-                <Box>
+                <Box  sx={{ mr:-3}}>
                   <Typography
                     sx={{
+                     
                       fontFamily: "sans-serif",
                       fontSize: "12px",
                       lineHeight: "12px",

@@ -1,11 +1,13 @@
 .Box {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  padding: 4px;
- 
+  width: 85%;
+  padding-top: 45px;
+
+  margin: auto;
+
   text-align: center;
-  height: 100%;
+  height: 420px;
 }
 
 .Box img {
@@ -20,22 +22,26 @@
 .Box::before {
   content: attr(data-name);
   position: absolute;
-  width: 72%;
- margin-left: 14%;
- 
-  
-  height: 100%;
+  width: 67%;
+  margin-top: 45px;
+  margin-left: 13%;
+  height: 97%;
   top: 0;
   left: 0%;
   color: black;
-  background: rgba(211, 211, 211, 0.7); /* Gris más claro */
+  background: #e2e2c7;
   opacity: 0;
   transition: all 0.3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-   /* Texto en mayúsculas */
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
+  font-family: "Pragmatica";
+  /* Texto en mayúsculas */
+  text-transform: uppercase;
 }
 
 .Box:hover::before {
@@ -44,23 +50,23 @@
 
 /* Estilos de bordes para comunta  1 y 2 */
 .leftBorder {
-  border-left: solid #666666 0.1px;
+  border-left: solid #060000 1px;
 }
 
 .rightBorder {
-  border-right: solid #666666 0.1px;
-  border-left: solid #666666 0.1px;
+  border-right: solid #060000 1px;
+  border-left: solid #060000 1px;
 }
 
 .blankCard {
   position: relative;
   overflow: hidden;
+  height: 100%;
   width: 100%;
   padding: 4px;
   border-left: solid #666666 0.1px;
   border-right: solid #666666 0.1px;
   text-align: center;
-  height: 100%;
 }
 
 .blankCardContent {

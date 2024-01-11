@@ -30,8 +30,8 @@ const Proyectos = () => {
     <>
   
   <Hidden mdDown>
-        <Box id="projects" width={"93%"} m={"auto"}>
-          <ImageList variant="classic" cols={3} gap={0}>
+        <Box id="projects" width={"95%"} m={"auto"}>
+          <ImageList  variant="standard" cols={3} gap={0}>
             {projects &&
               projects
                 .filter((item) => item.visible)
@@ -50,7 +50,7 @@ const Proyectos = () => {
                     >
                       <div className={proyectosStyle.Box} data-name={item.name}>
                         <img
-                          width={"75%"}
+                         
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}
