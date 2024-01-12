@@ -1,4 +1,4 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 import ImgCard from "../../commond/imgCard/ImgCard";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -129,6 +129,7 @@ const Descripcion = () => {
           animation="fade"
           timeout={1}
           cycleNavigation={false}
+        
           sx={{
             width: "99%",
             m: "auto",
@@ -138,7 +139,11 @@ const Descripcion = () => {
             justifyContent: "center",
             alignItems: "center",
             ".MuiButtonBase-root": {
-              top: "70% !important",
+              top: "48% !important",
+            },
+            ".transparent-button": {
+              background: "transparent !important",
+              color: "black !important",
             },
           }}
         >

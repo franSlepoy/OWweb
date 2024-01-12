@@ -52,9 +52,9 @@ const OW = ({ modulosStudio }) => {
       </Box>
 
       <Divider
-        color="grey"
+        color="black"
         sx={{
-          borderWidth: { xs: "none", md: 1 },
+          width: { xs: "none", md: "0.5px" },
         }}
       />
       <Box

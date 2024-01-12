@@ -113,6 +113,7 @@ const Descripcion2 = () => {
         }
         backButton={
           <Button
+          
             size="small"
             onClick={handleBack}
             disabled={activeStep === 0}
