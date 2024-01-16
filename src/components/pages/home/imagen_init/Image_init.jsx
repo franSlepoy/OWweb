@@ -24,15 +24,14 @@ const Image_init = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        width:"100%"
+        width: "100%",
       }}
     >
       {inicio ? (
         <img
-         
           src={inicio.image_desktop ? inicio.image_desktop : ""}
           alt="Imagen de inicio"
-          style={{ height: "100vh" }}
+          style={{ height: "100vh", width: "100%" }}
         />
       ) : (
         <div className={image_init_style.container}></div>

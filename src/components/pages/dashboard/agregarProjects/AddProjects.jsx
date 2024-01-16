@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db, uploadFile } from "../../../../firebaseConfig/FirebaseConfig";
 import AddGallery3 from "./galleryImages/AddGallery3";
 import AddSlides from "./fichasSlides/AddSlides";
 import ImagePpal from "./imagePpal/ImagePpal";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs } from "firebase/firestore";
 import { Box, Button, Input, Typography } from "@mui/material";
 
 const AddProjectsContainer = () => {
+  const [quantity, setQuantity] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let refCollection = collection(db, "projects_test");
+      let res = await getDocs(refCollection);
+
+      console.log(res._snapshot.docChanges.length);
+      setQuantity(res._snapshot.docChanges.length);
+    })();
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     image_ppal: "",
@@ -19,6 +30,7 @@ const AddProjectsContainer = () => {
     memories: { memorie_en: "", memorie_es: "" },
     gallery: [],
     visible: true,
+    order: quantity + 1,
   });
   const [file, setFile] = useState(null);
   const [isImageUpload, setIsImageUpload] = useState(false);
@@ -60,7 +72,10 @@ const AddProjectsContainer = () => {
   console.log("formData addprojec: ", formData);
 
   return (
-    <Box m={3} width={"100%"}>
+    <Box
+      m={3}
+      width={"100%"}
+    >
       <Typography fontSize={"20px"}>PROYECTOS</Typography>
       <Typography>Listado - Agregar proyectos </Typography>
       <form onSubmit={handleSubmit}>
@@ -90,16 +105,27 @@ const AddProjectsContainer = () => {
           />
         </Box>
 
-        <AddSlides setFormData={setFormData} formData={formData} />
+        <AddSlides
+          setFormData={setFormData}
+          formData={formData}
+        />
 
-        <AddGallery3 setFormData={setFormData} formData={formData} />
+        <AddGallery3
+          setFormData={setFormData}
+          formData={formData}
+        />
 
         <br />
         <br />
         <hr />
         <br />
         <br />
-        <Button color="success" size="small" variant="contained" type="submit">
+        <Button
+          color="success"
+          size="small"
+          variant="contained"
+          type="submit"
+        >
           Crear Proyecto
         </Button>
       </form>

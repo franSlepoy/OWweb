@@ -26,13 +26,15 @@ const ProjectsListContainer = () => {
   }, [changesProjects]);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredProjects = projects.filter((prod) => {
-    // Convierte tanto el displayName como el email a minúsculas para hacer la búsqueda insensible a mayúsculas
-    const prodName = prod?.name?.toLowerCase();
+  const filteredProjects = projects
+    .filter((prod) => {
+      // Convierte tanto el displayName como el email a minúsculas para hacer la búsqueda insensible a mayúsculas
+      const prodName = prod?.name?.toLowerCase();
 
-    // Verifica si el término de búsqueda está incluido en el nombre o email del usuario
-    return prodName?.includes(searchTerm?.toLowerCase());
-  });
+      // Verifica si el término de búsqueda está incluido en el nombre o email del usuario
+      return prodName?.includes(searchTerm?.toLowerCase());
+    })
+    .sort((a, b) => a.order - b.order);
 
   console.log(projects);
   return (

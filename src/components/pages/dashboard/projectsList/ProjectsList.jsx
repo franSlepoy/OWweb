@@ -27,7 +27,16 @@ export default function ProjectsList({
       visible: !project.visible,
     };
 
-    console.log("el obj final seria: ", obj);
+    let refDoc = doc(db, "projects_test", project.id);
+    await updateDoc(refDoc, obj);
+    setChangesProjects(true);
+  };
+
+  const cambiarOrden = async (project, value) => {
+    let obj = {
+      ...project,
+      order: +value,
+    };
     let refDoc = doc(db, "projects_test", project.id);
     await updateDoc(refDoc, obj);
     setChangesProjects(true);
@@ -59,10 +68,13 @@ export default function ProjectsList({
           searchTerm={searchTerm}
           text={"Productos"}
         />
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table
+          sx={{ minWidth: 650 }}
+          aria-label="simple table"
+        >
           <TableHead>
             <TableRow>
-              <TableCell>id</TableCell>
+              <TableCell>Orden</TableCell>
               <TableCell align="right">Proyecto</TableCell>
               <TableCell align="right">Acciones</TableCell>
             </TableRow>
@@ -70,8 +82,16 @@ export default function ProjectsList({
           <TableBody>
             {filteredProjects.map((project) => (
               <TableRow key={project.id}>
-                <TableCell component="th" scope="row">
-                  {project.id}
+                <TableCell
+                  component="th"
+                  scope="row"
+                >
+                  <input
+                    type="numer"
+                    value={project.order}
+                    onChange={(e) => cambiarOrden(project, e.target.value)}
+                  />
+                  {/* {project.order} */}
                 </TableCell>
                 <TableCell align="right">{project.name}</TableCell>
                 <TableCell align="right">
