@@ -28,10 +28,17 @@ const Proyectos = () => {
 
   return (
     <>
-  
-  <Hidden mdDown>
-        <Box id="projects" width={"95%"} m={"auto"}>
-          <ImageList  variant="standard" cols={3} gap={0}>
+      <Hidden mdDown>
+        <Box
+          id="projects"
+          width={"95%"}
+          m={"auto"}
+        >
+          <ImageList
+            variant="standard"
+            cols={3}
+            gap={4}
+          >
             {projects &&
               projects
                 .filter((item) => item.visible)
@@ -48,9 +55,11 @@ const Proyectos = () => {
                       to={`/project/${item.id}`}
                       style={{ textDecoration: "none", position: "relative" }}
                     >
-                      <div className={proyectosStyle.Box} data-name={item.name}>
+                      <div
+                        className={proyectosStyle.Box}
+                        data-name={item.name}
+                      >
                         <img
-                         
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}
@@ -79,10 +88,17 @@ const Proyectos = () => {
         </Box>
       </Hidden>
 
-
       <Hidden mdUp>
-        <Box width={"98%"} m={"auto"} id="projects">
-          <ImageList variant="classic" cols={1} gap={0}>
+        <Box
+          width={"98%"}
+          m={"auto"}
+          id="projects"
+        >
+          <ImageList
+            variant="classic"
+            cols={1}
+            gap={0}
+          >
             {projects
               ?.filter((item) => item.visible)
               .map((item, index) => (
@@ -98,7 +114,10 @@ const Proyectos = () => {
                     to={`/project/${item.id}`}
                     style={{ textDecoration: "none", position: "relative" }}
                   >
-                    <div className={proyectosStyle.Box} data-name={item.name}>
+                    <div
+                      className={proyectosStyle.Box}
+                      data-name={item.name}
+                    >
                       <img
                         width={"75%"}
                         srcSet={`${item.image_ppal}`}

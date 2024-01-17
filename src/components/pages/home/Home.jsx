@@ -5,6 +5,7 @@ import NavBar from "../../commond/navBar/NavBar";
 import StudioContainer from "../studio/StudioContainer";
 import Image_init from "./imagen_init/Image_init";
 import styles from "./Home.module.css"; // Importa el archivo de estilos CSS Module
+import flechita from "../../../../public/imagenes/defaults/slider_arrow.svg";
 
 const Home = () => {
   const [isLogoHidden, setIsLogoHidden] = useState(false);
@@ -69,6 +70,26 @@ const Home = () => {
           src="https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/logo%2FOWblanco.png?alt=media&token=d88e194d-01ad-44fe-9b47-e5340a313a82"
           alt=""
         />
+      </Box>
+
+      <Box
+        style={{
+          position: "absolute",
+          bottom: "30px",
+          left: "50%",
+          /*           transform: "translate(-25%, 0)",
+           */ zIndex: 1300,
+        }}
+      >
+        <a
+          href="#projects"
+          style={{
+            textDecoration: "none",
+            underline: "none",
+          }}
+        >
+          <img src={flechita} />
+        </a>
       </Box>
 
       {/* Inicia el navbar y el resto */}

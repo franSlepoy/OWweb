@@ -68,6 +68,4 @@
     opacity: 2;
     transform: translate(-50%, 0px);
   }
-  animation-duration: 3.5s; /* Duración de la animación */
-  animation-timing-function: ease-in-out; /* Ajusta la función de interpolación */
 }
