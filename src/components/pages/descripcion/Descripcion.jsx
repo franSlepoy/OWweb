@@ -118,7 +118,7 @@ const Descripcion = () => {
 
       <Box
         sx={{
-          width: "80%",
+          /* width: "80%", */
           m: "auto",
           mb: 3,
         }}
@@ -129,11 +129,11 @@ const Descripcion = () => {
           animation="fade"
           timeout={1}
           cycleNavigation={false}
-        
           sx={{
-            width: "99%",
+            width: "90%",
+            height: "80vh",
             m: "auto",
-            height: "85vh",
+            border: "solid green",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -187,12 +187,15 @@ const Descripcion = () => {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
+                          height: "90vh",
                         }}
                       >
                         <img
                           src={item.url}
-                          width={"99%"}
-                          style={{ height: "70vh", objectFit: "contain" }}
+                          style={{
+                            objectFit: "contain",
+                            width: "100%",
+                          }}
                         />
                       </div>
                     );
@@ -225,69 +228,6 @@ const Descripcion = () => {
             ).elements
           }
         </Carousel>
-
-        {/*  <Box>
-          <Typography>{project?.name}</Typography>
-          <Card
-            sx={{
-              width: "80%",
-              objectFit: "cover",
-              border: "solid green",
-              display: "flex",
-            }}
-          >
-            <ImgCard
-              imagen={project?.image_ppal}
-              width={200}
-            />
-            <p>Imagenes secun</p>
-            <br />
-            <hr />
-            <br />
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
-              {project?.gallery.map((imagen, i) => {
-                return (
-                  <div
-                    key={i}
-                    style={{}}
-                  >
-                    <p>{imagen.order}</p>
-                    <img
-                      src={imagen.url}
-                      width={150}
-                    />
-                    {imagen.isNew ? <p>Nuevo</p> : <p>Viejo</p>}
-                  </div>
-                );
-              })}
-              <Box>
-                <p>Aca van las memories: </p>
-                <hr />
-                <br />
-                {lenguage === "es" ? (
-                  <Typography>{project?.memories?.memorie_es}</Typography>
-                ) : (
-                  <Typography>{project?.memories?.memorie_en}</Typography>
-                )}
-              </Box>
-              <Box>
-                <p>Aca van las slides: </p>
-                <hr />
-                <br />
-                {lenguage === "es" ? (
-                  <Typography>{project?.slides?.slides1_es}</Typography>
-                ) : (
-                  <Typography>{project?.slides?.slides1_en}</Typography>
-                )}
-                {lenguage === "es" ? (
-                  <Typography>{project?.slides?.slides2_es}</Typography>
-                ) : (
-                  <Typography>{project?.slides?.slides2_en}</Typography>
-                )}
-              </Box>
-            </Box>
-          </Card>
-        </Box> */}
       </Box>
     </>
   );

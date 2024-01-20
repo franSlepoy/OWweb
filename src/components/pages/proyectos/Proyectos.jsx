@@ -33,13 +33,14 @@ const Proyectos = () => {
           id="projects"
           width={"95%"}
           m={"auto"}
+          mt={10}
         >
           <ImageList
             variant="standard"
             cols={3}
             gap={4}
           >
-            {projects &&
+            {/* {projects &&
               projects
                 .filter((item) => item.visible)
                 .map((item, index) => (
@@ -68,7 +69,42 @@ const Proyectos = () => {
                       </div>
                     </Link>
                   </ImageListItem>
+                ))} */}
+            {projects &&
+              projects
+                .filter((item) => item.visible)
+                .map((item, index) => (
+                  <ImageListItem
+                    key={item.id}
+                    className={
+                      index % 3 === 2
+                        ? proyectosStyle.rightBorder
+                        : proyectosStyle.leftBorder
+                    }
+                  >
+                    <Link
+                      to={`/project2/${item.id}`}
+                      style={{ textDecoration: "none", position: "relative" }}
+                    >
+                      <div
+                        className={proyectosStyle.hoverContainer}
+                        data-name={item.name}
+                      >
+                        <img
+                          srcSet={`${item.image_ppal}`}
+                          src={`${item.image_ppal}`}
+                          alt={item.name}
+                          loading="lazy"
+                          className={proyectosStyle.projectImage}
+                        />
+                        <div className={proyectosStyle.hoverText}>
+                          <p>{item.name}</p>
+                        </div>
+                      </div>
+                    </Link>
+                  </ImageListItem>
                 ))}
+
             {/* Agregar tarjetas blancas para completar la última fila */}
             {Array.from(
               { length: projects ? 3 - (projects.length % 3) : 0 },
