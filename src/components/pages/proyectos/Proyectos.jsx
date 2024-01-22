@@ -29,17 +29,8 @@ const Proyectos = () => {
   return (
     <>
       <Hidden mdDown>
-        <Box
-          id="projects"
-          width={"95%"}
-          m={"auto"}
-          mt={10}
-        >
-          <ImageList
-            variant="standard"
-            cols={3}
-            gap={4}
-          >
+        <Box id="projects" width={"95%"} m={"auto"} mt={10}>
+          <ImageList variant="standard" cols={3} gap={0}>
             {/* {projects &&
               projects
                 .filter((item) => item.visible)
@@ -91,6 +82,7 @@ const Proyectos = () => {
                         data-name={item.name}
                       >
                         <img
+                         
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}
@@ -125,42 +117,31 @@ const Proyectos = () => {
       </Hidden>
 
       <Hidden mdUp>
-        <Box
-          width={"98%"}
-          m={"auto"}
-          id="projects"
-        >
-          <ImageList
-            variant="classic"
-            cols={1}
-            gap={0}
-          >
+        <Box width={"98%"} m={"auto"} id="projects">
+          <ImageList variant="classic" cols={1} gap={0}>
             {projects
               ?.filter((item) => item.visible)
               .map((item, index) => (
                 <ImageListItem
+                sx={{mt:5}}
                   key={item.id}
-                  className={
-                    index % 3 === 2
-                      ? proyectosStyle.rightBorder
-                      : proyectosStyle.leftBorder
-                  }
+                  
                 >
                   <Link
                     to={`/project/${item.id}`}
                     style={{ textDecoration: "none", position: "relative" }}
                   >
-                    <div
-                      className={proyectosStyle.Box}
-                      data-name={item.name}
-                    >
-                      <img
-                        width={"75%"}
-                        srcSet={`${item.image_ppal}`}
-                        src={`${item.image_ppal}`}
-                        alt={item.name}
-                        loading="lazy"
-                      />
+                    <div data-name={item.name}>
+                      <Box width={"90%"} margin={"auto"}>
+                        <img
+                          width={"100%"}
+                          height={"450px"}
+                          srcSet={`${item.image_ppal}`}
+                          src={`${item.image_ppal}`}
+                          alt={item.name}
+                          loading="lazy"
+                        />
+                      </Box>
                     </div>
                   </Link>
                   {/* <Box
