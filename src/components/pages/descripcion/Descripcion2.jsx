@@ -10,6 +10,10 @@ import { AuthContext } from "../../../context/AuthContext";
 import Carousel from "react-material-ui-carousel";
 import NavBar2 from "../../commond/navBar/NavBar2";
 import "./descripcion_styles.css";
+import HeaderDescription from "./HeaderDescription";
+import ESDescription from "./ESDescription";
+import ENDescription from "./ENDescription";
+import ProjectNavigation from "./ProjectNavigation";
 const Descripcion2 = () => {
   const { id } = useParams();
   const { lenguage } = useContext(AuthContext);
@@ -85,10 +89,7 @@ const Descripcion2 = () => {
     const elements = text.split("\n");
     const agrupamiento = groupElements(elements);
     return agrupamiento.map((innerArray, index) => (
-      <div
-        key={index}
-        style={{ margin: 4, padding: 4 }}
-      >
+      <div key={index} style={{ margin: 4, padding: 4 }}>
         {renderDivs(innerArray)}
       </div>
     ));
@@ -96,124 +97,132 @@ const Descripcion2 = () => {
 
   return (
     <>
-      <NavBar2 />
-
-      <Box
-        sx={{
-          display: "flex",
-          mt: 10,
-          justifyContent: "center",
-          alignItems: "center",
-          border: "solid blue",
-        }}
-      >
-        <Carousel
-          autoPlay={false}
-          indicators={true}
-          animation="fade"
-          timeout={1}
-          cycleNavigation={false}
-          sx={{
-            width: "95%",
-            m: "auto",
-            border: "solid green",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            ".MuiButtonBase-root": {
-              top: "78% !important",
-            },
-            ".transparent-button": {
-              background: "transparent !important",
-              color: "black !important",
-            },
-          }}
-        >
-          {
-            combinedData?.reduce(
-              (acc, item, i) => {
-                if (item.url && !acc.skipNext) {
-                  if (item.double) {
-                    // Si la imagen tiene la propiedad "double" en true
-                    let nextItem = combinedData[i + 1];
-                    acc.skipNext = true; // Saltar la siguiente imagen
-                    acc.elements.push(
-                      <div
-                        key={i}
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <img
-                          src={item.url}
-                          width={"40%"}
-                        />
-                        {nextItem && nextItem.url && (
-                          <img
-                            src={nextItem.url}
-                            width={"40%"}
-                          />
-                        )}
-                      </div>
-                    );
-                  } else {
-                    // Si la imagen no tiene la propiedad "double" en true
-                    acc.elements.push(
-                      <div
-                        key={i}
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          border: "solid red",
-                          height: "76vh",
-                        }}
-                      >
-                        <img
-                          src={item.url}
+      <div className="body-container">
+        <div className="header">
+          {/* <NavBar2 /> */}
+          <HeaderDescription />
+        </div>
+        <div className="left-side">
+          <ESDescription />
+        </div>
+        <div className="main-content">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Carousel
+              autoPlay={false}
+              indicators={true}
+              animation="fade"
+              timeout={1}
+              cycleNavigation={false}
+              sx={{
+                width: "100%",
+                m: "auto",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                ".MuiButtonBase-root": {
+                  top: "50% !important",
+                  background: "transparent",
+                },
+                ".transparent-button": {
+                  background: "transparent !important",
+                  color: "black !important",
+                },
+              }}
+            >
+              {
+                combinedData?.reduce(
+                  (acc, item, i) => {
+                    if (item.url && !acc.skipNext) {
+                      if (item.double) {
+                        // Si la imagen tiene la propiedad "double" en true
+                        let nextItem = combinedData[i + 1];
+                        acc.skipNext = true; // Saltar la siguiente imagen
+                        acc.elements.push(
+                          <div
+                            key={i}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            <img src={item.url} width={"40%"} />
+                            {nextItem && nextItem.url && (
+                              <img src={nextItem.url} width={"40%"} />
+                            )}
+                          </div>
+                        );
+                      } else {
+                        // Si la imagen no tiene la propiedad "double" en true
+                        acc.elements.push(
+                          <div
+                            key={i}
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              height: "76vh",
+                            }}
+                          >
+                            <img
+                              src={item.url}
+                              style={{
+                                objectFit: "cover",
+                                /*  width: "100%",
+                                 */
+                                width: "auto", // Ancho automático para mantener la proporción
+                                maxHeight: "100%",
+                              }}
+                            />
+                          </div>
+                        );
+                      }
+                    } else if (!item.url && item.trim() !== "") {
+                      // Si no es una imagen, renderiza el texto
+                      acc.elements.push(
+                        <div
+                          key={i}
                           style={{
-                            objectFit: "cover",
-                            /*  width: "100%",
-                            border: "solid violet", */
-                            width: "auto", // Ancho automático para mantener la proporción
-                            maxHeight: "100%",
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "space-evenly",
+                            alignItems: "center",
+                            height: "76vh",
+                            textAlign: "center",
                           }}
-                        />
-                      </div>
-                    );
-                  }
-                } else if (!item.url && item.trim() !== "") {
-                  // Si no es una imagen, renderiza el texto
-                  acc.elements.push(
-                    <div
-                      key={i}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "space-evenly",
-                        alignItems: "center",
-                        height: "76vh",
-                        textAlign: "center",
-                      }}
-                    >
-                      {/*  {applyStyles(item)} */}
-                      {splitText(item)}
-                    </div>
-                  );
-                } else if (acc.skipNext) {
-                  // Si se debe saltar la imagen actual
-                  acc.skipNext = false; // Restablecer para la próxima imagen
-                }
-                return acc;
-              },
-              { elements: [], skipNext: false }
-            ).elements
-          }
-        </Carousel>
-      </Box>
+                        >
+                          {/*  {applyStyles(item)} */}
+                          {splitText(item)}
+                        </div>
+                      );
+                    } else if (acc.skipNext) {
+                      // Si se debe saltar la imagen actual
+                      acc.skipNext = false; // Restablecer para la próxima imagen
+                    }
+                    return acc;
+                  },
+                  { elements: [], skipNext: false }
+                ).elements
+              }
+            </Carousel>
+          </Box>
+        </div>
+        <div className="right-side">
+          <ENDescription />
+        </div>
+
+        <div className="footer">
+          <ProjectNavigation />
+        </div>
+      </div>
     </>
   );
 };

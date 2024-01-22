@@ -7,3 +7,50 @@
 .css-1abc02a .css-1abc02a {
   top: 10% !important;
 }
+
+/* Agrega esto a tu archivo de estilos */
+.body-container {
+  display: grid;
+  grid-template-columns: 3% 94% 3%;
+  grid-template-rows: auto 1fr auto;
+  height: 99vh;
+}
+
+.header {
+  grid-column: 1 / -1; /* Ocupa toda la fila */
+}
+
+.main-content {
+  border: solid red;
+}
+
+.footer {
+  grid-column: 1 / -1; /* Ocupa toda la fila */
+}
+
+.left-side,
+.right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid blue;
+}
+
+.button_leng {
+  border: none;
+  text-transform: uppercase;
+}
+
+.button_leng:hover {
+  background-color: transparent;
+  transition: none;
+}
+
+.project-navigation-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid red;
+  width: 94%;
+  margin: 0 auto;
+}

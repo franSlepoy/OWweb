@@ -38,20 +38,6 @@ const NavBar2 = () => {
     return setOpen(false);
   };
 
-  /*   const [isScrolled, setIsScrolled] = useState(false); */
-
-  /*   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > window.innerHeight * 0.3;
-      setIsScrolled(isScrolled);
-    };
-
-    document.addEventListener("scroll", handleScroll);
-    return () => {
-      document.removeEventListener("scroll", handleScroll);
-    };
-  }, []); */
-
   return (
     <>
       {/* VERSION DESKTOP NAVBAR */}
