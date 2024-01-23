@@ -85,7 +85,10 @@ const InfoContact = ({ modulosStudio }) => {
         >
           {rightContent.title}
         </h6>
+        <a style={{color:"black"}} href="mailto:correo@example.com">
         <div>{formatText(rightContent.text)}</div>
+        </a>
+        
       </Box>
     </Box>
   );

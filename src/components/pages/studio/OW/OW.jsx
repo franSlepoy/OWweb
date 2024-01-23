@@ -69,7 +69,8 @@ const OW = ({ modulosStudio }) => {
         <div className={owstyles.img_container}>
           <img src={W_img} />
         </div>
-        <p>
+       
+       <p>
           {(lenguage == "es"
             ? modulosStudio?.modulo2?.w_es
             : modulosStudio?.modulo2?.w_en
@@ -88,6 +89,8 @@ const OW = ({ modulosStudio }) => {
               );
             })}
         </p>
+      
+        
       </Box>
     </Box>
   );
