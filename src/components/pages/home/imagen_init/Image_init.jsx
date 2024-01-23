@@ -31,7 +31,7 @@ const Image_init = () => {
         <img
           src={inicio.image_desktop ? inicio.image_desktop : ""}
           alt="Imagen de inicio"
-          style={{ height: "100vh",/*  width: "100%"  */}}
+          style={{ height: "100vh", width: "100%" }}
         />
       ) : (
         <div className={image_init_style.container}></div>

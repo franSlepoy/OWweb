@@ -19,6 +19,7 @@
   background-image: conic-gradient(transparent 25%, var(--uib-color));
   animation: spin calc(var(--uib-speed)) linear infinite;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 @keyframes spin {
