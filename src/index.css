@@ -18,16 +18,18 @@
 
 body {
   font-family: "PoynterOSDisp", sans-serif;
-  cursor: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23e2e2c7"><circle cx="8" cy="8" r="8" /></svg>')
-      8 8,
-    auto;
-}
-a {
-  cursor: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="%23e2e2c7"><circle cx="12" cy="12" r="10" /></svg>')
+  cursor: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(226,226,199,0.5)"><circle cx="8" cy="8" r="8" /></svg>')
       12 12,
     auto;
+}
+
+a {
+  cursor:  url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10" /></svg>')
+      12 12,
+    auto; 
   text-decoration: none;
 }
+
 
 html {
   scroll-behavior: smooth;
