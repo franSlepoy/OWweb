@@ -54,62 +54,121 @@ const NavBar = () => {
 
   console.log("El lenguage es: ", lenguage);
 
+  const [currentPage, setCurrentPage] = useState("projects");
+ 
+
+  const handleProjectsClick = () => {
+    setCurrentPage("projects");
+  };
+
+  const handleStudioClick = () => {
+    setCurrentPage("studio");
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const isProjectsActive = currentPage === "projects";
+  const isStudioActive = currentPage === "studio";
+
   return (
     <>
       {/* VERSION DESKTOP NAVBAR */}
       <Hidden mdDown>
-        <div style={{ overflow: "hidden" }}>
-          <AppBar
-            /* position="fixed" */
-            sx={{
-              boxShadow: 0,
-              bgcolor: "white",
-              top: isScrolled ? "0px" : "-672px",
-              transition: "top 0.3s",
-              zIndex: 1500,
-            }}
-          >
-            <Toolbar sx={{ justifyContent: "space-between" }}>
-              <Box width={"33,3%"} display={"flex"}>
-                <a
-                  href="#projects"
-                  style={{
-                    paddingLeft:"10px",
-                    fontSize: "16px",
-                    color: "#000",
-                    underline: "none",
-                    fontFamily: "Pragmatica",
-                    textDecoration: "none",
+      <div style={{ overflow: "hidden" }}>
+        <AppBar
+          sx={{
+            boxShadow: 0,
+            bgcolor: "white",
+            top: isScrolled ? "0px" : "-672px",
+            transition: "top 0.3s",
+            zIndex: 1500,
+          }}
+        >
+          <Toolbar sx={{ justifyContent: "space-between" }}>
+            <Box
+              width={"33,3%"}
+              display={"flex"}
+              onClick={handleProjectsClick}
+            >
+              <a
+                href="#projects"
+                style={{
+                  paddingLeft: "10px",
+                  fontSize: "16px",
+                  color: "#000",
+                  underline: "none",
+                  fontFamily: "Pragmatica",
+                  textDecoration: "none",
+                }}
+              >
+                {t("tituloNavBarIzquierda")}
+              </a>
+              {isProjectsActive && (
+                <Box
+                  sx={{
+                    width: "20px",
+                    height: "20px",
+                    backgroundColor: "rgba(226,226,199)",
+                    borderRadius: "100%",
+                    ml: 1,
                   }}
                 >
-                  {t("tituloNavBarIzquierda")}
-                </a>
-              </Box>
+                  {/* circulo */}
+                </Box>
+              )}
+            </Box>
 
-              <Box width={"26%"}>
-                <img width={"320px"} src={logo_ow_negro} alt="" />
-              </Box>
+            <Box width={"26%"}>
+              <img width={"320px"} src={logo_ow_negro} alt="" />
+            </Box>
 
-              <Box width={"33,3%"}>
-                <a
-                  href="#studio"
-                  style={{
-                    paddingRight:"10px",
-                    textAlign: "end",
-                    fontSize: "16px",
-                    color: "#000",
-                    underline: "none",
-                    fontFamily: "Pragmatica",
-                    textDecoration: "none",
+            <Box
+              width={"33,3%"}
+              display={"flex"}
+              onClick={handleStudioClick}
+            >
+              {isStudioActive && (
+                <Box
+                  sx={{
+                    width: "20px",
+                    height: "20px",
+                    backgroundColor: "rgba(226,226,199)",
+                    borderRadius: "100%",
+                    mr: 1,
                   }}
                 >
-                  {t("tituloNavBarDerecha")}
-                </a>
-              </Box>
-            </Toolbar>
-          </AppBar>
-        </div>
-      </Hidden>
+                  {/* circulo */}
+                </Box>
+              )}
+              <a
+                href="#studio"
+                style={{
+                  paddingRight: "10px",
+                  textAlign: "end",
+                  fontSize: "16px",
+                  color: "#000",
+                  underline: "none",
+                  fontFamily: "Pragmatica",
+                  textDecoration: "none",
+                }}
+              >
+                {t("tituloNavBarDerecha")}
+              </a>
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </div>
+    </Hidden>
       {/* MANEJADOR DE LENGUAJES
        */}{" "}
       <Hidden mdDown>
