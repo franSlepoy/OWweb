@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Hidden, ImageList, ImageListItem } from "@mui/material";
+import { Box, Hidden, ImageList, ImageListItem, Typography } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 import { Link } from "react-router-dom";
@@ -141,6 +141,11 @@ const Proyectos = () => {
                           alt={item.name}
                           loading="lazy"
                         />
+                        <Typography sx={{
+                          fontFamily:"programatica , san.serif", fontSize:"16px", lineHeight:"20px", letterSpacing: 0.5, color:"#000", textTransform:"uppercase"
+                        }}>
+                          {item.name}
+                        </Typography>
                       </Box>
                     </div>
                   </Link>

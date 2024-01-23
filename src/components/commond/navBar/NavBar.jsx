@@ -217,7 +217,7 @@ const NavBar = () => {
         <AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white" }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Box>
-              <img width={"50%"} src="/imagenes/ownegro.png" alt="" />
+              <img width={"50%"} src={logo_ow_negro}  alt="" />
             </Box>
             <Box>
               <Button
