@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../../context/AuthContext";
 
 const ESDescription = () => {
-  const { t, i18n } = useTranslation();
-  const { handleLenguage, lenguage } = useContext(AuthContext);
+  const { i18n } = useTranslation();
+  const { handleLenguage } = useContext(AuthContext);
 
   // Función para cambiar el idioma a español
   const cambiarAEspanol = () => {

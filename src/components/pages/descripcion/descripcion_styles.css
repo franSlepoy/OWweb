@@ -21,7 +21,6 @@
 }
 
 .main-content {
-  border: solid red;
 }
 
 .footer {
@@ -33,7 +32,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid blue;
+}
+
+.left-side {
+  border-right: solid black 0.5px;
+}
+.right-side {
+  border-left: solid black 0.5px;
 }
 
 .button_leng {
@@ -50,7 +55,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: solid red;
   width: 94%;
   margin: 0 auto;
+  padding-top: 10px;
+}
+
+.project-footer-left,
+.project-footer-center,
+.project-footer-right {
+  font-size: 16px;
+  color: #1d1d1d;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.project-footer-left {
+  width: 23%;
+}
+.project-footer-center {
+  width: 50%;
+}
+.project-footer-right {
+  width: 23%;
 }

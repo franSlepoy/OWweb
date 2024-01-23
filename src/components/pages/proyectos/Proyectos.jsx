@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { Box, Hidden, ImageList, ImageListItem, Typography } from "@mui/material";
+import {
+  Box,
+  Hidden,
+  ImageList,
+  ImageListItem,
+  Typography,
+} from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 import { Link } from "react-router-dom";
@@ -24,6 +30,17 @@ const Proyectos = () => {
     })();
   }, []);
 
+  function formatProjectName(name) {
+    // Dividir el nombre por guiones y tomar todos los elementos excepto el último
+    const parts = name.split(" - ");
+    parts.pop(); // Elimina el último elemento (que es la fecha)
+    console.log(
+      "Esto es parts.join de cada nombre, asi quedo: ",
+      parts.join(" - ")
+    );
+    return parts.join(" - "); // Une los elementos restantes manteniendo el guion original
+  }
+
   console.log(projects);
 
   return (
@@ -31,36 +48,6 @@ const Proyectos = () => {
       <Hidden mdDown>
         <Box id="projects" width={"95%"} m={"auto"} mt={10}>
           <ImageList variant="standard" cols={3} gap={0}>
-            {/* {projects &&
-              projects
-                .filter((item) => item.visible)
-                .map((item, index) => (
-                  <ImageListItem
-                    key={item.id}
-                    className={
-                      index % 3 === 2
-                        ? proyectosStyle.rightBorder
-                        : proyectosStyle.leftBorder
-                    }
-                  >
-                    <Link
-                      to={`/project/${item.id}`}
-                      style={{ textDecoration: "none", position: "relative" }}
-                    >
-                      <div
-                        className={proyectosStyle.Box}
-                        data-name={item.name}
-                      >
-                        <img
-                          srcSet={`${item.image_ppal}`}
-                          src={`${item.image_ppal}`}
-                          alt={item.name}
-                          loading="lazy"
-                        />
-                      </div>
-                    </Link>
-                  </ImageListItem>
-                ))} */}
             {projects &&
               projects
                 .filter((item) => item.visible)
@@ -82,7 +69,6 @@ const Proyectos = () => {
                         data-name={item.name}
                       >
                         <img
-                         
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}
@@ -90,7 +76,7 @@ const Proyectos = () => {
                           className={proyectosStyle.projectImage}
                         />
                         <div className={proyectosStyle.hoverText}>
-                          <p>{item.name}</p>
+                          <p>{formatProjectName(item.name)}</p>
                         </div>
                       </div>
                     </Link>
@@ -122,11 +108,7 @@ const Proyectos = () => {
             {projects
               ?.filter((item) => item.visible)
               .map((item, index) => (
-                <ImageListItem
-                sx={{mt:5}}
-                  key={item.id}
-                  
-                >
+                <ImageListItem sx={{ mt: 5 }} key={item.id}>
                   <Link
                     to={`/project/${item.id}`}
                     style={{ textDecoration: "none", position: "relative" }}
@@ -141,74 +123,21 @@ const Proyectos = () => {
                           alt={item.name}
                           loading="lazy"
                         />
-                        <Typography sx={{
-                          fontFamily:"programatica , san.serif", fontSize:"16px", lineHeight:"20px", letterSpacing: 0.5, color:"#000", textTransform:"uppercase"
-                        }}>
-                          {item.name}
+                        <Typography
+                          sx={{
+                            fontFamily: "programatica , san.serif",
+                            fontSize: "16px",
+                            lineHeight: "20px",
+                            letterSpacing: 0.5,
+                            color: "#000",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          <p>{formatProjectName(item.name)}</p>
                         </Typography>
                       </Box>
                     </div>
                   </Link>
-                  {/* <Box
-                  sx={{
-                    p: 4,
-                    width: "100%",
-                    textAlign: "center",
-                    position: "relative",
-                    height: "440px",
-                  }}
-                >
-                  {hoveredItem === item ? (
-                    <Box
-                      sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        margin: "auto",
-                        width: "100%",
-                        height: "440px",
-                        backgroundColor: "#e2e2c7",
-                      }}
-                    >
-                      <a
-                        href={"/description"}
-                        style={{ textDecoration: "none", position: "relative" }}
-                      >
-                        <Typography
-                          sx={{
-                            fontFamily: "Pragmatica",
-                            textAlign: "center",
-                            fontSize: "16px",
-                            color: "black",
-                            p: 10,
-                          }}
-                        >
-                          {item.titulo}
-                        </Typography>
-                      </a>
-                    </Box>
-                  ) : (
-                    <img
-                      width={"100%"}
-                      height={"440px"}
-                      srcSet={`${item.imagen}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                      src={`${item.imagen}?w=248&fit=crop&auto=format`}
-                      alt={item.titulo}
-                      loading="lazy"
-                    />
-                  )}
-                </Box>
-                <Typography
-                  sx={{
-                    fontFamily: "Pragmatica",
-                    textAlign: "center",
-                    fontSize: "16px",
-                    color: "black",
-                    mt: 5,
-                  }}
-                >
-                  {item.titulo}
-                </Typography> */}
                 </ImageListItem>
               ))}
           </ImageList>

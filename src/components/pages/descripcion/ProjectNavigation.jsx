@@ -3,7 +3,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
 import "./descripcion_styles.css";
-
+import botonSiguiente from "../../../../public/imagenes/boton_siguiente.svg";
+import botonAnterior from "../../../../public/imagenes/boton_anterior.svg";
 
 const ProjectNavigation = () => {
   const [projects, setProjects] = useState([]);
@@ -34,12 +35,48 @@ const ProjectNavigation = () => {
   const nextProject = projects[nextIndex];
   const currentProject = projects[currentIndex];
 
-
   return (
     <div className="project-navigation-footer">
-      <Link to={`/project2/${prevProject?.id}`}>{prevProject?.name}</Link>
-      <p>{currentProject?.name}</p>
-      <Link to={`/project2/${nextProject?.id}`}>{nextProject?.name}</Link>
+      <div className="project-footer-left">
+        {" "}
+        <Link
+          to={`/project2/${prevProject?.id}`}
+          style={{ fontSize: "16px", color: "#1d1d1d" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "left",
+              gap: 8,
+            }}
+          >
+            <img src={botonAnterior} /> {prevProject?.name}
+          </div>
+        </Link>
+      </div>
+      <div className="project-footer-center">
+        {" "}
+        <p>{currentProject?.name}</p>
+      </div>
+      <div className="project-footer-right">
+        {" "}
+        <Link
+          to={`/project2/${nextProject?.id}`}
+          style={{ fontSize: "16px", color: "#1d1d1d" }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "right",
+              gap: 8,
+            }}
+          >
+            {nextProject?.name} <img src={botonSiguiente} />
+          </div>
+        </Link>
+      </div>
     </div>
   );
 };

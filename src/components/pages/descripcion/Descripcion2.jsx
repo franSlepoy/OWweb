@@ -152,6 +152,7 @@ const Descripcion2 = () => {
                               display: "flex",
                               justifyContent: "center",
                               alignItems: "center",
+                              height: "76vh",
                             }}
                           >
                             <img src={item.url} width={"40%"} />
