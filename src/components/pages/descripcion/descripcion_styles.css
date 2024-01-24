@@ -20,8 +20,8 @@
   grid-column: 1 / -1; /* Ocupa toda la fila */
 }
 
-.main-content {
-}
+/* .main-content {
+} */
 
 .footer {
   grid-column: 1 / -1; /* Ocupa toda la fila */
@@ -36,9 +36,11 @@
 
 .left-side {
   border-right: solid black 0.5px;
+  height: 573px;
 }
 .right-side {
   border-left: solid black 0.5px;
+  height: 573px;
 }
 
 .button_leng {
@@ -58,6 +60,7 @@
   width: 94%;
   margin: 0 auto;
   padding-top: 10px;
+  padding-bottom: 14px;
 }
 
 .project-footer-left,
@@ -67,6 +70,9 @@
   color: #1d1d1d;
   text-align: center;
   text-transform: uppercase;
+  font-family: 'pragmatica', sans-serif;
+  font-weight: 100;
+  line-height: 18px;
 }
 
 .project-footer-left {

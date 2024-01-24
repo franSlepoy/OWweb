@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../../context/AuthContext";
@@ -23,7 +23,7 @@ const ENDescription = () => {
       onClick={cambiarAIngles}
       data-i18n="en"
     >
-      <Box>
+      <Box >
         <Typography
           sx={{
             fontFamily: "sans-serif",

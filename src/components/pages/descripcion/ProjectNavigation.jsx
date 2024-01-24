@@ -49,6 +49,7 @@ const ProjectNavigation = () => {
               alignItems: "center",
               justifyContent: "left",
               gap: 8,
+             
             }}
           >
             <img src={botonAnterior} /> {prevProject?.name}

@@ -1,5 +1,4 @@
-import { Box, Button, Card, Typography } from "@mui/material";
-import ImgCard from "../../commond/imgCard/ImgCard";
+import { Box,  Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { collection, doc, getDoc } from "firebase/firestore";

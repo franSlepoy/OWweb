@@ -125,10 +125,11 @@ const Proyectos = () => {
                         />
                         <Typography
                           sx={{
-                            fontFamily: "programatica , san.serif",
+                            
                             fontSize: "16px",
                             lineHeight: "20px",
                             letterSpacing: 0.5,
+                            fontWeight:"100",
                             color: "#000",
                             textTransform: "uppercase",
                           }}

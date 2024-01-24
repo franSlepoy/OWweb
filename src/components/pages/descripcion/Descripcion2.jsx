@@ -1,6 +1,6 @@
-import { Box, Button, Card, Typography } from "@mui/material";
-import ImgCard from "../../commond/imgCard/ImgCard";
-import { Link, useParams } from "react-router-dom";
+import { Box, Hidden, Typography } from "@mui/material";
+
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebaseConfig/FirebaseConfig";
@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import Carousel from "react-material-ui-carousel";
-import NavBar2 from "../../commond/navBar/NavBar2";
+
 import "./descripcion_styles.css";
 import HeaderDescription from "./HeaderDescription";
 import ESDescription from "./ESDescription";
@@ -97,133 +97,154 @@ const Descripcion2 = () => {
 
   return (
     <>
-      <div className="body-container">
-        <div className="header">
-          {/* <NavBar2 /> */}
-          <HeaderDescription />
-        </div>
-        <div className="left-side">
-          <ESDescription />
-        </div>
-        <div className="main-content">
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <Carousel
-              autoPlay={false}
-              indicators={true}
-              animation="fade"
-              timeout={1}
-              cycleNavigation={false}
+      <Hidden mdDown>
+        <div className="body-container">
+          <div className="header">
+            {/* <NavBar2 /> */}
+            <HeaderDescription />
+          </div>
+          <div className="left-side">
+            <ESDescription />
+          </div>
+          <div className="main-content">
+            <Box
               sx={{
-                width: "100%",
-                m: "auto",
                 display: "flex",
-                flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
-                ".MuiButtonBase-root": {
-                  top: "50% !important",
-                  background: "transparent",
-                },
-                ".transparent-button": {
-                  background: "transparent !important",
-                  color: "black !important",
-                },
+                width: "100%",
               }}
             >
-              {
-                combinedData?.reduce(
-                  (acc, item, i) => {
-                    if (item.url && !acc.skipNext) {
-                      if (item.double) {
-                        // Si la imagen tiene la propiedad "double" en true
-                        let nextItem = combinedData[i + 1];
-                        acc.skipNext = true; // Saltar la siguiente imagen
-                        acc.elements.push(
-                          <div
-                            key={i}
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              height: "76vh",
-                            }}
-                          >
-                            <img src={item.url} width={"40%"} />
-                            {nextItem && nextItem.url && (
-                              <img src={nextItem.url} width={"40%"} />
-                            )}
-                          </div>
-                        );
-                      } else {
-                        // Si la imagen no tiene la propiedad "double" en true
-                        acc.elements.push(
-                          <div
-                            key={i}
-                            style={{
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              height: "76vh",
-                            }}
-                          >
-                            <img
-                              src={item.url}
-                              style={{
-                                objectFit: "cover",
-                                /*  width: "100%",
-                                 */
-                                width: "auto", // Ancho automático para mantener la proporción
-                                maxHeight: "100%",
-                              }}
-                            />
-                          </div>
-                        );
-                      }
-                    } else if (!item.url && item.trim() !== "") {
-                      // Si no es una imagen, renderiza el texto
-                      acc.elements.push(
-                        <div
-                          key={i}
-                          style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-evenly",
-                            alignItems: "center",
-                            height: "76vh",
-                            textAlign: "center",
-                          }}
-                        >
-                          {/*  {applyStyles(item)} */}
-                          {splitText(item)}
-                        </div>
-                      );
-                    } else if (acc.skipNext) {
-                      // Si se debe saltar la imagen actual
-                      acc.skipNext = false; // Restablecer para la próxima imagen
-                    }
-                    return acc;
+              <Carousel
+                autoPlay={false}
+                indicators={true}
+                animation="fade"
+                timeout={1}
+                cycleNavigation={false}
+                sx={{
+                  width: "100%",
+                  m: "auto",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  ".MuiButtonBase-root": {
+                    top: "45% !important",
+                    background: "transparent",
                   },
-                  { elements: [], skipNext: false }
-                ).elements
-              }
-            </Carousel>
-          </Box>
-        </div>
-        <div className="right-side">
-          <ENDescription />
-        </div>
+                  ".transparent-button": {
+                    background: "transparent !important",
+                    color: "black !important",
+                  },
+                }}
+              >
+                {
+                  combinedData?.reduce(
+                    (acc, item, i) => {
+                      if (item.url && !acc.skipNext) {
+                        if (item.double) {
+                          // Si la imagen tiene la propiedad "double" en true
+                          let nextItem = combinedData[i + 1];
+                          acc.skipNext = true; // Saltar la siguiente imagen
+                          acc.elements.push(
+                            <div
+                              key={i}
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                height: "76vh",
+                              }}
+                            >
+                              <img src={item.url} width={"40%"} />
+                              {nextItem && nextItem.url && (
+                                <img src={nextItem.url} width={"40%"} />
+                              )}
+                            </div>
+                          );
+                        } else {
+                          // Si la imagen no tiene la propiedad "double" en true
+                          acc.elements.push(
+                            <div
+                              key={i}
+                              style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                height: "76vh",
+                              }}
+                            >
+                              <img
+                                src={item.url}
+                                style={{
+                                  objectFit: "cover",
+                                  /*  width: "100%",
+                                   */
+                                  width: "auto", // Ancho automático para mantener la proporción
+                                  maxHeight: "100%",
+                                }}
+                              />
+                            </div>
+                          );
+                        }
+                      } else if (!item.url && item.trim() !== "") {
+                        // Si no es una imagen, renderiza el texto
+                        acc.elements.push(
+                          <div
+                            key={i}
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "space-evenly",
+                              alignItems: "center",
+                              height: "76vh",
+                              textAlign: "center",
+                            }}
+                          >
+                            {/*  {applyStyles(item)} */}
+                            {splitText(item)}
+                          </div>
+                        );
+                      } else if (acc.skipNext) {
+                        // Si se debe saltar la imagen actual
+                        acc.skipNext = false; // Restablecer para la próxima imagen
+                      }
+                      return acc;
+                    },
+                    { elements: [], skipNext: false }
+                  ).elements
+                }
+              </Carousel>
+            </Box>
+          </div>
+          <div className="right-side">
+            <ENDescription />
+          </div>
 
-        <div className="footer">
-          <ProjectNavigation />
+          <div className="footer">
+            <ProjectNavigation />
+          </div>
         </div>
-      </div>
+      </Hidden>
+
+      <Hidden mdUp>
+        <HeaderDescription />
+        <Box width={"90%"} margin={"auto"}>
+          <Typography
+            sx={{
+              mt: 10,
+              textTransform: "uppercase",
+              fontSize: "16px",
+              lineHeight: "20px",
+              fontWeight: "100",
+            }}
+          >
+            Titulo del Proyecto
+          </Typography>
+        </Box>
+
+        {/* GALERIA DE IMAGENES */}
+      </Hidden>
     </>
   );
 };
