@@ -1,4 +1,4 @@
-import { Box, Hidden, Typography } from "@mui/material";
+import { Box, Grid, Hidden, ImageList, Typography } from "@mui/material";
 
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -227,23 +227,38 @@ const Descripcion2 = () => {
         </div>
       </Hidden>
 
+     
+      {/* VERSIÓN MÓVIL */}
       <Hidden mdUp>
         <HeaderDescription />
         <Box width={"90%"} margin={"auto"}>
+          {/* Muestra el título del proyecto */}
           <Typography
+            variant="h4"
+            component="div"
             sx={{
-              mt: 10,
+             
               textTransform: "uppercase",
               fontSize: "16px",
               lineHeight: "20px",
               fontWeight: "100",
+              mt:10,
             }}
           >
-            Titulo del Proyecto
+            {project && splitText(project.name)}
           </Typography>
-        </Box>
 
-        {/* GALERIA DE IMAGENES */}
+          {/* Muestra las imágenes en una sola columna */}
+          {project &&
+            project.gallery.map((image, index) => (
+              <img
+                key={index}
+                src={image.url}
+                alt={`Image ${index + 1}`}
+                style={{ width: "100%",objectFit:"cover", marginTop: "10px" }}
+              />
+            ))}
+        </Box>
       </Hidden>
     </>
   );

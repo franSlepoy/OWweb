@@ -110,7 +110,7 @@ const Proyectos = () => {
               .map((item, index) => (
                 <ImageListItem sx={{ mt: 5 }} key={item.id}>
                   <Link
-                    to={`/project/${item.id}`}
+                    to={`/project2/${item.id}`}
                     style={{ textDecoration: "none", position: "relative" }}
                   >
                     <div data-name={item.name}>
@@ -118,6 +118,7 @@ const Proyectos = () => {
                         <img
                           width={"100%"}
                           height={"450px"}
+                          style={{objectFit:"cover"}}
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}

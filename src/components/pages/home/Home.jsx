@@ -93,7 +93,10 @@ const Home = () => {
       </Box>
 
       {/* Inicia el navbar y el resto */}
+      <Box>
       <NavBar />
+      </Box>
+      
       <Proyectos />
       <StudioContainer />
     </>
