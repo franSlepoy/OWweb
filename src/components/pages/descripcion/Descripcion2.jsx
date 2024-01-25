@@ -123,6 +123,7 @@ const Descripcion2 = () => {
                 cycleNavigation={false}
                 sx={{
                   width: "100%",
+                 
                   m: "auto",
                   display: "flex",
                   flexDirection: "column",
