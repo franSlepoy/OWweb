@@ -42,10 +42,11 @@ const NavBar2 = () => {
     <>
       {/* VERSION DESKTOP NAVBAR */}
       <Hidden mdDown>
-        <div style={{ overflow: "hidden" }}>
+        <div style={{ overflow: "hidden",  }}>
           <AppBar
             /* position="fixed" */
             sx={{
+              
               boxShadow: 0,
               bgcolor: "white",
               /*  top: isScrolled ? "0" : "-64px", */
@@ -63,6 +64,7 @@ const NavBar2 = () => {
                     underline: "none",
                     fontFamily: "Pragmatica",
                     textDecoration: "none",
+                    
                   }}
                 >
                   {t("tituloNavBarIzquierda")}
