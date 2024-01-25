@@ -39,8 +39,9 @@ const NavBar = () => {
   };
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > window.innerHeight * 0.9;
       setIsScrolled(isScrolled);
@@ -50,12 +51,11 @@ const NavBar = () => {
     return () => {
       document.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, []); */
 
   console.log("El lenguage es: ", lenguage);
 
   const [currentPage, setCurrentPage] = useState("projects");
- 
 
   const handleProjectsClick = () => {
     setCurrentPage("projects");
@@ -65,9 +65,27 @@ const NavBar = () => {
     setCurrentPage("studio");
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 700);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []); */
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Lógica para AppBar que cambia de posición
+      const shouldBeSticky = window.scrollY > 640; // ajusta este valor según sea necesario
+      setIsSticky(shouldBeSticky);
+
+      // Tu lógica existente de isScrolled
+      const scrolled = window.scrollY > window.innerHeight * 0.9;
+      setIsScrolled(scrolled);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -84,91 +102,88 @@ const NavBar = () => {
     <>
       {/* VERSION DESKTOP NAVBAR */}
       <Hidden mdDown>
-      <div style={{ overflow: "hidden" }}>
-        <AppBar
-          sx={{
-            boxShadow: 0,
-            bgcolor: "white",
-            top: isScrolled ? "0px" : "-672px",
-            transition: "top 0.3s",
-            zIndex: 1500,
-          }}
-        >
-          <Toolbar sx={{ justifyContent: "space-between" }}>
-            <Box
-              width={"33,3%"}
-              display={"flex"}
-              onClick={handleProjectsClick}
-            >
-              <a
-                href="#projects"
-                style={{
-                  paddingLeft: "10px",
-                  fontSize: "16px",
-                  color: "#000",
-                  underline: "none",
-                  fontFamily: "Pragmatica",
-                  textDecoration: "none",
-                }}
+        <div style={{ overflow: "hidden" }}>
+          <AppBar
+            sx={{
+              position: isSticky ? "fixed" : "static",
+              boxShadow: 0,
+              bgcolor: "white",
+              top: isScrolled ? "0px" : "-672px",
+              transition: "top 0.3s",
+              zIndex: 1500,
+            }}
+          >
+            <Toolbar sx={{ justifyContent: "space-between" }}>
+              <Box
+                width={"33,3%"}
+                display={"flex"}
+                onClick={handleProjectsClick}
               >
-                {t("tituloNavBarIzquierda")}
-              </a>
-              {isProjectsActive && (
-                <Box
-                  sx={{
-                    width: "20px",
-                    height: "20px",
-                    backgroundColor: "rgba(226,226,199)",
-                    borderRadius: "100%",
-                    ml: 1,
+                <a
+                  href="#projects"
+                  style={{
+                    paddingLeft: "10px",
+                    fontSize: "16px",
+                    color: "#000",
+                    underline: "none",
+                    fontFamily: "Pragmatica",
+                    textDecoration: "none",
                   }}
                 >
-                  {/* circulo */}
-                </Box>
-              )}
-            </Box>
+                  {t("tituloNavBarIzquierda")}
+                </a>
+                {isProjectsActive && (
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      backgroundColor: "rgba(226,226,199)",
+                      borderRadius: "100%",
+                      ml: 1,
+                    }}
+                  >
+                    {/* circulo */}
+                  </Box>
+                )}
+              </Box>
 
-            <Box width={"26%"}>
-              <img width={"320px"} src={logo_ow_negro} alt="" />
-            </Box>
+              <Box width={"26%"}>
+                <img width={"320px"} src={logo_ow_negro} alt="" />
+              </Box>
 
-            <Box
-              width={"33,3%"}
-              display={"flex"}
-              onClick={handleStudioClick}
-            >
-              {isStudioActive && (
-                <Box
-                  sx={{
-                    width: "20px",
-                    height: "20px",
-                    backgroundColor: "rgba(226,226,199)",
-                    borderRadius: "100%",
-                    mr: 1,
+              <Box width={"33,3%"} display={"flex"} onClick={handleStudioClick}>
+                {isStudioActive && (
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      backgroundColor: "rgba(226,226,199)",
+                      borderRadius: "100%",
+                      mr: 1,
+                    }}
+                  >
+                    {/* circulo */}
+                  </Box>
+                )}
+                <a
+                  href="#studio"
+                  style={{
+                    paddingRight: "10px",
+                    textAlign: "end",
+                    fontSize: "16px",
+                    color: "#000",
+                    underline: "none",
+                    fontFamily: "Pragmatica",
+                    textDecoration: "none",
                   }}
                 >
-                  {/* circulo */}
-                </Box>
-              )}
-              <a
-                href="#studio"
-                style={{
-                  paddingRight: "10px",
-                  textAlign: "end",
-                  fontSize: "16px",
-                  color: "#000",
-                  underline: "none",
-                  fontFamily: "Pragmatica",
-                  textDecoration: "none",
-                }}
-              >
-                {t("tituloNavBarDerecha")}
-              </a>
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </div>
-    </Hidden>
+                  {t("tituloNavBarDerecha")}
+                </a>
+              </Box>
+            </Toolbar>
+          </AppBar>
+        </div>
+      </Hidden>
       {/* MANEJADOR DE LENGUAJES
        */}{" "}
       <Hidden mdDown>
@@ -197,15 +212,14 @@ const NavBar = () => {
                 <Box
                   sx={{
                     fontFamily: "sans-serif",
-                   
+
                     lineHeight: "12px",
                     color: "#1d1d1d",
-                    ml:-3
+                    ml: -3,
                   }}
                 >
                   <Typography
                     sx={{
-                     
                       fontSize: "12px",
                       fontFamily: "sans-serif",
                       lineHeight: "12px",
@@ -243,10 +257,9 @@ const NavBar = () => {
                 onClick={cambiarAIngles}
                 data-i18n="en"
               >
-                <Box  sx={{ mr:-3}}>
+                <Box sx={{ mr: -3 }}>
                   <Typography
                     sx={{
-                     
                       fontFamily: "sans-serif",
                       fontSize: "12px",
                       lineHeight: "12px",
@@ -276,7 +289,7 @@ const NavBar = () => {
         <AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white" }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Box>
-              <img width={"50%"} src={logo_ow_negro}  alt="" />
+              <img width={"50%"} src={logo_ow_negro} alt="" />
             </Box>
             <Box>
               <Button
