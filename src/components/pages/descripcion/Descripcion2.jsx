@@ -154,11 +154,12 @@ const Descripcion2 = () => {
                                 justifyContent: "center",
                                 alignItems: "center",
                                 height: "76vh",
+                                gap: 10,
                               }}
                             >
-                              <img src={item.url} width={"40%"} />
+                              <img src={item.url} width={"27%"} />
                               {nextItem && nextItem.url && (
-                                <img src={nextItem.url} width={"40%"} />
+                                <img src={nextItem.url} width={"27%"} />
                               )}
                             </div>
                           );
@@ -227,7 +228,6 @@ const Descripcion2 = () => {
         </div>
       </Hidden>
 
-     
       {/* VERSIÓN MÓVIL */}
       <Hidden mdUp>
         <HeaderDescription />
@@ -237,12 +237,11 @@ const Descripcion2 = () => {
             variant="h4"
             component="div"
             sx={{
-             
               textTransform: "uppercase",
               fontSize: "16px",
               lineHeight: "20px",
               fontWeight: "100",
-              mt:10,
+              mt: 10,
             }}
           >
             {project && splitText(project.name)}
@@ -255,7 +254,7 @@ const Descripcion2 = () => {
                 key={index}
                 src={image.url}
                 alt={`Image ${index + 1}`}
-                style={{ width: "100%",objectFit:"cover", marginTop: "10px" }}
+                style={{ width: "100%", objectFit: "cover", marginTop: "10px" }}
               />
             ))}
         </Box>
