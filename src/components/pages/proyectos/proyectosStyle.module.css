@@ -52,11 +52,13 @@
 /* Estilos de bordes para comunta  1 y 2 */
 .leftBorder {
   border-left: solid #060000 1px;
+  
 }
 
 .rightBorder {
   border-right: solid #060000 1px;
   border-left: solid #060000 1px;
+  
 }
 
 /* Card diagonal */
@@ -101,6 +103,7 @@
   display: block; /* Asegura que la imagen ocupa todo el contenedor */
   width: 100%;
   transition: all 0.6s ease-in-out; /* Transición suave para el efecto de desvanecimiento */
+  margin-top: -5%;
 }
 
 .hoverText {
