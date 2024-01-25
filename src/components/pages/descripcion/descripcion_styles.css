@@ -32,15 +32,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .left-side {
   border-right: solid black 0.5px;
-  height: 573px;
+  height: 95%;
 }
 .right-side {
   border-left: solid black 0.5px;
-  height: 573px;
+  height: 95%;
+  
 }
 
 .button_leng {
@@ -77,6 +79,7 @@
 
 .project-footer-left {
   width: 23%;
+  margin-top: -12px;
 }
 .project-footer-center {
   width: 50%;
