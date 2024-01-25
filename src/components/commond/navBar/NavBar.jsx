@@ -105,12 +105,12 @@ const NavBar = () => {
         <div style={{ overflow: "hidden" }}>
           <AppBar
             sx={{
-              position: isSticky ? "fixed" : "static",
+              position: isSticky ? "fixed" : "sticky",
               boxShadow: 0,
               bgcolor: "white",
               top: isScrolled ? "0px" : "-672px",
               transition: "top 0.3s",
-              zIndex: 1500,
+              zIndex: 99999999999999,
             }}
           >
             <Toolbar sx={{ justifyContent: "space-between" }}>

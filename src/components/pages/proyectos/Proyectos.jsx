@@ -46,7 +46,7 @@ const Proyectos = () => {
   return (
     <>
       <Hidden mdDown>
-        <Box id="projects" width={"95%"} m={"auto"} mt={10}>
+        <Box id="projects" width={"95%"} m={"auto"}>
           <ImageList variant="standard" cols={3} gap={0}>
             {projects &&
               projects
@@ -118,7 +118,7 @@ const Proyectos = () => {
                         <img
                           width={"100%"}
                           height={"450px"}
-                          style={{objectFit:"cover"}}
+                          style={{ objectFit: "cover" }}
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}
@@ -126,11 +126,10 @@ const Proyectos = () => {
                         />
                         <Typography
                           sx={{
-                            
                             fontSize: "16px",
                             lineHeight: "20px",
                             letterSpacing: 0.5,
-                            fontWeight:"100",
+                            fontWeight: "100",
                             color: "#000",
                             textTransform: "uppercase",
                           }}
