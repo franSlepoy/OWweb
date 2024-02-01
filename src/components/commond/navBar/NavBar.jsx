@@ -147,7 +147,7 @@ const NavBar = () => {
                 )}
               </Box>
 
-              <Box width={"26%"}>
+              <Box width={"33,3%"} ml={-8}>
                 <img width={"320px"} src={logo_ow_negro} alt="" />
               </Box>
 

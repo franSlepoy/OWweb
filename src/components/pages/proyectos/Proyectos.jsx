@@ -69,6 +69,7 @@ const Proyectos = () => {
                         data-name={item.name}
                       >
                         <img
+                          style={{marginTop:42}}
                           srcSet={`${item.image_ppal}`}
                           src={`${item.image_ppal}`}
                           alt={item.name}

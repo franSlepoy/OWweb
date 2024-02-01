@@ -74,9 +74,10 @@ const Home = () => {
 
       <Box
         style={{
+          
           position: "absolute",
           bottom: "30px",
-          left: "50%",
+          left: "48%",
           /*           transform: "translate(-25%, 0)",
            */ zIndex: 1300,
         }}
@@ -88,7 +89,7 @@ const Home = () => {
             underline: "none",
           }}
         >
-          <img src={flechita} />
+          <img  src={flechita} />
         </a>
       </Box>
 
