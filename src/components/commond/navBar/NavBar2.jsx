@@ -42,11 +42,10 @@ const NavBar2 = () => {
     <>
       {/* VERSION DESKTOP NAVBAR */}
       <Hidden mdDown>
-        <div style={{ overflow: "hidden",  }}>
+        <div style={{ overflow: "hidden" }}>
           <AppBar
             /* position="fixed" */
             sx={{
-              
               boxShadow: 0,
               bgcolor: "white",
               /*  top: isScrolled ? "0" : "-64px", */
@@ -64,7 +63,6 @@ const NavBar2 = () => {
                     underline: "none",
                     fontFamily: "Pragmatica",
                     textDecoration: "none",
-                    
                   }}
                 >
                   {t("tituloNavBarIzquierda")}
@@ -105,18 +103,12 @@ const NavBar2 = () => {
           >
             <Grid item>
               <Button
-              
                 disableRipple
                 sx={{
-                  
                   "&:hover": {
                     backgroundColor: "transparent",
                     transition: "none",
                   },
-                }}
-                style={{
-                  cursor:
-                    "url(\"data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23e2e2c7'><circle cx='12' cy='12' r='10' /></svg>\") 12 12, auto",
                 }}
                 onClick={cambiarAEspanol}
                 data-i18n="es"
@@ -124,7 +116,7 @@ const NavBar2 = () => {
                 <Box
                   sx={{
                     fontFamily: "sans-serif",
-                    
+
                     lineHeight: "12px",
                     color: "#1d1d1d",
                   }}
@@ -135,7 +127,6 @@ const NavBar2 = () => {
                       fontFamily: "sans-serif",
                       lineHeight: "12px",
                       color: "#1d1d1d",
-                      
                     }}
                   >
                     e
@@ -162,10 +153,7 @@ const NavBar2 = () => {
                     transition: "none",
                   },
                 }}
-                style={{
-                  cursor:
-                    "url(\"data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23e2e2c7'><circle cx='12' cy='12' r='10' /></svg>\") 12 12, auto",
-                }}
+                
                 onClick={cambiarAIngles}
                 data-i18n="en"
               >

@@ -18,7 +18,8 @@ const Image_init = () => {
   return (
     <Box
       sx={{
-        zIndex: 1200,
+        /* zIndex: { xs: "1200", sm:"0"} */
+       /*  zIndex: 1200,  */
         position: "relative",
         minHeight: "90vh",
         display: "flex",

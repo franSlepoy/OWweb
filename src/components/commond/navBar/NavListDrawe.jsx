@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import StylesNavBar from "./NavBar.module.css";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
+import NavBar from "./NavBar";
 
 export default function NavListDrawer({ onclose }) {
   const { t, i18n } = useTranslation();
@@ -25,15 +26,22 @@ export default function NavListDrawer({ onclose }) {
   };
 
   return (
-    <Box>
+    <>
+      <NavBar/>
+    <Box pt={"12%"} width={"95%"} m={"auto"} >
+      
       <nav aria-label="main mailbox folders">
         <List className={StylesNavBar.lista}>
+        <Divider />
           <a
             href="/#projects"
             style={{
+              height:"40px",
+              fontFamily:"pragmatica",
               fontSize: "16px",
-              color: "#000",
+              color: "#1d1d1d",
               underline: "none",
+              letterSpacing:0.5,
               textDecoration: "none",
             }}
             onClick={onclose}
@@ -47,9 +55,12 @@ export default function NavListDrawer({ onclose }) {
           <a
             href="/#studio"
             style={{
+              height:"40px",
+              fontFamily:"pragmatica",
               fontSize: "16px",
-              color: "#000",
+              color: "#1d1d1d",
               underline: "none",
+              letterSpacing:0.5,
               textDecoration: "none",
             }}
             onClick={onclose}
@@ -66,7 +77,7 @@ export default function NavListDrawer({ onclose }) {
             justifyContent={"space-between"}
           >
             <Box>
-              <Button
+              <Button 
                 onClick={cambiarAEspanol}
                 data-i18n="es"
               >
@@ -90,5 +101,7 @@ export default function NavListDrawer({ onclose }) {
         </List>
       </nav>
     </Box>
+    </>
+  
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, Hidden } from "@mui/material";
 import Proyectos from "../proyectos/Proyectos";
 import NavBar from "../../commond/navBar/NavBar";
 import StudioContainer from "../studio/StudioContainer";
@@ -47,59 +47,75 @@ const Home = () => {
 
   return (
     <>
-      {/* IMAGEN DE ARRIBA CON EL LOGO */}
-      <Image_init />
-      {/* logo */}
-      <Box
-        className={`${styles.stickyLogo} ${
-          isLogoHidden
-            ? scrollDirection === "down"
-              ? styles.fadeAndDrop
-              : styles.fadeAndRise
-            : ""
-        }`}
-        sx={{
-          zIndex: 1300,
-          transition: "opacity 0.8s",
-          maxWidth: "652px",
-          top: "42%",
-        }}
-      >
-        <img
-          width={"100%"}
-          src="https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/logo%2FOWblanco.png?alt=media&token=d88e194d-01ad-44fe-9b47-e5340a313a82"
-          alt=""
-        />
-      </Box>
-
-      <Box
-        style={{
-          
-          position: "absolute",
-          bottom: "30px",
-          left: "48%",
-          /*           transform: "translate(-25%, 0)",
-           */ zIndex: 1300,
-        }}
-      >
-        <a
-          href="#projects"
-          style={{
-            textDecoration: "none",
-            underline: "none",
+      <Hidden mdDown>
+        {/* IMAGEN DE ARRIBA CON EL LOGO */}
+        <Image_init />
+        {/* logo */}
+        <Box
+          className={`${styles.stickyLogo} ${
+            isLogoHidden
+              ? scrollDirection === "down"
+                ? styles.fadeAndDrop
+                : styles.fadeAndRise
+              : ""
+          }`}
+          sx={{
+            zIndex: 1300,
+            transition: "opacity 0.8s",
+            maxWidth: "652px",
+            top: "42%",
           }}
         >
-          <img  src={flechita} />
-        </a>
-      </Box>
+          <img
+            width={"100%"}
+            src="https://firebasestorage.googleapis.com/v0/b/ow-backend.appspot.com/o/logo%2FOWblanco.png?alt=media&token=d88e194d-01ad-44fe-9b47-e5340a313a82"
+            alt=""
+          />
+        </Box>
 
-      {/* Inicia el navbar y el resto */}
+        <Box
+          style={{
+            position: "absolute",
+            bottom: "30px",
+            left: "48%",
+            /*           transform: "translate(-25%, 0)",
+             */ zIndex: 1300,
+          }}
+        >
+          <a
+            href="#projects"
+            style={{
+              textDecoration: "none",
+              underline: "none",
+            }}
+          >
+            <img src={flechita} />
+          </a>
+        </Box>
+
+        {/* Inicia el navbar y el resto */}
+        <Box>
+          <NavBar />
+        </Box>
+
+        <Proyectos />
+        <StudioContainer />
+      </Hidden>
+
+      <Hidden mdUp>
       <Box>
-      <NavBar />
-      </Box>
+          <NavBar />
+        </Box>
+     
+     <Image_init />
+     
       
-      <Proyectos />
-      <StudioContainer />
+       {/* Inicia el navbar y el resto */}
+       
+
+        <Proyectos />
+        <StudioContainer />
+      </Hidden>
     </>
   );
 };

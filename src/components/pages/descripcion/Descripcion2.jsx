@@ -124,14 +124,18 @@ const Descripcion2 = () => {
                 sx={{
                   width: "100%",
 
+                  borderLeft: "solid black 1px",
+                  borderRight: "solid black 1px",
                   m: "auto",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
+
                   ".MuiButtonBase-root": {
-                    top: "45% !important",
+                    top: "47% !important",
                     background: "transparent",
+                   
                   },
                   ".transparent-button": {
                     background: "transparent !important",
@@ -154,7 +158,7 @@ const Descripcion2 = () => {
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                height: "76vh",
+
                                 gap: 10,
                               }}
                             >
@@ -183,7 +187,7 @@ const Descripcion2 = () => {
                                   /*  width: "100%",
                                    */
                                   width: "auto", // Ancho automático para mantener la proporción
-                                  maxHeight: "100%",
+                                  maxHeight: "110%",
                                 }}
                               />
                             </div>
