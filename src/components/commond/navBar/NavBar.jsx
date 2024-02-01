@@ -191,7 +191,12 @@ const NavBar = () => {
           <Grid
             container
             justifyContent="space-between"
-            sx={{ position: "fixed", top: "50%" }}
+            sx={{
+              position: "fixed",
+              top: "50%",
+              cursor:
+                'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
+            }}
           >
             <Grid item>
               <Button
@@ -200,11 +205,9 @@ const NavBar = () => {
                   "&:hover": {
                     backgroundColor: "transparent",
                     transition: "none",
+                    cursor:
+                      'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
                   },
-                }}
-                style={{
-                  cursor:
-                    "url(\"data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23e2e2c7'><circle cx='12' cy='12' r='10' /></svg>\") 12 12, auto",
                 }}
                 onClick={cambiarAEspanol}
                 data-i18n="es"
@@ -248,11 +251,9 @@ const NavBar = () => {
                   "&:hover": {
                     backgroundColor: "transparent",
                     transition: "none",
+                    cursor:
+                      'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
                   },
-                }}
-                style={{
-                  cursor:
-                    "url(\"data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='%23e2e2c7'><circle cx='12' cy='12' r='10' /></svg>\") 12 12, auto",
                 }}
                 onClick={cambiarAIngles}
                 data-i18n="en"
@@ -288,8 +289,8 @@ const NavBar = () => {
       <Hidden mdUp>
         <AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white" }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
-            <Box>
-              <img width={"50%"} src={logo_ow_negro} alt="" />
+            <Box >
+              <img width={"70%"} src={logo_ow_negro} alt="" />
             </Box>
             <Box>
               <Button

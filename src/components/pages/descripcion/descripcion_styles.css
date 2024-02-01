@@ -35,7 +35,7 @@
   
 }
 
-.left-side {
+/* .left-side {
   border-right: solid black 0.5px;
   height: 95%;
 }
@@ -43,7 +43,7 @@
   border-left: solid black 0.5px;
   height: 95%;
   
-}
+} */
 
 .button_leng {
   border: none;
@@ -79,7 +79,7 @@
 
 .project-footer-left {
   width: 23%;
-  margin-top: -12px;
+ 
 }
 .project-footer-center {
   width: 50%;
