@@ -1,4 +1,4 @@
-import { Box, Grid, Hidden, ImageList, Typography } from "@mui/material";
+import { Box, Hidden, ImageList, Typography } from "@mui/material";
 
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
@@ -123,7 +123,7 @@ const Descripcion2 = () => {
                 cycleNavigation={false}
                 sx={{
                   width: "100%",
-                 
+
                   m: "auto",
                   display: "flex",
                   flexDirection: "column",
