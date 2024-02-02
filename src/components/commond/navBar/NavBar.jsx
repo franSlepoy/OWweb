@@ -17,21 +17,18 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 
 const NavBar = () => {
- 
   const { handleLenguage, lenguage } = useContext(AuthContext);
 
   // Función para cambiar el idioma a español
   const cambiarAEspanol = () => {
-    
     handleLenguage("es");
   };
 
   // Función para cambiar el idioma a inglés
   const cambiarAIngles = () => {
-   
     handleLenguage("en");
   };
- 
+
   const [open, setOpen] = useState(false);
 
   const cerrarBar = () => {
@@ -41,7 +38,7 @@ const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
-  console.log("El lenguage es: ", lenguage); 
+  console.log("El lenguage es: ", lenguage);
 
   const [currentPage, setCurrentPage] = useState("projects");
 
@@ -106,7 +103,7 @@ const NavBar = () => {
                     textDecoration: "none",
                   }}
                 >
-                {/*   {t("tituloNavBarIzquierda")} */} vbkjwbvjd
+                  {lenguage === "es" ? "Proyectos" : "Projects"}
                 </a>
                 {isProjectsActive && (
                   <Box
@@ -153,7 +150,7 @@ const NavBar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  hvabvalvn
+                  {lenguage === "es" ? "Estudio" : "Studio"}
                 </a>
               </Box>
             </Toolbar>
@@ -186,7 +183,6 @@ const NavBar = () => {
                   },
                 }}
                 onClick={cambiarAEspanol}
-               
               >
                 <Box
                   sx={{
@@ -231,8 +227,7 @@ const NavBar = () => {
                       'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
                   },
                 }}
-                 onClick={cambiarAIngles}
-                
+                onClick={cambiarAIngles}
               >
                 <Box sx={{ mr: -3 }}>
                   <Typography

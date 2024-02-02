@@ -41,7 +41,7 @@ const ProjectNavigation = () => {
         {" "}
         <Link
           to={`/project2/${prevProject?.id}`}
-          style={{ fontSize: "16px", color: "#1d1d1d" }}
+          style={{ fontSize: "13px", color: "#1d1d1d" }}
         >
           <div
             style={{
@@ -49,7 +49,6 @@ const ProjectNavigation = () => {
               alignItems: "center",
               justifyContent: "left",
               gap: 8,
-             
             }}
           >
             <img src={botonAnterior} /> {prevProject?.name}
@@ -64,7 +63,7 @@ const ProjectNavigation = () => {
         {" "}
         <Link
           to={`/project2/${nextProject?.id}`}
-          style={{ fontSize: "16px", color: "#1d1d1d" }}
+          style={{ fontSize: "14px", color: "#1d1d1d" }}
         >
           <div
             style={{
