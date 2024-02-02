@@ -7,6 +7,7 @@ import Image_init from "./imagen_init/Image_init";
 import styles from "./Home.module.css"; // Importa el archivo de estilos CSS Module
 import flechita from "../../../../public/imagenes/defaults/slider_arrow.svg";
 
+
 const Home = () => {
   const [isLogoHidden, setIsLogoHidden] = useState(false);
   const [scrollDirection, setScrollDirection] = useState("down"); // 'down' o 'up'
@@ -95,7 +96,7 @@ const Home = () => {
 
         {/* Inicia el navbar y el resto */}
         <Box>
-          <NavBar />
+        <NavBar />
         </Box>
 
         <Proyectos />
@@ -104,7 +105,7 @@ const Home = () => {
 
       <Hidden mdUp>
       <Box>
-          <NavBar />
+           <NavBar /> 
         </Box>
      
      <Image_init />

@@ -17,20 +17,10 @@ import { AuthContext } from "../../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const NavBar2 = () => {
-  const { t, i18n } = useTranslation();
-  const { handleLenguage, lenguage } = useContext(AuthContext);
+  
 
   // Función para cambiar el idioma a español
-  const cambiarAEspanol = () => {
-    i18n.changeLanguage("es");
-    handleLenguage("es");
-  };
-
-  // Función para cambiar el idioma a inglés
-  const cambiarAIngles = () => {
-    i18n.changeLanguage("en");
-    handleLenguage("en");
-  };
+  
 
   const [open, setOpen] = useState(false);
 
@@ -40,24 +30,30 @@ const NavBar2 = () => {
 
   return (
     <>
+       <>
       {/* VERSION DESKTOP NAVBAR */}
       <Hidden mdDown>
         <div style={{ overflow: "hidden" }}>
           <AppBar
-            /* position="fixed" */
             sx={{
+             /*  position: isSticky ? "fixed" : "sticky", */
               boxShadow: 0,
               bgcolor: "white",
-              /*  top: isScrolled ? "0" : "-64px", */
+             /*  top: isScrolled ? "0px" : "-672px", */
               transition: "top 0.3s",
-              zIndex: 1500,
+              zIndex: 99999999999999,
             }}
           >
             <Toolbar sx={{ justifyContent: "space-between" }}>
-              <Box width={"33,3%"} display={"flex"}>
-                <Link
-                  to="/#projects"
+              <Box
+                width={"33,3%"}
+                display={"flex"}
+                /* onClick={handleProjectsClick} */
+              >
+                <a
+                  href="#projects"
                   style={{
+                    paddingLeft: "10px",
                     fontSize: "16px",
                     color: "#000",
                     underline: "none",
@@ -65,18 +61,45 @@ const NavBar2 = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {t("tituloNavBarIzquierda")}
-                </Link>
+                  jkmbkhvh
+                </a>
+               
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      backgroundColor: "rgba(226,226,199)",
+                      borderRadius: "100%",
+                      ml: 1,
+                    }}
+                  >
+                    {/* circulo */}
+                  </Box>
+                
               </Box>
 
-              <Box width={"26%"}>
+              <Box width={"33,3%"} ml={-8}>
                 <img width={"320px"} src={logo_ow_negro} alt="" />
               </Box>
 
-              <Box width={"33,3%"}>
-                <Link
-                  to="/#studio"
+              <Box width={"33,3%"} display={"flex"} >
+                
+                  <Box
+                    sx={{
+                      width: "20px",
+                      height: "20px",
+                      backgroundColor: "rgba(226,226,199)",
+                      borderRadius: "100%",
+                      mr: 1,
+                    }}
+                  >
+                    {/* circulo */}
+                  </Box>
+             
+                <a
+                  href="#studio"
                   style={{
+                    paddingRight: "10px",
                     textAlign: "end",
                     fontSize: "16px",
                     color: "#000",
@@ -85,8 +108,8 @@ const NavBar2 = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {t("tituloNavBarDerecha")}
-                </Link>
+                  hdjcjhvkb
+                </a>
               </Box>
             </Toolbar>
           </AppBar>
@@ -99,7 +122,12 @@ const NavBar2 = () => {
           <Grid
             container
             justifyContent="space-between"
-            sx={{ position: "fixed", top: "50%" }}
+            sx={{
+              position: "fixed",
+              top: "50%",
+              cursor:
+                'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
+            }}
           >
             <Grid item>
               <Button
@@ -108,10 +136,12 @@ const NavBar2 = () => {
                   "&:hover": {
                     backgroundColor: "transparent",
                     transition: "none",
+                    cursor:
+                      'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
                   },
                 }}
-                onClick={cambiarAEspanol}
-                data-i18n="es"
+               /*  onClick={cambiarAEspanol} */
+               /*  data-i18n="es" */
               >
                 <Box
                   sx={{
@@ -119,6 +149,7 @@ const NavBar2 = () => {
 
                     lineHeight: "12px",
                     color: "#1d1d1d",
+                    ml: -3,
                   }}
                 >
                   <Typography
@@ -151,13 +182,14 @@ const NavBar2 = () => {
                   "&:hover": {
                     backgroundColor: "transparent",
                     transition: "none",
+                    cursor:
+                      'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="rgba(226,226,199,0.5)"><circle cx="12" cy="12" r="10"/></svg>\') 12 12, auto',
                   },
                 }}
-                
-                onClick={cambiarAIngles}
-                data-i18n="en"
+               /*  onClick={cambiarAIngles}
+                data-i18n="en" */
               >
-                <Box>
+                <Box sx={{ mr: -3 }}>
                   <Typography
                     sx={{
                       fontFamily: "sans-serif",
@@ -189,7 +221,7 @@ const NavBar2 = () => {
         <AppBar position="fixed" sx={{ boxShadow: 0, bgcolor: "white" }}>
           <Toolbar sx={{ justifyContent: "space-between" }}>
             <Box>
-              <img width={"50%"} src="/imagenes/ownegro.png" alt="" />
+              <img width={"70%"} src={logo_ow_negro} alt="" />
             </Box>
             <Box>
               <Button
@@ -211,6 +243,8 @@ const NavBar2 = () => {
           <NavListDrawer onclose={cerrarBar} />
         </Drawer>
       </Hidden>
+    </>
+     
     </>
   );
 };
