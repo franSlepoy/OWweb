@@ -290,3 +290,4 @@ const Descripcion2 = () => {
 };
 
 export default Descripcion2;
+
