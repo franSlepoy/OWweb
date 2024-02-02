@@ -135,7 +135,6 @@ const Descripcion2 = () => {
                   ".MuiButtonBase-root": {
                     top: "47% !important",
                     background: "transparent",
-                   
                   },
                   ".transparent-button": {
                     background: "transparent !important",
@@ -238,30 +237,52 @@ const Descripcion2 = () => {
         <HeaderDescription />
         <Box width={"90%"} margin={"auto"}>
           {/* Muestra el título del proyecto */}
-          <Typography
-            variant="h4"
-            component="div"
-            sx={{
-              textTransform: "uppercase",
-              fontSize: "16px",
-              lineHeight: "20px",
-              fontWeight: "100",
-              mt: 10,
-            }}
-          >
-            {project && splitText(project.name)}
-          </Typography>
+          {project && (
+            <Typography
+              variant="h4"
+              component="div"
+              sx={{
+                textTransform: "uppercase",
+                fontSize: "16px",
+                lineHeight: "20px",
+                fontWeight: "100",
+                mt: 10,
+              }}
+            >
+              {splitText(project.name)}
+            </Typography>
+          )}
 
-          {/* Muestra las imágenes en una sola columna */}
-          {project &&
-            project.gallery.map((image, index) => (
-              <img
-                key={index}
-                src={image.url}
-                alt={`Image ${index + 1}`}
-                style={{ width: "100%", objectFit: "cover", marginTop: "10px" }}
-              />
-            ))}
+          {/* Muestra las imágenes y el texto de slides y memories */}
+          {combinedData?.map((item, index) => {
+            if (item.url) {
+              // Renderiza la imagen
+              return (
+                <img
+                  key={index}
+                  src={item.url}
+                  alt={`Image ${index + 1}`}
+                  style={{
+                    width: "100%",
+                    objectFit: "cover",
+                    marginTop: "10px",
+                  }}
+                />
+              );
+            } else if (typeof item === "string" && item.trim() !== "") {
+              // Renderiza el texto
+              return (
+                <div
+                  key={index}
+                  style={{ marginTop: "10px", textAlign: "center" }}
+                >
+                  {splitText(item)}
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })}
         </Box>
       </Hidden>
     </>
