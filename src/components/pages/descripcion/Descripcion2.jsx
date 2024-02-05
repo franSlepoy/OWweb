@@ -69,11 +69,47 @@ const Descripcion2 = () => {
         {array.map((item, index) => {
           if (typeof item === "string") {
             if (item.startsWith("# ")) {
-              return <h1 key={index}>{item.slice(2)}</h1>;
+              return (
+                <p
+                  key={index}
+                  style={{
+                    /*         fontFamily: "'poynter-oldstyle-display', sans-serif", */
+                    fontSize: "4.17vh",
+                    lineHeight: " 5.2vh",
+                    letterSpacing: "0.03em",
+                  }}
+                >
+                  {item.slice(2)}
+                </p>
+              );
             } else if (item.startsWith("## ")) {
-              return <h2 key={index}>{item.slice(3)}</h2>;
+              return (
+                <p
+                  key={index}
+                  style={{
+                    fontFamily: "'poynter-oldstyle-display', sans-serif",
+                    fontSize: "2.18vh",
+                    letterSpacing: "0.02em",
+                    lineHeight: "2.6vh",
+                  }}
+                >
+                  {item.slice(3)}
+                </p>
+              );
             } else {
-              return <p key={index}>{item}</p>;
+              return (
+                <p
+                  key={index}
+                  style={{
+                    fontFamily: "'poynter-oldstyle-display', sans-serif",
+                    fontSize: "2.18vh",
+                    letterSpacing: "0.02em",
+                    lineHeight: "2.6vh",
+                  }}
+                >
+                  {item}
+                </p>
+              );
             }
           } else {
             // Manejar el caso en que item no es una cadena
@@ -200,10 +236,11 @@ const Descripcion2 = () => {
                             style={{
                               display: "flex",
                               flexDirection: "column",
-                              justifyContent: "space-evenly",
+                              justifyContent: "center",
                               alignItems: "center",
                               height: "76vh",
                               textAlign: "center",
+                              border: "solid red",
                             }}
                           >
                             {/*  {applyStyles(item)} */}
@@ -290,4 +327,3 @@ const Descripcion2 = () => {
 };
 
 export default Descripcion2;
-
