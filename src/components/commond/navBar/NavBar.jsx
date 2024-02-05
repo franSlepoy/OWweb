@@ -103,7 +103,7 @@ const NavBar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {lenguage === "es" ? "Proyectos" : "Projects"}
+                  {lenguage === "es" ? "PROYECTOS" : "PROYECTS"}
                 </a>
                 {isProjectsActive && (
                   <Box
@@ -150,7 +150,7 @@ const NavBar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {lenguage === "es" ? "Estudio" : "Studio"}
+                  {lenguage === "es" ? "ESTUDIO" : "STUDIO"}
                 </a>
               </Box>
             </Toolbar>
@@ -190,7 +190,8 @@ const NavBar = () => {
 
                     lineHeight: "12px",
                     color: "#1d1d1d",
-                    mr: "58%",
+                    ml: "-3vh",
+                    
                   }}
                 >
                   <Typography
@@ -229,7 +230,7 @@ const NavBar = () => {
                 }}
                 onClick={cambiarAIngles}
               >
-                <Box sx={{ mr: -3 }}>
+                <Box sx={{ mr: "-3vh"}}>
                   <Typography
                     sx={{
                       fontFamily: "sans-serif",

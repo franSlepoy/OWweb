@@ -34,7 +34,7 @@ const ESDescription = () => {
       <Box
         sx={{
           fontFamily: "sans-serif",
-
+          mt: -1,
           lineHeight: "12px",
           color: "#1d1d1d",
         }}

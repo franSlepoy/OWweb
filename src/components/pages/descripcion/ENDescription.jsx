@@ -23,7 +23,7 @@ const ENDescription = () => {
       onClick={cambiarAIngles}
       data-i18n="en"
     >
-      <Box >
+      <Box mt={-1} >
         <Typography
           sx={{
             fontFamily: "sans-serif",
