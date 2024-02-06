@@ -230,7 +230,7 @@ const NavBar = () => {
                 }}
                 onClick={cambiarAIngles}
               >
-                <Box sx={{ mr: "-3vh"}}>
+                <Box sx={{ mr: -3 }}>
                   <Typography
                     sx={{
                       fontFamily: "sans-serif",

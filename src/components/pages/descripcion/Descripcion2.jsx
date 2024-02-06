@@ -240,7 +240,7 @@ const Descripcion2 = () => {
                               alignItems: "center",
                               height: "76vh",
                               textAlign: "center",
-                              border: "solid red",
+                              
                             }}
                           >
                             {/*  {applyStyles(item)} */}
